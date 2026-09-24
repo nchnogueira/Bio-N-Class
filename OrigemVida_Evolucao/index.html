@@ -577,7 +577,8 @@
             <div x-show="selectedScientist === 'pasteur'" x-transition class="space-y-4">
               <div class="flex flex-col-reverse sm:flex-row sm:items-start justify-between gap-3 sm:gap-4">
                 <div class="space-y-1 min-w-0">
-                  <span class="inline-block px-2.5 py-1 rounded bg-bio-600 text-white text-xs font-bold">França (1862) • O Veredito
+                  <span class="inline-block px-2.5 py-1 rounded bg-bio-600 text-white text-xs font-bold">França (1862) •
+                    O Veredito
                     Definitivo</span>
                   <h4 class="font-display font-bold text-base sm:text-lg">Louis Pasteur e o Frasco Pescoço de Cisne</h4>
                 </div>
@@ -633,108 +634,182 @@
         </div>
       </div>
 
+
+
       <!-- PARTE 1.2: A ORIGEM PRIMITIVA: DA EVOLUÇÃO QUÍMICA ÀS PRIMEIRAS CÉLULAS -->
-      <div class="space-y-6 pt-4 border-t border-slate-200 dark:border-slate-800">
+      <div class="space-y-8 pt-6 border-t border-slate-200 dark:border-slate-800">
+        <!-- Badge & Título Principal da Seção 1.2 -->
         <div class="flex items-center gap-2 text-base font-bold font-display text-bio-800 dark:text-bio-300">
           <span class="w-2.5 h-2.5 rounded-full bg-bio-500"></span>
           1.2 A Origem Primitiva: Da Evolução Química às Primeiras Células
         </div>
 
         <div
-          class="p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
-          <h3 class="font-display font-black text-lg sm:text-xl text-slate-900 dark:text-white">
-            O Paradoxo da Biogênese e a Solução de Oparin-Haldane
-          </h3>
-          <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-            Se todo ser vivo só nasce de outro, como surgiu o primeiríssimo habitante da Terra?
-            Nas décadas de 1920 e 1930, <strong>Aleksandr Oparin</strong> (Rússia) e <strong>John Burdon
-              Haldane</strong> (Reino Unido) propuseram de forma independente a <em>Hipótese da Evolução Gradual dos
-              Compostos Químicos</em> (Evolução Prebiótica). Eles deduziram que o surgimento da vida a partir da matéria
-            inanimada ocorreu apenas uma vez, sob as condições extremas da Terra primitiva — condições que não existem
-            mais hoje!
-          </p>
+          class="p-5 sm:p-7 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
 
-          <!-- Destaque: A Terra Primitiva -->
-          <div
-            class="p-4 rounded-xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-900/60 space-y-3">
-            <span class="font-display font-bold text-sm text-amber-900 dark:text-amber-300 flex items-center gap-2">
-              <span>🌋</span> O Cenário da Terra Primitiva (Há cerca de 4,0 a 3,8 bilhões de anos):
-            </span>
-            <ul class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 space-y-1.5 list-disc pl-5">
-              <li><strong>Sem camada de ozônio ($O_3$):</strong> Bombardeamento contínuo de radiação ultravioleta letal
-                direto na crosta.</li>
-              <li><strong>Crosta terrestre instável:</strong> Vulcanismo generalizado expelindo magma, cinzas e vapores
-                incandescentes.</li>
-              <li><strong>Atmosfera Redutora:</strong> Composta primordialmente por Metano ($\mathrm{CH_4}$), Amônia
-                ($\mathrm{NH_3}$), Gás Hidrogênio ($\mathrm{H_2}$) e Vapor de Água ($\mathrm{H_2O}$).</li>
-              <li class="text-red-700 dark:text-red-400 font-bold bg-red-100/60 dark:bg-red-950/60 p-2 rounded-lg">
-                ⚠️ ATENÇÃO CRÍTICA: NÃO HAVIA OXIGÊNIO LIVRE ($\mathrm{O_2}$)! Se houvesse $\mathrm{O_2}$ livre, ele
-                oxidaria e quebraria rapidamente as primeiras moléculas orgânicas antes que elas pudessem se associar.
-              </li>
-            </ul>
+          <!-- Subtópico: O Paradoxo da Biogênese e a Hipótese de Oparin-Haldane -->
+          <div class="space-y-3">
+            <h3 class="font-display font-black text-lg sm:text-xl text-slate-900 dark:text-white">
+              O Paradoxo da Biogênese e a Hipótese de Oparin-Haldane
+            </h3>
+            <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              Se a biologia moderna estabelece que a vida só provém de outra vida pré-existente (<em>Omnis cellula e
+                cellula</em>), surge o enigma inevitável: <strong>como surgiu a primeiríssima linhagem viva da
+                Terra?</strong>
+            </p>
+            <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              Nas décadas de 1920 e 1930, o bioquímico russo <strong>Aleksandr Oparin</strong> e o biólogo britânico
+              <strong>J. B. S. Haldane</strong> propuseram, de maneira independente, o modelo da <strong>Evolução
+                Prebiótica (ou Química)</strong>. A premissa central é que o surgimento da vida a partir de matéria
+              inorgânica não viola o princípio da biogênese atual: ele ocorreu sob um contexto geoquímico e atmosférico
+              singular do Arqueano — um conjunto de condições extremas irreproduzíveis no planeta hoje.
+            </p>
           </div>
 
-          <!-- A Cozinha Prebiótica -->
-          <div class="space-y-3 pt-2">
-            <h4 class="font-display font-bold text-base text-slate-900 dark:text-white">
-              A Cozinha Prebiótica: Como se Formaram os Blocos da Vida?
+          <!-- O Cenário da Terra Primitiva -->
+          <div
+            class="p-5 rounded-xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-900/60 space-y-3">
+            <span
+              class="font-display font-bold text-sm sm:text-base text-amber-900 dark:text-amber-300 flex items-center gap-2">
+              <span>🌋</span> O Cenário da Terra Primitiva (Há cerca de 4,0 a 3,8 bilhões de anos):
+            </span>
+            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              Para compreender as reações da sopa primordial, é indispensável examinar as características
+              físico-químicas do planeta recém-formado:
+            </p>
+            <ul class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 space-y-2 list-disc pl-5">
+              <li><strong>Ausência de Camada de Ozônio ($\mathrm{O_3}$):</strong> Sem oxigênio livre, não havia filtro
+                contra a radiação ultravioleta de ondas curtas (UVC/UVB), que incidia com força letal diretamente na
+                crosta e nas lâminas d'água superficiais.</li>
+              <li><strong>Instabilidade Tectônica e Térmica:</strong> Calor residual de acreção planetária,
+                bombardeamento contínuo de bólidos e vulcanismo severo expelindo magma, cinzas e gases redutores.</li>
+              <li><strong>Atmosfera Redutora e Anóxica:</strong> O ar primordial era saturado em vapor d'água
+                ($\mathrm{H_2O}$), metano ($\mathrm{CH_4}$), amônia ($\mathrm{NH_3}$) e gás hidrogênio ($\mathrm{H_2}$),
+                além de monóxido e dióxido de carbono ($\mathrm{CO}$ e $\mathrm{CO_2}$) e ácido sulfídrico
+                ($\mathrm{H_2S}$).</li>
+            </ul>
+
+            <div
+              class="mt-3 text-xs sm:text-sm text-amber-900 dark:text-amber-200 bg-amber-100/80 dark:bg-amber-900/40 p-3.5 rounded-lg border border-amber-300 dark:border-amber-800">
+              <strong class="font-bold flex items-center gap-1.5 text-amber-950 dark:text-amber-100 mb-1">
+                <span>⚠️</span> Atenção conceitual:
+              </strong>
+              A atmosfera primordial <strong>não continha gás oxigênio livre ($\mathrm{O_2}$)</strong>. Se houvesse
+              oxigênio diatômico disponível, o seu elevado poder oxidante fragmentaria de imediato as cadeias carbônicas
+              incipientes. A ausência de $\mathrm{O_2}$ foi a janela geoquímica que permitiu o acúmulo estável de
+              matéria orgânica no planeta.
+            </div>
+          </div>
+
+          <!-- As Etapas da Síntese Prebiótica -->
+          <div class="space-y-4 pt-2">
+            <h4 class="font-display font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-bio-600"></span>
+              As Etapas da Síntese Prebiótica
             </h4>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 text-xs sm:text-sm">
               <div
-                class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-1">
-                <span class="font-bold text-bio-700 dark:text-bio-400 block">1. Descargas & Raios</span>
-                Tempestades violentas e radiação UV quebraram as ligações de $\mathrm{CH_4}$, $\mathrm{NH_3}$,
-                $\mathrm{H_2}$ e $\mathrm{H_2O}$.
+                class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-2">
+                <div class="font-bold text-bio-700 dark:text-bio-400 flex items-center gap-1.5">
+                  <span
+                    class="px-2 py-0.5 rounded-md bg-bio-100 dark:bg-bio-950 text-bio-800 dark:text-bio-300 text-xs">1</span>
+                  Ativação Energética
+                </div>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                  As descargas elétricas de tempestades globais e a radiação UV forneceram a energia de ativação
+                  necessária para romper as ligações covalentes dos gases atmosféricos ($\mathrm{CH_4}$,
+                  $\mathrm{NH_3}$, $\mathrm{H_2}$, $\mathrm{H_2O}$).
+                </p>
               </div>
+
               <div
-                class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-1">
-                <span class="font-bold text-bio-700 dark:text-bio-400 block">2. Aminoácidos</span>
-                Os átomos livres recombinaram-se em compostos orgânicos simples: aminoácidos (tijolos das proteínas) e
-                bases nitrogenadas.
+                class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-2">
+                <div class="font-bold text-bio-700 dark:text-bio-400 flex items-center gap-1.5">
+                  <span
+                    class="px-2 py-0.5 rounded-md bg-bio-100 dark:bg-bio-950 text-bio-800 dark:text-bio-300 text-xs">2</span>
+                  Monômeros Orgânicos
+                </div>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Os radicais livres gerados recombinaram-se em moléculas orgânicas simples: aminoácidos (tijolos
+                  proteicos), purinas e pirimidinas (bases nitrogenadas) e ácidos graxos.
+                </p>
               </div>
+
               <div
-                class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-1">
-                <span class="font-bold text-bio-700 dark:text-bio-400 block">3. Caldo Nutritivo</span>
-                Chuvas torrenciais lavaram esses compostos para os oceanos quentes em formação, acumulando o "Caldo
-                Primordial".
+                class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-2">
+                <div class="font-bold text-bio-700 dark:text-bio-400 flex items-center gap-1.5">
+                  <span
+                    class="px-2 py-0.5 rounded-md bg-bio-100 dark:bg-bio-950 text-bio-800 dark:text-bio-300 text-xs">3</span>
+                  Caldo Primordial
+                </div>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Chuvas lavaram esses compostos para oceanos aquecidos. Minerais de argila nas margens atuaram como
+                  catalisadores inorgânicos, favorecendo a polimerização (ligações peptídicas e fosfodiéster).
+                </p>
               </div>
+
               <div
-                class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-1">
-                <span class="font-bold text-bio-700 dark:text-bio-400 block">4. Coacervados</span>
-                Proteínas desidrataram na areia quente e formaram aglomerados isolados por água: os
-                <strong>coacervados</strong> (protocélulas).
+                class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-2">
+                <div class="font-bold text-bio-700 dark:text-bio-400 flex items-center gap-1.5">
+                  <span
+                    class="px-2 py-0.5 rounded-md bg-bio-100 dark:bg-bio-950 text-bio-800 dark:text-bio-300 text-xs">4</span>
+                  Coacervados
+                </div>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Proteínas e lipídios agruparam-se em microesferas coloidais isoladas por filmes de água — os
+                  <strong>coacervados</strong> (protobiontes).
+                </p>
               </div>
             </div>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed pt-1">
-              Os coacervados não eram seres vivos ainda, mas protocélulas capazes de manter um meio interno químico
-              distinto do exterior. Quando essas estruturas englobaram uma molécula autorreplicante (como o RNA
-              primordial), surgiram as primeiras células vivas!
-            </p>
+
+            <div
+              class="p-4 rounded-xl bg-slate-100/70 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm text-slate-700 dark:text-slate-300 space-y-2">
+              <strong class="text-slate-900 dark:text-white font-semibold block">Propriedades Fundamentais dos
+                Coacervados (Protobiontes):</strong>
+              <ul class="list-disc pl-5 space-y-1 text-slate-600 dark:text-slate-300 text-xs">
+                <li><strong>Individualização:</strong> Manutenção de um microambiente interno com pH e concentração de
+                  solutos distintos do meio externo.</li>
+                <li><strong>Capacidade de Troca e Catálise Rudimentar:</strong> Absorção de substâncias externas e
+                  incorporação de reações em suas interfaces.</li>
+              </ul>
+            </div>
           </div>
 
           <!-- O Experimento de Miller e Urey (1953) -->
           <div
-            class="p-5 rounded-2xl bg-gradient-to-br from-bio-50 to-emerald-100/50 dark:from-slate-900 dark:to-bio-950/40 border border-bio-200 dark:border-bio-800/80 shadow-sm space-y-3">
-            <h4 class="font-display font-bold text-bio-900 dark:text-bio-200 flex items-center gap-2">
-              <svg class="w-5 h-5 text-bio-600 dark:text-bio-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            class="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-bio-50 to-emerald-100/50 dark:from-slate-900 dark:to-bio-950/40 border border-bio-200 dark:border-bio-800/80 shadow-sm space-y-4">
+            <h4
+              class="font-display font-bold text-bio-900 dark:text-bio-200 flex items-center gap-2 text-base sm:text-lg">
+              <svg class="w-5 h-5 text-bio-600 dark:text-bio-400 shrink-0" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
-              O Teste de Laboratório: O Experimento de Miller e Urey (1953)
+              A Evidência Experimental: O Experimento de Miller e Urey (1953)
             </h4>
             <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-              Na Universidade de Chicago, Stanley Miller e seu orientador Harold Urey construíram um aparato de vidro
-              fechado que simulava fielmente a atmosfera e os mares da Terra primitiva:
+              Para verificar se as ideias de Oparin e Haldane eram quimicamente factíveis, Stanley Miller e Harold Urey
+              construíram um circuito fechado de vidro borossilicato simulando o ciclo hidrológico e atmosférico da
+              Terra primitiva:
             </p>
+            <ul class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 space-y-1 list-disc pl-5">
+              <li>A água líquida era aquecida para evaporar;</li>
+              <li>O vapor misturava-se a uma câmara contendo $\mathrm{CH_4}$, $\mathrm{NH_3}$ e $\mathrm{H_2}$;</li>
+              <li>Eletrodos de tungstênio disparavam centelhas de alta voltagem contínuas (simulando raios);</li>
+              <li>Um condensador resfriava os gases, devolvendo o líquido ao reservatório basal.</li>
+            </ul>
+
             <div
-              class="my-2 p-3 rounded-xl bg-white dark:bg-slate-950 border border-bio-300 dark:border-slate-800 text-center font-mono text-sm text-bio-800 dark:text-bio-300 overflow-x-auto w-full max-w-full min-w-0">
-              <span>$$\text{Metano } (\mathrm{CH_4}) + \text{Amônia } (\mathrm{NH_3}) + \text{Hidrogênio }
-                (\mathrm{H_2}) + \text{Água } (\mathrm{H_2O}) \xrightarrow{\text{Faíscas Elétricas}} \text{Aminoácidos
-                (Glicina, Alanina)}$$</span>
+              class="my-3 p-3.5 rounded-xl bg-white dark:bg-slate-950 border border-bio-300 dark:border-slate-800 text-center font-mono text-xs sm:text-sm text-bio-800 dark:text-bio-300 overflow-x-auto w-full max-w-full min-w-0">
+              $$\text{Metano } (\mathrm{CH_4}) + \text{Amônia } (\mathrm{NH_3}) + \text{Hidrogênio } (\mathrm{H_2}) +
+              \text{Água } (\mathrm{H_2O}) \xrightarrow{\text{Faíscas Elétricas}} \text{Aminoácidos (Glicina, Alanina,
+              Ác. Aspártico, Ureia)}$$
             </div>
-            <p class="text-xs text-slate-600 dark:text-slate-400">
-              Após apenas uma semana de funcionamento ininterrupto, o líquido límpido do fundo adquiriu uma coloração
-              marrom-avermelhada. Ao analisá-lo quimicamente, Miller encontrou diversos aminoácidos orgânicos! Estava
-              provado: a química da Terra primitiva era capaz de gerar espontaneamente os blocos moleculares da vida.
+
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Após uma semana de ciclo contínuo, a solução incolor tornou-se vermelho-acastanhada. A cromatografia
+              revelou a presença de <strong>glicina, alanina, ácido aspártico e ureia</strong>. O teste comprovou
+              empiricamente que monômeros biológicos fundamentais podem ser sintetizados espontaneamente a partir de
+              precursores inorgânicos em condições prebióticas.
             </p>
 
             <figure
@@ -748,133 +823,488 @@
                 os oceanos da Terra primitiva para investigar a formação abiótica de moléculas orgânicas.
               </figcaption>
             </figure>
+          </div>
 
+          <!-- Do Coacervado ao Código: O "Mundo do RNA" e o LUCA -->
+          <div
+            class="p-5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-3">
+            <h4 class="font-display font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+              <span>🧬</span> Do Coacervado ao Código: O "Mundo do RNA" e o LUCA
+            </h4>
+            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              O elo que separa um agregado coloidal de um ser vivo é a <strong>hereditariedade</strong>. O metabolismo
+              requer enzimas proteicas; a síntese proteica requer instruções em DNA; e a replicação do DNA exige enzimas
+              proteicas.
+            </p>
+            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              Como resolver esse dilema do "ovo e da galinha"? A hipótese amplamente aceita é a do <strong>Mundo do
+                RNA</strong>:
+            </p>
+            <ul class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 space-y-2 list-disc pl-5">
+              <li>O RNA é capaz não apenas de armazenar informação genética, mas também de atuar como catalisador
+                biológico de reações químicas (as chamadas <strong>ribozimas</strong>).</li>
+              <li>Os primeiros sistemas auto-replicantes utilizavam RNA tanto como genoma quanto como maquinário
+                funcional.</li>
+              <li>Com a estabilização desse sistema e a encapsulação por membranas fosfolipídicas, surgiu a população de
+                protocélulas que culminou no <strong>LUCA</strong> (<em>Last Universal Common Ancestor</em>), o
+                ancestral comum de toda a biosfera. Como destaca a biologia evolutiva contemporânea (Ridley), o fato de
+                todos os seres vivos compartilharem o mesmo código genético padrão — um "acidente congelado" sem
+                necessidade química determinística — comprova que descendemos dessa mesma linhagem inicial.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- NOVO TÓPICO COMPLEMENTAR: A ORIGEM EXTRATERRESTRE DE MOLÉCULAS — HIPÓTESES DA PANSPERMIA -->
+      <div class="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+        <div class="flex items-center gap-2 text-base font-bold font-display text-bio-800 dark:text-bio-300">
+          <span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span>
+          Tópico Complementar: A Origem Extraterrestre de Moléculas — Hipóteses da Panspermia
+        </div>
+
+        <div
+          class="p-5 sm:p-7 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+          <div class="space-y-3">
+            <h3 class="font-display font-black text-lg sm:text-xl text-slate-900 dark:text-white">
+              Uma Hipótese Complementar, Não Antagônica
+            </h3>
+            <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              Ao lado da síntese atmosférica de Miller-Urey e das fontes hidrotermais abissais, a ciência investiga se
+              parte da matéria-prima da vida veio de fora do planeta. Essa proposição é dividida em duas abordagens
+              científicas radicalmente distintas:
+            </p>
+          </div>
+
+          <!-- Tabela Comparativa Panspermia -->
+          <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
+            <table class="w-full text-left border-collapse text-xs sm:text-sm">
+              <thead>
+                <tr
+                  class="bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-white font-display border-b border-slate-200 dark:border-slate-800">
+                  <th class="p-3.5 font-bold">Vertente da Hipótese</th>
+                  <th class="p-3.5 font-bold">Mecanismo Proposto</th>
+                  <th class="p-3.5 font-bold">Status Científico Atual</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
+                <tr class="bg-emerald-50/50 dark:bg-emerald-950/20">
+                  <td class="p-3.5 font-semibold text-emerald-900 dark:text-emerald-300">
+                    1. Panspermia Molecular<br><span
+                      class="text-[11px] font-normal text-slate-500 dark:text-slate-400">(Pseudo-panspermia)</span>
+                  </td>
+                  <td class="p-3.5">
+                    Compostos orgânicos complexos (aminoácidos, bases nitrogenadas) trazidos por meteoritos e cometas.
+                  </td>
+                  <td class="p-3.5 font-semibold text-emerald-700 dark:text-emerald-400">
+                    <span
+                      class="inline-block px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-200 text-xs font-bold mr-1">FATO
+                      COMPROVADO</span><br>
+                    Documentado em meteoritos como Murchison e sondas espaciais (Ryugu e Bennu).
+                  </td>
+                </tr>
+                <tr class="bg-rose-50/50 dark:bg-rose-950/20">
+                  <td class="p-3.5 font-semibold text-rose-900 dark:text-rose-300">
+                    2. Panspermia Estrita<br><span
+                      class="text-[11px] font-normal text-slate-500 dark:text-slate-400">(Litopanspermia)</span>
+                  </td>
+                  <td class="p-3.5">
+                    Células viáveis ou esporos microbianos sobrevivendo a viagens interestelares em rochas espaciais.
+                  </td>
+                  <td class="p-3.5 font-semibold text-rose-700 dark:text-rose-400">
+                    <span
+                      class="inline-block px-2 py-0.5 rounded bg-rose-100 dark:bg-rose-900/60 text-rose-800 dark:text-rose-200 text-xs font-bold mr-1">HIPÓTESE
+                      NÃO COMPROVADA</span><br>
+                    Enfrenta severas barreiras físicas e não resolve a origem do metabolismo.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
+            <!-- 1. Panspermia Molecular -->
+            <div
+              class="p-5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-3">
+              <h4 class="font-display font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                <span>☄️</span> 1. Panspermia Molecular (Pseudo-panspermia)
+              </h4>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                A geoquímica moderna não considera essa vertente exótica, mas sim parte documentada da história do
+                Sistema Solar:
+              </p>
+              <ul class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2 list-disc pl-4">
+                <li><strong>Evidências em Meteoritos:</strong> A análise do meteorito <em>Murchison</em> (Austrália,
+                  1969) catalogou mais de 70 tipos diferentes de aminoácidos, além de bases púricas e pirimídicas. Em
+                  missões recentes (Hayabusa2 e OSIRIS-REx), amostras intocadas dos asteroides <em>Ryugu</em> e
+                  <em>Bennu</em> confirmaram a presença de uracila e água extraterrestre.</li>
+                <li><strong>O Intenso Bombardeio Tardio (Há ~4,1 a 3,8 bilhões de anos):</strong> Enquanto a crosta
+                  terrestre se consolidava, milhões de toneladas de fragmentos de cometas e asteroides colidiram com o
+                  planeta, injetando toneladas de carbono orgânico e água nos oceanos primitivos em formação.</li>
+              </ul>
+            </div>
+
+            <!-- 2. Panspermia Estrita -->
+            <div
+              class="p-5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-3">
+              <h4 class="font-display font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                <span>🛑</span> 2. Panspermia Estrita (Litopanspermia)
+              </h4>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                A ideia de que microrganismos vivos tenham cruzado o espaço interestelar encontra fortes objeções da
+                astrobiologia:
+              </p>
+              <ul class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2 list-disc pl-4">
+                <li><strong>Barreira da Radiação e Tempo:</strong> O vácuo espacial impõe temperaturas próximas do zero
+                  absoluto e exposição sem blindagem a raios cósmicos galácticos e radiação solar ionizante. Viagens
+                  entre sistemas estelares levariam milhões de anos, degradando o genoma mesmo de bactérias endósporas
+                  ultrarresistentes.</li>
+                <li><strong>A Fricção Atmosférica:</strong> O choque de um bólido contra a atmosfera gera temperaturas
+                  que ultrapassam milhares de graus, calcinando as camadas externas e impondo choques mecânicos
+                  violentos no impacto.</li>
+                <li><strong>O Vazio Explicativo:</strong> Do ponto de vista epistemológico, a panspermia estrita não
+                  resolve o problema da biogênese primária. Dizer que bactérias vieram de outro corpo celeste apenas
+                  transfere o problema da origem química para outro planeta, sem elucidar como a matéria inanimada se
+                  organizou funcionalmente pela primeira vez.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- PARTE 1.3: OS PRIMEIROS SERES VIVOS E A REVOLUÇÃO BIOQUÍMICA -->
-      <div class="space-y-6 pt-4 border-t border-slate-200 dark:border-slate-800">
+      <div class="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
         <div class="flex items-center gap-2 text-base font-bold font-display text-bio-800 dark:text-bio-300">
           <span class="w-2.5 h-2.5 rounded-full bg-bio-500"></span>
           1.3 Os Primeiros Seres Vivos, a Catástrofe do Oxigênio e a Endossimbiose
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- Como se alimentavam & Catástrofe do Oxigênio -->
-          <div
-            class="p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
-            <h3 class="font-display font-bold text-base sm:text-lg text-slate-900 dark:text-white">
-              A Hipótese Heterotrófica & O Grande Evento de Oxigenação
+        <div
+          class="p-5 sm:p-7 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+
+          <!-- Metabolismo Primitivo -->
+          <div class="space-y-3">
+            <h3 class="font-display font-black text-lg sm:text-xl text-slate-900 dark:text-white">
+              O Metabolismo Primitivo: Hipótese Heterotrófica vs. Autotrófica
             </h3>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-              <strong>Hipótese Heterotrófica:</strong> Os primeiros organismos eram simples procariontes sem maquinário
-              fotossintético. Eles absorviam moléculas orgânicas prontas no oceano primitivo e extraíam energia por
-              <strong>fermentação anaeróbia</strong> (sem $\mathrm{O_2}$).
+            <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              Como se alimentavam os pioneiros da biosfera?
             </p>
-            <div
-              class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs space-y-2">
-              <strong class="text-slate-800 dark:text-slate-200 block">⚡ O Grande Evento de Oxigenação (Há 2,4 bilhões
-                de anos):</strong>
-              <p class="text-slate-600 dark:text-slate-300">
-                Ancestrais das cianobactérias aprenderam a fazer fotossíntese liberando gás oxigênio ($\mathrm{O_2}$).
-                Esse evento:
-              </p>
-              <ul class="list-disc pl-4 space-y-1 text-slate-600 dark:text-slate-400 text-[11px]">
-                <li>Extinguiu incontáveis espécies anaeróbias que não toleravam oxigênio ("Catástrofe do Oxigênio").
-                </li>
-                <li>Oxidou o ferro oceânico, gerando as gigantescas jazidas de ferro exploradas pela mineração hoje.
-                </li>
-                <li>Formou a <strong>camada de ozônio ($\mathrm{O_3}$)</strong>, blindando a Terra contra raios UV e
-                  abrindo caminho para a terra firme.</li>
-                <li>Possibilitou a evolução da <strong>respiração celular aeróbia</strong>, até 18 vezes mais eficiente
-                  que a fermentação!</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Teoria da Endossimbiose -->
-          <div
-            class="p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
-            <div class="flex items-center justify-between">
-              <h3 class="font-display font-bold text-base sm:text-lg text-slate-900 dark:text-white">
-                A Teoria da Endossimbiose (Lynn Margulis)
-              </h3>
-              <span
-                class="text-xs font-bold px-2 py-0.5 rounded bg-bio-100 text-bio-800 dark:bg-bio-950 dark:text-bio-300">Origem
-                dos Eucariontes</span>
-            </div>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-              Como surgiram as células complexas (eucariontes)? Pela fusão cooperativa entre bactérias de vida livre:
-            </p>
-            <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc pl-4">
-              <li><strong>Mitocôndrias:</strong> Uma célula hospedeira fagocitou uma bactéria aeróbia que escapou da
-                digestão. A bactéria fornecia energia (ATP) e a hospedeira garantia alimento e abrigo.</li>
-              <li><strong>Cloroplastos:</strong> Uma linhagem com mitocôndrias fagocitou cianobactérias
-                fotossintetizantes, originando plantas e algas.</li>
-            </ul>
-
-            <div
-              class="p-3 rounded-xl bg-bio-50 dark:bg-bio-950/40 border border-bio-200 dark:border-bio-800 text-[11px] text-bio-900 dark:text-bio-300 space-y-1">
-              <strong>Evidências irrefutáveis da Endossimbiose:</strong>
-              <div class="grid grid-cols-2 gap-1.5 pt-1">
-                <div>✓ DNA circular próprio bacteriano</div>
-                <div>✓ Ribossomos próprios 70S</div>
-                <div>✓ Membrana celular dupla</div>
-                <div>✓ Divisão binária autônoma</div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+              <div
+                class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-2 text-xs sm:text-sm">
+                <strong class="text-bio-700 dark:text-bio-400 font-bold block text-sm">A Hipótese Heterotrófica
+                  Clássica</strong>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Assume que os primeiros procariontes eram seres anaeróbios extremamente simples que absorviam
+                  nutrientes prontos dissolvidos no "caldo primordial". Para extrair energia dessas ligações, realizavam
+                  processos bioquímicos rudimentares similares à fermentação alcoólica ou lática.
+                </p>
+              </div>
+              <div
+                class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-2 text-xs sm:text-sm">
+                <strong class="text-bio-700 dark:text-bio-400 font-bold block text-sm">O Desafio da Depleção
+                  Nutricional</strong>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Conforme a população de heterótrofos proliferava, o consumo de matéria orgânica superava a taxa de
+                  síntese química espontânea do planeta, gerando uma crise de escassez alimentar. Essa pressão seletiva
+                  favoreceu organismos capazes de sintetizar seu próprio alimento (autótrofos).
+                </p>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- IMAGEM 05: A ENDOSSIMBIOSE E A CONTRIBUICAO DE LYNN MARGULIS -->
-        <div
-          class="p-4 sm:p-5 rounded-2xl border border-bio-200 dark:border-bio-800 bg-white dark:bg-slate-900 shadow-sm">
-          <figure>
-            <img src="img/05_teoria_endossimbiose_margulis.png"
-              alt="Infográfico da Teoria da Endossimbiose Sequencial de Lynn Margulis em três etapas"
-              class="w-full max-h-[520px] rounded-xl object-contain bg-slate-50 dark:bg-slate-950" loading="lazy" />
-            <figcaption
-              class="mt-4 rounded-xl bg-bio-50 dark:bg-bio-950/40 p-4 border border-bio-200 dark:border-bio-800 text-center text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-              <strong class="block text-slate-900 dark:text-white">Teoria da Endossimbiose Sequencial</strong>
-              <span>
-                Uma célula hospedeira anaeróbia engloba uma bactéria aeróbia, que passa a viver como mitocôndria. Mais
-                tarde, uma cianobactéria fotossintética é incorporada e origina o cloroplasto. Proposta por Lynn
-                Margulis,
-                essa teoria explica como associações cooperativas entre bactérias deram origem às células eucarióticas
-                complexas. Impor
-              </span>
-            </figcaption>
-          </figure>
-
+          <!-- Grande Evento de Oxigenação -->
           <div
-            class="mt-4 grid grid-cols-1 md:grid-cols-[minmax(0,0.8fr)_minmax(0,2fr)] gap-4 items-center p-4 rounded-xl bg-gradient-to-r from-slate-100 to-bio-50 dark:from-slate-950 dark:to-bio-950/40 border border-bio-200 dark:border-bio-800">
-            <figure class="m-0">
-              <img src="img/LynnMargulis.webp" alt="Lynn Margulis trabalhando ao microscópio"
-                class="w-full max-w-[280px] max-h-[260px] mx-auto rounded-xl object-contain grayscale shadow-sm"
-                loading="lazy" />
-              <figcaption class="text-[10px] text-slate-500 dark:text-slate-400 text-center italic mt-2">
-                Lynn Margulis em seu trabalho de pesquisa.
-              </figcaption>
-            </figure>
-            <div class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-              <span class="text-[11px] font-bold uppercase tracking-wider text-bio-700 dark:text-bio-400">Mulheres na
-                ciência</span>
-              <h4 class="font-display font-black text-base sm:text-lg text-slate-900 dark:text-white">Lynn Margulis: uma
-                ideia que mudou a biologia</h4>
-              <p>
-                Lynn Margulis foi uma bióloga norte-americana que transformou a compreensão sobre a origem das células
-                eucarióticas. Sua teoria mostrou que a cooperação entre organismos, e não apenas a competição, também
-                pode produzir grandes inovações evolutivas.
-              </p>
-              <p class="font-semibold text-bio-800 dark:text-bio-300">
-                Sua trajetória lembra que a ciência avança quando diferentes perguntas, experiências e vozes encontram
-                espaço para transformar evidências em conhecimento.
-              </p>
+            class="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-bio-50/60 dark:from-slate-950 dark:to-bio-950/30 border border-bio-200 dark:border-bio-800 space-y-4">
+            <h4
+              class="font-display font-bold text-slate-900 dark:text-white text-base sm:text-lg flex items-center gap-2">
+              <span>⚡</span> O Grande Evento de Oxigenação (GEO) e a Catástrofe do Oxigênio
+            </h4>
+            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              Há cerca de 2,4 bilhões de anos, linhagens procariontes ancestrais das atuais
+              <strong>cianobactérias</strong> desenvolveram a <strong>fotossíntese oxigênica</strong>: utilizar água
+              ($\mathrm{H_2O}$) como doadora de elétrons e liberar oxigênio molecular ($\mathrm{O_2}$) como subproduto.
+            </p>
+
+            <div
+              class="my-3 p-3.5 rounded-xl bg-white dark:bg-slate-950 border border-bio-300 dark:border-slate-800 text-center font-mono text-xs sm:text-sm text-bio-800 dark:text-bio-300 overflow-x-auto w-full max-w-full min-w-0">
+              $$\text{Energia Luminosa} + 6\mathrm{CO_2} + 6\mathrm{H_2O} \longrightarrow \mathrm{C_6H_{12}O_6} +
+              6\mathrm{O_2}\uparrow$$
+            </div>
+
+            <p class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">
+              As consequências planetárias desse evento foram monumentais:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs sm:text-sm">
+              <div
+                class="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-1.5">
+                <span class="font-bold text-red-600 dark:text-red-400 block text-xs">1. Extinção em Massa dos
+                  Anaeróbios</span>
+                <p class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed">
+                  O $\mathrm{O_2}$ era altamente tóxico para organismos primitivos sem enzimas antioxidantes (como
+                  superóxido dismutase e catalase). Trilhões de linhagens anaeróbias foram dizimadas (<strong>Catástrofe
+                    do Oxigênio</strong>).
+                </p>
+              </div>
+
+              <div
+                class="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-1.5">
+                <span class="font-bold text-amber-600 dark:text-amber-400 block text-xs">2. Formações Ferríferas
+                  Bandadas (BIFs)</span>
+                <p class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed">
+                  O oxigênio liberado reagiu com o ferro dissolvido nos oceanos, oxidando-o em óxido de ferro insolúvel
+                  ($\mathrm{Fe_2O_3}$). Esse precipitado originou os megadepósitos de minério de ferro explorados hoje.
+                </p>
+              </div>
+
+              <div
+                class="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-1.5">
+                <span class="font-bold text-blue-600 dark:text-blue-400 block text-xs">3. Escudo de Ozônio
+                  ($\mathrm{O_3}$)</span>
+                <p class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed">
+                  A saturação do $\mathrm{O_2}$ na estratosfera permitiu a formação da camada de ozônio por fotólise,
+                  atenuando a radiação UV prejudicial e viabilizando a futura colonização da terra firme.
+                </p>
+              </div>
+
+              <div
+                class="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-1.5">
+                <span class="font-bold text-emerald-600 dark:text-emerald-400 block text-xs">4. Salto Metabólico
+                  (Respiração Aeróbia)</span>
+                <p class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed">
+                  A respiração celular aeróbia viabilizou a fosforilação oxidativa. Enquanto a fermentação extrai apenas
+                  2 ATPs por glicose, a respiração produz 30-32 ATPs, viabilizando células eucarióticas e
+                  multicelularidade.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
 
+          <!-- Teoria da Endossimbiose Sequencial (SET) -->
+          <div class="space-y-4">
+            <h3 class="font-display font-black text-lg sm:text-xl text-slate-900 dark:text-white">
+              A Teoria da Endossimbiose Sequencial (SET)
+            </h3>
+            <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              O salto dos procariontes para a complexidade celular eucariótica não ocorreu por acúmulo de mutações
+              pontuais em isolamento, mas por cooperação intercelular estável. Formalizada e defendida por <strong>Lynn
+                Margulis</strong> na década de 1960, a Teoria da Endossimbiose Sequencial estabelece que mitocôndrias e
+              cloroplastos se originaram de bactérias de vida livre fagocitadas por células hospedeiras primitivas.
+            </p>
+
+            <!-- Fluxograma Visual Elegante da Endossimbiose -->
+            <div
+              class="p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-slate-50 to-bio-50/40 dark:from-slate-950 dark:to-bio-950/30 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                <span
+                  class="text-xs font-bold uppercase tracking-wider text-bio-700 dark:text-bio-400 flex items-center gap-1.5">
+                  <span>🔄</span> Fluxo da Endossimbiose Sequencial
+                </span>
+                <span
+                  class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-bio-100 text-bio-800 dark:bg-bio-950 dark:text-bio-300">
+                  Origem das Organelas
+                </span>
+              </div>
+
+              <div class="space-y-4">
+                <!-- Passo 1: Célula Hospedeira -->
+                <div
+                  class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950/70 text-amber-700 dark:text-amber-400 font-bold flex items-center justify-center shrink-0 shadow-inner">
+                      1
+                    </div>
+                    <div>
+                      <h5 class="font-display font-bold text-sm text-slate-900 dark:text-white">Célula Hospedeira
+                        Primitiva</h5>
+                      <p class="text-xs text-slate-500 dark:text-slate-400">Arqueia / Protoeucarionte Anaeróbia de
+                        grande porte</p>
+                    </div>
+                  </div>
+                  <span
+                    class="text-xs font-medium px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 self-start sm:self-auto">
+                    Ponto de Partida
+                  </span>
+                </div>
+
+                <!-- Conector 1 -->
+                <div class="flex flex-col items-center justify-center text-bio-600 dark:text-bio-400 py-0.5">
+                  <div class="h-4 w-0.5 bg-bio-300 dark:bg-bio-800"></div>
+                  <span
+                    class="text-[11px] font-semibold text-bio-700 dark:text-bio-300 bg-bio-50 dark:bg-bio-950 px-2.5 py-0.5 rounded-full border border-bio-200 dark:border-bio-800 my-0.5">
+                    Englobação sem digestão (Fagocitose)
+                  </span>
+                  <div class="h-4 w-0.5 bg-bio-300 dark:bg-bio-800"></div>
+                </div>
+
+                <!-- Passo 2: Alfa-proteobactéria -> Mitocôndria -->
+                <div
+                  class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-bio-300 dark:border-bio-800 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                  <div class="flex items-start gap-3">
+                    <div
+                      class="w-10 h-10 rounded-xl bg-bio-100 dark:bg-bio-950/70 text-bio-700 dark:text-bio-300 font-bold flex items-center justify-center shrink-0 shadow-inner">
+                      2
+                    </div>
+                    <div>
+                      <div class="flex items-center gap-2">
+                        <h5 class="font-display font-bold text-sm text-slate-900 dark:text-white">+ Alfa-Proteobactéria
+                          Aeróbia</h5>
+                        <span
+                          class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300">1º
+                          Evento</span>
+                      </div>
+                      <p class="text-xs text-slate-600 dark:text-slate-300 mt-0.5">Bactéria capaz de realizar respiração
+                        aeróbia passa a viver em simbiose.</p>
+                    </div>
+                  </div>
+                  <div
+                    class="p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-xs text-emerald-900 dark:text-emerald-200 w-full md:w-auto shrink-0">
+                    <strong class="block font-bold text-xs text-emerald-950 dark:text-emerald-100">⚡ Origem da
+                      MITOCÔNDRIA</strong>
+                    <span>Respiração celular aeróbia (30-32 ATPs)</span>
+                  </div>
+                </div>
+
+                <!-- Conector 2 -->
+                <div class="flex flex-col items-center justify-center text-bio-600 dark:text-bio-400 py-0.5">
+                  <div class="h-4 w-0.5 bg-bio-300 dark:bg-bio-800"></div>
+                  <span
+                    class="text-[11px] font-semibold text-bio-700 dark:text-bio-300 bg-bio-50 dark:bg-bio-950 px-2.5 py-0.5 rounded-full border border-bio-200 dark:border-bio-800 my-0.5">
+                    Linhagem ancestral heterotrófica eucariótica
+                  </span>
+                  <div class="h-4 w-0.5 bg-bio-300 dark:bg-bio-800"></div>
+                </div>
+
+                <!-- Passo 3: Cianobactéria -> Cloroplasto -->
+                <div
+                  class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-teal-300 dark:border-teal-800 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                  <div class="flex items-start gap-3">
+                    <div
+                      class="w-10 h-10 rounded-xl bg-teal-100 dark:bg-teal-950/70 text-teal-700 dark:text-teal-300 font-bold flex items-center justify-center shrink-0 shadow-inner">
+                      3
+                    </div>
+                    <div>
+                      <div class="flex items-center gap-2">
+                        <h5 class="font-display font-bold text-sm text-slate-900 dark:text-white">+ Cianobactéria
+                          Fototrófica</h5>
+                        <span
+                          class="text-[10px] font-bold px-2 py-0.5 rounded bg-teal-100 dark:bg-teal-950 text-teal-800 dark:text-teal-300">2º
+                          Evento</span>
+                      </div>
+                      <p class="text-xs text-slate-600 dark:text-slate-300 mt-0.5">Segunda englobação ocorrida na
+                        linhagem ancestral das plantas e algas.</p>
+                    </div>
+                  </div>
+                  <div
+                    class="p-3 rounded-lg bg-teal-50 dark:bg-teal-950/40 border border-teal-200 dark:border-teal-800/60 text-xs text-teal-900 dark:text-teal-200 w-full md:w-auto shrink-0">
+                    <strong class="block font-bold text-xs text-teal-950 dark:text-teal-100">🌿 Origem do
+                      CLOROPLASTO</strong>
+                    <span>Autotrofia (Plantas e Algas)</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Figura Endossimbiose -->
+            <figure
+              class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-3 sm:p-4 shadow-sm">
+              <img src="img/05_teoria_endossimbiose_margulis.png"
+                alt="Infográfico da Teoria da Endossimbiose Sequencial de Lynn Margulis em três etapas"
+                class="w-full max-h-[520px] rounded-xl object-contain bg-slate-50 dark:bg-slate-950" loading="lazy" />
+              <figcaption
+                class="mt-4 rounded-xl bg-bio-50 dark:bg-bio-950/40 p-4 border border-bio-200 dark:border-bio-800 text-center text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                <strong class="block text-slate-900 dark:text-white">Teoria da Endossimbiose Sequencial</strong>
+                <span>
+                  Uma célula hospedeira anaeróbia engloba uma bactéria aeróbia, que passa a viver como mitocôndria. Mais
+                  tarde, uma cianobactéria fotossintética é incorporada e origina o cloroplasto. Proposta por Lynn
+                  Margulis, essa teoria explica como associações cooperativas entre bactérias deram origem às células
+                  eucarióticas complexas.
+                </span>
+              </figcaption>
+            </figure>
+
+            <!-- Card Mulheres na Ciência: Lynn Margulis -->
+            <div
+              class="grid grid-cols-1 md:grid-cols-[minmax(0,0.8fr)_minmax(0,2fr)] gap-4 items-center p-4 rounded-xl bg-gradient-to-r from-slate-100 to-bio-50 dark:from-slate-950 dark:to-bio-950/40 border border-bio-200 dark:border-bio-800">
+              <figure class="m-0">
+                <img src="img/LynnMargulis.webp" alt="Lynn Margulis trabalhando ao microscópio"
+                  class="w-full max-w-[280px] max-h-[260px] mx-auto rounded-xl object-contain grayscale shadow-sm"
+                  loading="lazy" />
+                <figcaption class="text-[10px] text-slate-500 dark:text-slate-400 text-center italic mt-2">
+                  Lynn Margulis em seu trabalho de pesquisa.
+                </figcaption>
+              </figure>
+              <div class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-bio-700 dark:text-bio-400">Mulheres na
+                  ciência</span>
+                <h4 class="font-display font-black text-base sm:text-lg text-slate-900 dark:text-white">Lynn Margulis:
+                  uma ideia que mudou a biologia</h4>
+                <p>
+                  Lynn Margulis foi uma bióloga norte-americana que transformou a compreensão sobre a origem das células
+                  eucarióticas. Sua teoria mostrou que a cooperação entre organismos, e não apenas a competição, também
+                  pode produzir grandes inovações evolutivas.
+                </p>
+                <p class="font-semibold text-bio-800 dark:text-bio-300">
+                  Sua trajetória lembra que a ciência avança quando diferentes perguntas, experiências e vozes encontram
+                  espaço para transformar evidências em conhecimento.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- As Evidências Citológicas e Moleculares -->
+          <div class="p-5 rounded-2xl bg-bio-50 dark:bg-bio-950/40 border border-bio-200 dark:border-bio-800 space-y-3">
+            <h4 class="font-display font-bold text-bio-900 dark:text-bio-200 text-base flex items-center gap-2">
+              <span>🔬</span> As Evidências Citológicas e Moleculares da Endossimbiose
+            </h4>
+            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              A endossimbiose deixou marcas indeléveis na biologia celular:
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm pt-1">
+              <div
+                class="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-bio-200 dark:border-bio-800/60 space-y-1">
+                <strong class="text-bio-800 dark:text-bio-300 block font-bold">1. Genoma Próprio e Circular</strong>
+                <p class="text-slate-600 dark:text-slate-300 text-xs">
+                  Mitocôndrias e cloroplastos contêm fitas de DNA circular covalentemente fechado, sem histonas
+                  protetoras complexas, idêntico ao genoma bacteriano.
+                </p>
+              </div>
+
+              <div
+                class="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-bio-200 dark:border-bio-800/60 space-y-1">
+                <strong class="text-bio-800 dark:text-bio-300 block font-bold">2. Ribossomos do Tipo 70S</strong>
+                <p class="text-slate-600 dark:text-slate-300 text-xs">
+                  O maquinário de síntese proteica nessas organelas é formado por ribossomos de sedimentação 70S
+                  (subunidades 50S e 30S), típicos de bactérias, e não pelos ribossomos 80S do citosol eucariótico.
+                </p>
+              </div>
+
+              <div
+                class="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-bio-200 dark:border-bio-800/60 space-y-1">
+                <strong class="text-bio-800 dark:text-bio-300 block font-bold">3. Dupla Membrana</strong>
+                <p class="text-slate-600 dark:text-slate-300 text-xs">
+                  A membrana interna conserva a composição lipídica bacteriana ancestral (presença de cardiolipina),
+                  enquanto a membrana externa preserva os lipídios da vesícula de endocitose da célula hospedeira
+                  ancestral.
+                </p>
+              </div>
+
+              <div
+                class="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-bio-200 dark:border-bio-800/60 space-y-1">
+                <strong class="text-bio-800 dark:text-bio-300 block font-bold">4. Fissão Binária Autônoma</strong>
+                <p class="text-slate-600 dark:text-slate-300 text-xs">
+                  As organelas não podem ser fabricadas pela célula hospedeira do zero. Sua multiplicação ocorre
+                  exclusivamente por divisão binária interna, mediada por anéis proteicos análogos ao FtsZ bacteriano.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
@@ -941,6 +1371,13 @@
               evolutiva entre dinossauros répteis e as aves modernas: possui dentes, garras nas asas e cauda óssea, mas
               já exibia asas emplumadas e fúrcula!
             </div>
+            <div
+              class="p-3 bg-fossil-50 dark:bg-slate-950 rounded-xl text-xs text-slate-600 dark:text-slate-400 border border-fossil-200 dark:border-slate-800 mt-2">
+              <strong>O Desafio da Falsificabilidade:</strong> A ciência exige testes rigorosos. Como refutar a
+              evolução? O biólogo J. B. S. Haldane resumiu: <em>"Um coelho fóssil no Pré-Cambriano"</em>. Os fósseis
+              nunca aparecem misturados fora de ordem geológica (nunca se achou um mamífero antes dos primeiros peixes).
+              A ordem temporal inquebrável das rochas é um teste que a teoria passa há séculos.
+            </div>
           </div>
 
           <!-- Evidência 2: Deriva Continental -->
@@ -1001,9 +1438,11 @@
             </div>
             <div class="space-y-2 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
               <p>
-                <strong>Homologia (Divergência Evolutiva):</strong> Mesma origem embrionária e arquitetura óssea
-                fundamental, mesmo com funções diferentes (braço humano, pata do cavalo, nadadeira da baleia e asa do
-                morcego).
+                <strong>Homologia (Divergência Evolutiva):</strong> Semelhança anatômica profunda que não é necessária
+                para a função prática. Pense em uma "caixa de ferramentas": o morcego voa, a baleia nada, o cavalo corre
+                e o humano segura coisas. Se um engenheiro fosse criá-las do zero, usaria peças diferentes, mas todos
+                possuem os exatos mesmos 5 dedos (membro pentadáctilo) porque herdaram o mesmo molde básico de um
+                ancestral comum.
               </p>
               <p>
                 <strong>Analogia (Convergência Evolutiva):</strong> Mesma função ecológica, mas origens embrionárias
@@ -1040,8 +1479,11 @@
                 Moleculares</h4>
             </div>
             <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-              Todo e qualquer ser vivo na Terra — de um vírus até uma baleia — compartilha o <strong>mesmo código
-                genético universal</strong> formado pelas bases A, T, C, G para produzir os mesmos 20 aminoácidos.
+              Todo ser vivo na Terra compartilha o <strong>mesmo código genético universal</strong>. Imagine o código
+              como um dicionário ou um teclado QWERTY: não há lei física que obrigue a palavra "C-A-S-A" a significar
+              moradia, é uma convenção. O fato de bactérias, plantas e humanos usarem o exato mesmo dicionário (um
+              "acidente congelado" na história, como diria Francis Crick) é a maior prova de que todos descendemos de um
+              ancestral comum.
             </p>
             <div
               class="p-2.5 rounded-lg bg-blue-50 dark:bg-blue-950/40 text-xs text-blue-900 dark:text-blue-300 border border-blue-200 dark:border-blue-900">
@@ -1199,18 +1641,20 @@
             </div>
             <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               No ano em que Charles Darwin nasceu (1809), o naturalista francês Lamarck teve a imensa coragem científica
-              de publicar a primeira teoria consistente de evolução biológica: <strong>os seres vivos se transformam ao
-                longo do tempo!</strong>
+              de publicar a primeira teoria consistente de evolução biológica. Ele não era apenas "o cara que errou
+              sobre a girafa"; Lamarck propôs que a vida não era fixa. Para ele, o mecanismo primário da evolução era
+              uma <strong>"força interna para a complexidade"</strong> (a vida subindo em degraus de perfeição).
             </p>
             <div class="space-y-2 text-xs text-slate-700 dark:text-slate-300">
               <div class="p-3 rounded-lg bg-fossil-50 dark:bg-slate-950 border border-fossil-200 dark:border-slate-800">
-                <strong>1. Lei do Uso e Desuso:</strong> A necessidade imposta pelo meio ambiente faz com que o
-                organismo use mais certos órgãos, fortalecendo-os e aumentando-os. Órgãos não utilizados enfraquecem e
-                atrofiam.
+                <strong>A Força Secundária de Adaptação:</strong> O uso e desuso era apenas uma força que causava
+                desvios nessa linha principal. O esforço mudava o órgão, e essa mudança era herdada (Herança dos
+                Caracteres Adquiridos).
               </div>
               <div class="p-3 rounded-lg bg-fossil-50 dark:bg-slate-950 border border-fossil-200 dark:border-slate-800">
-                <strong>2. Lei da Herança dos Caracteres Adquiridos:</strong> As modificações morfológicas alcançadas
-                durante a vida do indivíduo pelo esforço de uso seriam transmitidas geneticamente para seus filhotes.
+                <strong>Árvore sem extinção:</strong> Em sua visão, as linhagens evolutivas não se ramificavam nem se
+                extinguiam, apenas progrediam como esteiras rolantes paralelas que nunca se cruzavam (diferente da
+                grande árvore ramificada de Darwin).
               </div>
             </div>
 
@@ -1362,8 +1806,12 @@
           <span>🧬</span> O que Darwin Não Sabia: O Neodarwinismo (Teoria Sintética da Evolução)
         </h3>
         <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-          Darwin provou que a seleção natural escolhe os mais aptos, mas <strong>não conseguia explicar duas questões
-            cruciais</strong>: (1) Como as variações surgem na população? (2) Como elas são transmitidas aos filhotes?
+          Darwin enfrentava um dilema matemático fatal: a crença na <strong>"herança por mistura" (blending
+            inheritance)</strong>. Se as características se misturassem como tintas (tinta preta + branca = cinza),
+          qualquer mutação genial (gota preta) desapareceria ao cruzar com a maioria normal (tinta branca) em poucas
+          gerações, antes que a seleção natural pudesse agir. O Neodarwinismo surgiu quando a <strong>Genética de
+            Mendel</strong> provou que a herança é <em>particulada</em> (como bolinhas de Lego sólidas que não se
+          diluem), salvando a teoria de Darwin.
         </p>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs pt-1">
           <div
@@ -1473,7 +1921,9 @@
                   <span class="text-sm">Aposematismo</span>
                 </div>
                 <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
-                  <strong>Rã-Ponta-de-Flecha Azul (<em>Dendrobates tinctorius azureus</em>):</strong> A cor azul-elétrico com manchas pretas adverte ostensivamente os predadores sobre os alcaloides altamente tóxicos presentes na sua pele.
+                  <strong>Rã-Ponta-de-Flecha Azul (<em>Dendrobates tinctorius azureus</em>):</strong> A cor
+                  azul-elétrico com manchas pretas adverte ostensivamente os predadores sobre os alcaloides altamente
+                  tóxicos presentes na sua pele.
                 </p>
               </div>
 
@@ -1486,7 +1936,9 @@
                   <span class="text-sm">Mimetismo Batesiano</span>
                 </div>
                 <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
-                  <strong>Cobra-Coral e Falsa-Coral:</strong> A falsa-coral (inofensiva) evoluiu o mesmo padrão vibrante de anéis tricolores da coral-verdadeira (altamente peçonhenta), enganando os predadores que evitam ambas.
+                  <strong>Cobra-Coral e Falsa-Coral:</strong> A falsa-coral (inofensiva) evoluiu o mesmo padrão vibrante
+                  de anéis tricolores da coral-verdadeira (altamente peçonhenta), enganando os predadores que evitam
+                  ambas.
                 </p>
               </div>
 
@@ -1499,17 +1951,64 @@
                   <span class="text-sm">Camuflagem</span>
                 </div>
                 <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
-                  <strong>Lagartixa-Satânica-Cauda-de-Folha (<em>Uroplatus phantasticus</em>):</strong> Seu corpo imita com precisão a textura, tom marrom e nervuras de uma folha seca murcha em um galho, fundindo-se à floresta.
+                  <strong>Lagartixa-Satânica-Cauda-de-Folha (<em>Uroplatus phantasticus</em>):</strong> Seu corpo imita
+                  com precisão a textura, tom marrom e nervuras de uma folha seca murcha em um galho, fundindo-se à
+                  floresta.
                 </p>
               </div>
             </div>
 
             <p class="text-xs text-slate-500 dark:text-slate-400 text-center italic pt-1">
-              <strong>Síntese Didática:</strong> "Na luta pela vida, a <strong>rã azul</strong> adverte com cores chocantes (<em>aposematismo</em>), a <strong>falsa-coral</strong> se protege imitando a serpente peçonhenta (<em>mimetismo</em>) e a <strong>lagartixa cauda-de-folha</strong> desaparece na paisagem (<em>camuflagem</em>)."
+              <strong>Síntese Didática:</strong> "Na luta pela vida, a <strong>rã azul</strong> adverte com cores
+              chocantes (<em>aposematismo</em>), a <strong>falsa-coral</strong> se protege imitando a serpente
+              peçonhenta (<em>mimetismo</em>) e a <strong>lagartixa cauda-de-folha</strong> desaparece na paisagem
+              (<em>camuflagem</em>)."
             </p>
           </figcaption>
         </figure>
 
+      </div>
+
+      <!-- 3.6: Os Três Modos Canônicos de Seleção Natural -->
+      <div class="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+        <div class="flex items-center gap-2 text-base font-bold font-display text-bio-800 dark:text-bio-300">
+          <span class="w-2.5 h-2.5 rounded-full bg-bio-500"></span>
+          3.6 A Matemática da Adaptação: Os Três Modos de Seleção Natural
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+          Quando a seleção natural atua sobre uma característica quantitativa (como tamanho, peso ou velocidade), ela
+          pode alterar a distribuição fenotípica de três maneiras distintas. (Você pode ver essas curvas em movimento no
+          Simulador da Seleção Natural no final da página).
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div
+            class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+            <h4 class="font-bold text-sm text-bio-700 dark:text-bio-400">1. Seleção Direcional</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-300">
+              Desloca a média da população para um dos extremos. <strong>Exemplo clássico:</strong> O salmão-rosado
+              sofreu redução no tamanho corporal ao longo das gerações porque a pesca intensiva capturava apenas os
+              espécimes maiores, favorecendo a reprodução dos menores.
+            </p>
+          </div>
+          <div
+            class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+            <h4 class="font-bold text-sm text-emerald-700 dark:text-emerald-400">2. Seleção Estabilizadora</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-300">
+              Favorece os indivíduos da média e elimina ambos os extremos. <strong>Exemplo clássico:</strong> O peso ao
+              nascer de bebês humanos. Bebês muito leves (prematuros) ou excessivamente pesados sofrem maior
+              mortalidade, estabilizando o peso ideal em torno de 3 kg.
+            </p>
+          </div>
+          <div
+            class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+            <h4 class="font-bold text-sm text-purple-700 dark:text-purple-400">3. Seleção Disruptiva</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-300">
+              Favorece os dois extremos e elimina a média, podendo gerar duas novas espécies. <strong>Exemplo
+                clássico:</strong> O tentilhão africano de bico médio desapareceu; a população dividiu-se entre aves com
+              bicos grandes (para quebrar sementes duras) e bicos pequenos (para sementes macias).
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1954,7 +2453,8 @@
           </div>
 
           <!-- Canvas do p5.js -->
-          <div id="p5-canvas-container" class="w-full flex justify-center bg-slate-950 overflow-hidden relative min-h-[300px] sm:min-h-[420px]">
+          <div id="p5-canvas-container"
+            class="w-full flex justify-center bg-slate-950 overflow-hidden relative min-h-[300px] sm:min-h-[420px]">
             <!-- O canvas do p5.js será inserido aqui dinamicamente -->
           </div>
 
@@ -1994,7 +2494,8 @@
                     <div id="hist-bar-0" class="w-full bg-blue-500 rounded-t-md transition-all duration-300"
                       style="height: 0%;"></div>
                   </div>
-                  <span class="text-[8px] sm:text-[9px] font-semibold text-slate-400 mt-1 truncate text-center w-full">&lt;1.8</span>
+                  <span
+                    class="text-[8px] sm:text-[9px] font-semibold text-slate-400 mt-1 truncate text-center w-full">&lt;1.8</span>
                 </div>
 
                 <!-- Bin 2: Moderado (1.8 - 2.8) -->
@@ -2006,7 +2507,8 @@
                     <div id="hist-bar-1" class="w-full bg-cyan-500 rounded-t-md transition-all duration-300"
                       style="height: 0%;"></div>
                   </div>
-                  <span class="text-[8px] sm:text-[9px] font-semibold text-slate-400 mt-1 truncate text-center w-full">1.8-2.8</span>
+                  <span
+                    class="text-[8px] sm:text-[9px] font-semibold text-slate-400 mt-1 truncate text-center w-full">1.8-2.8</span>
                 </div>
 
                 <!-- Bin 3: Médio (2.8 - 3.8) -->
@@ -2018,7 +2520,8 @@
                     <div id="hist-bar-2" class="w-full bg-purple-500 rounded-t-md transition-all duration-300"
                       style="height: 0%;"></div>
                   </div>
-                  <span class="text-[8px] sm:text-[9px] font-semibold text-slate-400 mt-1 truncate text-center w-full">2.8-3.8</span>
+                  <span
+                    class="text-[8px] sm:text-[9px] font-semibold text-slate-400 mt-1 truncate text-center w-full">2.8-3.8</span>
                 </div>
 
                 <!-- Bin 4: Rápido (3.8 - 4.8) -->
@@ -2030,7 +2533,8 @@
                     <div id="hist-bar-3" class="w-full bg-pink-500 rounded-t-md transition-all duration-300"
                       style="height: 0%;"></div>
                   </div>
-                  <span class="text-[8px] sm:text-[9px] font-semibold text-slate-400 mt-1 truncate text-center w-full">3.8-4.8</span>
+                  <span
+                    class="text-[8px] sm:text-[9px] font-semibold text-slate-400 mt-1 truncate text-center w-full">3.8-4.8</span>
                 </div>
 
                 <!-- Bin 5: Hiperveloz (>4.8) -->
@@ -2042,7 +2546,8 @@
                     <div id="hist-bar-4" class="w-full bg-red-500 rounded-t-md transition-all duration-300"
                       style="height: 0%;"></div>
                   </div>
-                  <span class="text-[8px] sm:text-[9px] font-semibold text-slate-400 mt-1 truncate text-center w-full">&gt;4.8</span>
+                  <span
+                    class="text-[8px] sm:text-[9px] font-semibold text-slate-400 mt-1 truncate text-center w-full">&gt;4.8</span>
                 </div>
               </div>
 

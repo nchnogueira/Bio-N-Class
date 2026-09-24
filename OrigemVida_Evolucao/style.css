@@ -54,6 +54,11 @@
       text-size-adjust: 100%;
     }
 
+    /* Alignment and typography adjustments */
+    p {
+      text-align: justify;
+    }
+
     /* Evita que o flex-item principal e seus filhos expandam além da viewport */
     main {
       width: 100%;
