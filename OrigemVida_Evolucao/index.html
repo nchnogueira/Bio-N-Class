@@ -246,7 +246,7 @@
   <!-- ========================================== -->
   <!-- CONTEÚDO PRINCIPAL (LAYOUT PRINCIPAL)      -->
   <!-- ========================================== -->
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16 flex-1">
+  <main class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16 flex-1 min-w-0">
 
     <!-- ========================================== -->
     <!-- ALERTA EPISTEMOLÓGICO: 3 ARMADILHAS CONCEITUAIS -->
@@ -434,16 +434,16 @@
 
             <!-- Aristóteles -->
             <div x-show="selectedScientist === 'aristoteles'" x-transition class="space-y-3">
-              <div class="flex items-start justify-between gap-4">
-                <div class="flex items-center gap-3 min-w-0">
+              <div class="flex flex-col-reverse sm:flex-row sm:items-start justify-between gap-3 sm:gap-4">
+                <div class="space-y-1 min-w-0">
                   <span
-                    class="px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-xs font-bold">Grécia
+                    class="inline-block px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-xs font-bold">Grécia
                     Antiga (Séc. IV a.C.)</span>
                   <h4 class="font-display font-bold text-base sm:text-lg">Aristóteles e a Doutrina do Princípio Ativo
                   </h4>
                 </div>
                 <img src="img/Aristotles.jpg" alt="Retrato de Aristóteles"
-                  class="w-28 h-28 sm:w-40 sm:h-40 object-cover rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm shrink-0">
+                  class="w-24 h-24 sm:w-40 sm:h-40 object-cover rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm shrink-0 self-start sm:self-start">
               </div>
               <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                 Aristóteles defendia que a matéria inanimada possuía um <strong>princípio ativo ou força vital
@@ -455,16 +455,16 @@
 
             <!-- Van Helmont -->
             <div x-show="selectedScientist === 'vanhelmont'" x-transition class="space-y-3">
-              <div class="flex items-start justify-between gap-4">
-                <div class="flex items-center gap-3 min-w-0">
+              <div class="flex flex-col-reverse sm:flex-row sm:items-start justify-between gap-3 sm:gap-4">
+                <div class="space-y-1 min-w-0">
                   <span
-                    class="px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-xs font-bold">Bélgica
+                    class="inline-block px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-xs font-bold">Bélgica
                     (1620)</span>
                   <h4 class="font-display font-bold text-base sm:text-lg">Jan Baptist van Helmont e a Famosa "Receita de
                     Ratos"</h4>
                 </div>
                 <img src="img/Helmont.jpg" alt="Retrato de Jan Baptist van Helmont"
-                  class="w-28 h-28 sm:w-40 sm:h-40 object-cover rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm shrink-0">
+                  class="w-24 h-24 sm:w-40 sm:h-40 object-cover rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm shrink-0 self-start sm:self-start">
               </div>
               <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                 Médico e alquimista renomado, Van Helmont publicou uma "receita científica" que prometia gerar
@@ -482,16 +482,16 @@
 
             <!-- Francesco Redi -->
             <div x-show="selectedScientist === 'redi'" x-transition class="space-y-4">
-              <div class="flex items-start justify-between gap-4">
-                <div class="flex items-center gap-3 min-w-0">
+              <div class="flex flex-col-reverse sm:flex-row sm:items-start justify-between gap-3 sm:gap-4">
+                <div class="space-y-1 min-w-0">
                   <span
-                    class="px-2.5 py-1 rounded bg-bio-100 dark:bg-bio-950 text-bio-800 dark:text-bio-300 text-xs font-bold">Itália
+                    class="inline-block px-2.5 py-1 rounded bg-bio-100 dark:bg-bio-950 text-bio-800 dark:text-bio-300 text-xs font-bold">Itália
                     (1668)</span>
                   <h4 class="font-display font-bold text-base sm:text-lg">Francesco Redi e o Nascimento do Método
                     Experimental</h4>
                 </div>
                 <img src="img/Francesco_Redi.jpg" alt="Retrato de Francesco Redi"
-                  class="w-28 h-28 sm:w-40 sm:h-40 object-cover rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm shrink-0">
+                  class="w-24 h-24 sm:w-40 sm:h-40 object-cover rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm shrink-0 self-start sm:self-start">
               </div>
               <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                 Incomodado com a ideia de que a carne gerava larvas por geração espontânea, o médico Francesco Redi
@@ -537,9 +537,9 @@
 
             <!-- Needham vs Spallanzani -->
             <div x-show="selectedScientist === 'needham_spallanzani'" x-transition class="space-y-3">
-              <div class="flex items-center gap-3">
+              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
                 <span
-                  class="px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-xs font-bold">Século
+                  class="inline-block px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-xs font-bold self-start">Século
                   XVIII</span>
                 <h4 class="font-display font-bold text-base sm:text-lg">A Batalha dos Caldos Nutritivos: John Needham
                   vs. Lazzaro Spallanzani</h4>
@@ -575,14 +575,14 @@
 
             <!-- Louis Pasteur -->
             <div x-show="selectedScientist === 'pasteur'" x-transition class="space-y-4">
-              <div class="flex items-start justify-between gap-4">
-                <div class="flex items-center gap-3 min-w-0">
-                  <span class="px-2.5 py-1 rounded bg-bio-600 text-white text-xs font-bold">França (1862) • O Veredito
+              <div class="flex flex-col-reverse sm:flex-row sm:items-start justify-between gap-3 sm:gap-4">
+                <div class="space-y-1 min-w-0">
+                  <span class="inline-block px-2.5 py-1 rounded bg-bio-600 text-white text-xs font-bold">França (1862) • O Veredito
                     Definitivo</span>
                   <h4 class="font-display font-bold text-base sm:text-lg">Louis Pasteur e o Frasco Pescoço de Cisne</h4>
                 </div>
                 <img src="img/Pasteur.png" alt="Retrato de Louis Pasteur"
-                  class="w-28 h-28 sm:w-40 sm:h-40 object-cover rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm shrink-0">
+                  class="w-24 h-24 sm:w-40 sm:h-40 object-cover rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm shrink-0 self-start sm:self-start">
               </div>
               <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                 Pasteur encerrou a disputa com um desenho experimental genial promovido pela Academia Francesa de
@@ -726,7 +726,7 @@
               fechado que simulava fielmente a atmosfera e os mares da Terra primitiva:
             </p>
             <div
-              class="my-2 p-3 rounded-xl bg-white dark:bg-slate-950 border border-bio-300 dark:border-slate-800 text-center font-mono text-sm text-bio-800 dark:text-bio-300 overflow-x-auto">
+              class="my-2 p-3 rounded-xl bg-white dark:bg-slate-950 border border-bio-300 dark:border-slate-800 text-center font-mono text-sm text-bio-800 dark:text-bio-300 overflow-x-auto w-full max-w-full min-w-0">
               <span>$$\text{Metano } (\mathrm{CH_4}) + \text{Amônia } (\mathrm{NH_3}) + \text{Hidrogênio }
                 (\mathrm{H_2}) + \text{Água } (\mathrm{H_2O}) \xrightarrow{\text{Faíscas Elétricas}} \text{Aminoácidos
                 (Glicina, Alanina)}$$</span>
@@ -1954,8 +1954,7 @@
           </div>
 
           <!-- Canvas do p5.js -->
-          <div id="p5-canvas-container" class="w-full flex justify-center bg-slate-950 overflow-hidden relative"
-            style="min-height: 420px;">
+          <div id="p5-canvas-container" class="w-full flex justify-center bg-slate-950 overflow-hidden relative min-h-[300px] sm:min-h-[420px]">
             <!-- O canvas do p5.js será inserido aqui dinamicamente -->
           </div>
 
@@ -1965,7 +1964,7 @@
 
             <!-- Gráfico 1: Histograma Fenotípico de Velocidade (Estilo Primer) -->
             <div
-              class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+              class="min-w-0 p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
               <div>
                 <div class="flex items-center justify-between">
                   <h4
@@ -1985,9 +1984,9 @@
 
               <!-- Barras do Histograma -->
               <div
-                class="mt-4 grid grid-cols-5 gap-2 items-end h-28 pt-2 pb-1 border-b border-slate-100 dark:border-slate-800">
+                class="mt-4 grid grid-cols-5 gap-1 sm:gap-2 items-end h-28 pt-2 pb-1 border-b border-slate-100 dark:border-slate-800">
                 <!-- Bin 1: Muito Lento (<1.8) -->
-                <div class="flex flex-col items-center h-full justify-end group">
+                <div class="flex flex-col items-center h-full justify-end group min-w-0">
                   <span class="text-[10px] font-mono font-bold text-blue-600 dark:text-blue-400 mb-1"
                     id="hist-count-0">0</span>
                   <div
@@ -1995,11 +1994,11 @@
                     <div id="hist-bar-0" class="w-full bg-blue-500 rounded-t-md transition-all duration-300"
                       style="height: 0%;"></div>
                   </div>
-                  <span class="text-[9px] font-semibold text-slate-400 mt-1">&lt;1.8</span>
+                  <span class="text-[8px] sm:text-[9px] font-semibold text-slate-400 mt-1 truncate text-center w-full">&lt;1.8</span>
                 </div>
 
                 <!-- Bin 2: Moderado (1.8 - 2.8) -->
-                <div class="flex flex-col items-center h-full justify-end group">
+                <div class="flex flex-col items-center h-full justify-end group min-w-0">
                   <span class="text-[10px] font-mono font-bold text-cyan-600 dark:text-cyan-400 mb-1"
                     id="hist-count-1">0</span>
                   <div
@@ -2007,11 +2006,11 @@
                     <div id="hist-bar-1" class="w-full bg-cyan-500 rounded-t-md transition-all duration-300"
                       style="height: 0%;"></div>
                   </div>
-                  <span class="text-[9px] font-semibold text-slate-400 mt-1">1.8-2.8</span>
+                  <span class="text-[8px] sm:text-[9px] font-semibold text-slate-400 mt-1 truncate text-center w-full">1.8-2.8</span>
                 </div>
 
                 <!-- Bin 3: Médio (2.8 - 3.8) -->
-                <div class="flex flex-col items-center h-full justify-end group">
+                <div class="flex flex-col items-center h-full justify-end group min-w-0">
                   <span class="text-[10px] font-mono font-bold text-purple-600 dark:text-purple-400 mb-1"
                     id="hist-count-2">0</span>
                   <div
@@ -2019,11 +2018,11 @@
                     <div id="hist-bar-2" class="w-full bg-purple-500 rounded-t-md transition-all duration-300"
                       style="height: 0%;"></div>
                   </div>
-                  <span class="text-[9px] font-semibold text-slate-400 mt-1">2.8-3.8</span>
+                  <span class="text-[8px] sm:text-[9px] font-semibold text-slate-400 mt-1 truncate text-center w-full">2.8-3.8</span>
                 </div>
 
                 <!-- Bin 4: Rápido (3.8 - 4.8) -->
-                <div class="flex flex-col items-center h-full justify-end group">
+                <div class="flex flex-col items-center h-full justify-end group min-w-0">
                   <span class="text-[10px] font-mono font-bold text-pink-600 dark:text-pink-400 mb-1"
                     id="hist-count-3">0</span>
                   <div
@@ -2031,11 +2030,11 @@
                     <div id="hist-bar-3" class="w-full bg-pink-500 rounded-t-md transition-all duration-300"
                       style="height: 0%;"></div>
                   </div>
-                  <span class="text-[9px] font-semibold text-slate-400 mt-1">3.8-4.8</span>
+                  <span class="text-[8px] sm:text-[9px] font-semibold text-slate-400 mt-1 truncate text-center w-full">3.8-4.8</span>
                 </div>
 
                 <!-- Bin 5: Hiperveloz (>4.8) -->
-                <div class="flex flex-col items-center h-full justify-end group">
+                <div class="flex flex-col items-center h-full justify-end group min-w-0">
                   <span class="text-[10px] font-mono font-bold text-red-600 dark:text-red-400 mb-1"
                     id="hist-count-4">0</span>
                   <div
@@ -2043,7 +2042,7 @@
                     <div id="hist-bar-4" class="w-full bg-red-500 rounded-t-md transition-all duration-300"
                       style="height: 0%;"></div>
                   </div>
-                  <span class="text-[9px] font-semibold text-slate-400 mt-1">&gt;4.8</span>
+                  <span class="text-[8px] sm:text-[9px] font-semibold text-slate-400 mt-1 truncate text-center w-full">&gt;4.8</span>
                 </div>
               </div>
 
@@ -2055,7 +2054,7 @@
 
             <!-- Gráfico 2: Equilíbrio Ecológico (Alimentos vs População) -->
             <div
-              class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+              class="min-w-0 p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
               <div>
                 <div class="flex items-center justify-between">
                   <h4

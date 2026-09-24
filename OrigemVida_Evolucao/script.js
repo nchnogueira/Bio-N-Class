@@ -1082,8 +1082,8 @@ function renderEquations(el = document.body) {
       const sketch = function (p) {
         p.setup = function () {
           const container = document.getElementById('p5-canvas-container');
-          canvasW = container ? container.clientWidth : 800;
-          canvasH = 420;
+          canvasW = container ? container.clientWidth : (window.innerWidth < 800 ? window.innerWidth : 800);
+          canvasH = window.innerWidth < 640 ? 300 : 420;
           let canvas = p.createCanvas(canvasW, canvasH);
           canvas.parent('p5-canvas-container');
           p.frameRate(60);
@@ -1094,9 +1094,14 @@ function renderEquations(el = document.body) {
 
         p.windowResized = function () {
           const container = document.getElementById('p5-canvas-container');
-          if (container && container.clientWidth !== canvasW) {
-            canvasW = container.clientWidth;
-            p.resizeCanvas(canvasW, canvasH);
+          if (container) {
+            const targetW = container.clientWidth;
+            const targetH = window.innerWidth < 640 ? 300 : 420;
+            if (targetW !== canvasW || targetH !== canvasH) {
+              canvasW = targetW;
+              canvasH = targetH;
+              p.resizeCanvas(canvasW, canvasH);
+            }
           }
         };
 

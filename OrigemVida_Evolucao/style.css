@@ -46,10 +46,34 @@
     }
 
     html, body {
+      width: 100%;
       max-width: 100%;
       overflow-x: hidden;
+      position: relative;
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
+    }
+
+    /* Evita que o flex-item principal e seus filhos expandam além da viewport */
+    main {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    @media (min-width: 1152px) {
+      main {
+        max-width: 72rem;
+      }
+    }
+
+    /* Evita que itens dentro de Flex e Grid recusem encolhimento */
+    main, section, div, article {
+      min-width: 0;
+    }
+
+    section, article {
+      max-width: 100%;
     }
 
     /* ==========================================================================
@@ -68,6 +92,14 @@
     }
 
     /* Scroll horizontal táctil suave para tabelas, fórmulas KaTeX e seletores em pills */
+    table, .katex-display {
+      display: block;
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 0.5rem 0;
+    }
+
     .overflow-x-auto {
       -webkit-overflow-scrolling: touch;
       overscroll-behavior-x: contain;
