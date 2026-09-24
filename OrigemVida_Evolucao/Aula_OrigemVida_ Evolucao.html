@@ -1,0 +1,2783 @@
+<!DOCTYPE html>
+<html lang="pt-BR" x-data="{ darkMode: false, activeTab: 'conteudo' }" :class="{ 'dark': darkMode }">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Origem da Vida e Estudo da Evolução | Aula Interativa SPA</title>
+
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Script da Aula (Configurações Tailwind, KaTeX, Controles Alpine e Simulações) -->
+  <script src="script.js"></script>
+
+  <!-- Alpine.js CDN -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
+
+  <!-- p5.js CDN para a Simulação Biológica -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
+  <!-- KaTeX para Notações Científicas -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <!-- Estilos Customizados da Aula -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body
+  class="bg-fossil-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col font-sans antialiased selection:bg-bio-500 selection:text-white overflow-x-hidden">
+
+  <!-- ========================================== -->
+  <!-- BARRA SUPERIOR DE NAVEGAÇÃO & CONTROLES    -->
+  <!-- ========================================== -->
+  <header
+    class="sticky top-0 z-50 backdrop-blur-md bg-white/90 dark:bg-slate-900/90 border-b border-bio-200 dark:border-slate-800 shadow-sm transition-colors"
+    x-data="{ mobileNavOpen: false }">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+
+      <!-- Identidade e Logo -->
+      <div class="flex items-center space-x-3">
+        <div
+          class="w-10 h-10 rounded-xl bg-gradient-to-tr from-bio-700 to-bio-500 flex items-center justify-center text-white shadow-md shadow-bio-600/30 shrink-0">
+          <svg class="w-6 h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+          </svg>
+        </div>
+        <div>
+          <span class="font-display font-bold text-lg text-bio-900 dark:text-bio-300 tracking-tight">Bio'N Class</span>
+          <span
+            class="hidden sm:inline-block text-xs font-semibold px-2 py-0.5 ml-2 rounded-full bg-bio-100 text-bio-800 dark:bg-bio-950 dark:text-bio-300 border border-bio-300 dark:border-bio-800">
+            Ciências Biológicas
+          </span>
+        </div>
+      </div>
+
+      <!-- Links Rápidos, Alternador de Tema e Menu Mobile -->
+      <div class="flex items-center space-x-2 sm:space-x-4">
+        <!-- Navegação Desktop (visível a partir de md: 768px) -->
+        <nav class="hidden md:flex items-center space-x-1 text-sm font-medium">
+          <a href="#origem"
+            class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-bio-700 hover:bg-bio-50 dark:text-slate-300 dark:hover:text-bio-300 dark:hover:bg-slate-800 transition">Origem
+            da Vida</a>
+          <a href="#evolucao"
+            class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-bio-700 hover:bg-bio-50 dark:text-slate-300 dark:hover:text-bio-300 dark:hover:bg-slate-800 transition">Evolução
+            & Fósseis</a>
+          <a href="#teorias"
+            class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-bio-700 hover:bg-bio-50 dark:text-slate-300 dark:hover:text-bio-300 dark:hover:bg-slate-800 transition">Lamarck
+            & Darwin</a>
+          <a href="#laboratorio"
+            class="px-3 py-1.5 rounded-lg text-bio-700 bg-bio-100/60 font-semibold hover:bg-bio-200/60 dark:text-bio-300 dark:bg-bio-900/50 transition flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-bio-500 animate-ping"></span>
+            Simulador
+          </a>
+          <a href="#videos"
+            class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-bio-700 hover:bg-bio-50 dark:text-slate-300 dark:hover:text-bio-300 dark:hover:bg-slate-800 transition">Vídeos</a>
+          <a href="#fixacao"
+            class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-bio-700 hover:bg-bio-50 dark:text-slate-300 dark:hover:text-bio-300 dark:hover:bg-slate-800 transition">Quiz
+            & Flashcards</a>
+        </nav>
+
+        <!-- Botão Dark / Light Mode (Acessibilidade de toque touch min-w/h 44px) -->
+        <button @click="darkMode = !darkMode" aria-label="Alternar modo escuro"
+          class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-amber-400 hover:scale-105 active:scale-95 transition shadow-sm min-w-[44px] min-h-[44px] flex items-center justify-center">
+          <template x-if="!darkMode">
+            <svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          </template>
+          <template x-if="darkMode">
+            <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </template>
+        </button>
+
+        <!-- Botão Menu Mobile Hamburger (Visível em celulares max-w: 768px - Diretriz 5) -->
+        <button @click="mobileNavOpen = !mobileNavOpen" aria-label="Abrir menu de navegação móvel"
+          class="md:hidden p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 active:scale-95 transition min-w-[44px] min-h-[44px] flex items-center justify-center">
+          <svg x-show="!mobileNavOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg x-show="mobileNavOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            style="display: none;">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Gaveta / Dropdown do Menu Mobile para Smartphones (Acessibilidade de Toque - Diretriz 5) -->
+    <div x-show="mobileNavOpen" x-transition:enter="transition ease-out duration-200"
+      x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+      x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
+      x-transition:leave-end="opacity-0 -translate-y-2"
+      class="md:hidden bg-white/95 dark:bg-slate-900/95 border-b border-bio-200 dark:border-slate-800 px-4 py-3 shadow-xl backdrop-blur-md"
+      style="display: none;">
+      <nav class="flex flex-col space-y-1 text-sm font-semibold">
+        <a href="#origem" @click="mobileNavOpen = false"
+          class="py-3 px-3.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-bio-50 dark:hover:bg-slate-800 hover:text-bio-700 flex items-center gap-2 min-h-[44px]">
+          <span class="text-bio-600 dark:text-bio-400 font-bold">01.</span> Origem da Vida
+        </a>
+        <a href="#evolucao" @click="mobileNavOpen = false"
+          class="py-3 px-3.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-bio-50 dark:hover:bg-slate-800 hover:text-bio-700 flex items-center gap-2 min-h-[44px]">
+          <span class="text-bio-600 dark:text-bio-400 font-bold">02.</span> Evolução & Fósseis
+        </a>
+        <a href="#teorias" @click="mobileNavOpen = false"
+          class="py-3 px-3.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-bio-50 dark:hover:bg-slate-800 hover:text-bio-700 flex items-center gap-2 min-h-[44px]">
+          <span class="text-bio-600 dark:text-bio-400 font-bold">03.</span> Lamarck & Darwin
+        </a>
+        <a href="#laboratorio" @click="mobileNavOpen = false"
+          class="py-3 px-3.5 rounded-xl text-bio-700 dark:text-bio-300 bg-bio-50 dark:bg-bio-950/60 font-bold flex items-center justify-between min-h-[44px]">
+          <span class="flex items-center gap-2">
+            <span>04.</span> Simulador Virtual
+          </span>
+          <span class="w-2 h-2 rounded-full bg-bio-500 animate-ping"></span>
+        </a>
+        <a href="#videos" @click="mobileNavOpen = false"
+          class="py-3 px-3.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-bio-50 dark:hover:bg-slate-800 hover:text-bio-700 flex items-center gap-2 min-h-[44px]">
+          <span class="text-bio-600 dark:text-bio-400 font-bold">05.</span> Cinemateca Científica
+        </a>
+        <a href="#fixacao" @click="mobileNavOpen = false"
+          class="py-3 px-3.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-bio-50 dark:hover:bg-slate-800 hover:text-bio-700 flex items-center gap-2 min-h-[44px]">
+          <span class="text-bio-600 dark:text-bio-400 font-bold">06.</span> Quiz & Flashcards
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- CABEÇALHO HERO COM IDENTIDADE TEMÁTICA    -->
+  <!-- ========================================== -->
+  <section id="hero"
+    class="relative overflow-hidden bg-gradient-to-b from-bio-900 via-bio-950 to-slate-900 text-white py-8 sm:py-14 md:py-20 px-3 sm:px-6 lg:px-8 border-b border-bio-800/60 shadow-xl">
+    <!-- Efeitos Visuais de Fundo -->
+    <div
+      class="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#22c55e_1px,transparent_1px)] [background-size:24px_24px]">
+    </div>
+    <div
+      class="absolute -top-12 -right-12 sm:-top-24 sm:-right-24 w-36 h-36 sm:w-72 sm:h-72 lg:w-96 lg:h-96 bg-bio-500/20 rounded-full blur-3xl pointer-events-none">
+    </div>
+    <div
+      class="absolute -bottom-12 -left-12 sm:-bottom-24 sm:-left-24 w-36 h-36 sm:w-72 sm:h-72 lg:w-96 lg:h-96 bg-fossil-600/20 rounded-full blur-3xl pointer-events-none">
+    </div>
+
+    <div class="relative max-w-5xl mx-auto text-center space-y-4 sm:space-y-6">
+      <div
+        class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-wide uppercase bg-bio-500/10 border border-bio-400/30 text-bio-300">
+        <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-bio-400 animate-pulse"></span>
+        Ensino Ciências Biológicas
+      </div>
+
+      <h1
+        class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-display tracking-tight text-white leading-snug sm:leading-tight">
+        De Onde Viemos? A Grande Viagem da <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-bio-400 via-emerald-300 to-fossil-300">Origem da
+          Vida</span> aos Mecanismos da <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-bio-400 to-teal-200">Evolução</span>
+      </h1>
+
+      <p class="text-sm sm:text-lg md:text-xl text-bio-200/90 max-w-3xl mx-auto font-medium leading-relaxed">
+        Como a matéria bruta se organizou nas primeiras células há cerca de 3,8 bilhões de anos, e como as forças da
+        seleção natural moldaram a impressionante biodiversidade do nosso planeta.
+      </p>
+
+      <!-- Texto Contextual para o Aluno -->
+      <div
+        class="max-w-3xl mx-auto text-left bg-slate-900/60 border border-slate-700/60 p-3.5 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl backdrop-blur-sm text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed space-y-2.5 sm:space-y-3">
+        <p>
+          Olhe ao seu redor por um instante: das árvores no pátio às aves no céu, dos microrganismos invisíveis na sua
+          pele até você mesmo, a Terra pulsa com milhões de formas de vida distintas. Mas o nosso planeta nem sempre foi
+          assim. Houve um tempo em que a Terra era um caldeirão incandescente, varrido por tempestades e lava,
+          desprovido de qualquer respiração ou batimento cardíaco.
+        </p>
+        <p class="font-semibold text-white">
+          Como saímos do silêncio mineral para a exuberância viva da floresta amazônica?
+        </p>
+        <p>
+          A resposta a essa pergunta é uma das maiores investigações científicas da história humana. Ela une químicos
+          decifrando reações em mares primitivos, microbiologistas fervendo caldos em laboratório e naturalistas
+          desbravando oceanos em busca de fósseis.
+        </p>
+        <div
+          class="p-2.5 sm:p-3.5 rounded-lg sm:rounded-xl bg-bio-950/60 border-l-4 border-bio-400 text-[11px] sm:text-xs md:text-sm text-bio-200 italic">
+          "Nesta aula interativa, você não vai apenas ler sobre a vida: você vai investigar experimentos históricos,
+          manipular simuladores genéticos em tempo real e compreender a regra de ouro da biologia formulada pelo
+          geneticista Theodosius Dobzhansky: <strong>'Nada na biologia faz sentido, a não ser sob a luz da
+            evolução.'</strong>"
+        </div>
+      </div>
+
+      <!-- Botões de Ação Hero: Largura total em smartphones e toque acessível (Diretriz 3 e 5) -->
+      <div class="pt-2 sm:pt-4 flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3 w-full">
+        <a href="#laboratorio"
+          class="w-full sm:w-auto px-5 sm:px-6 py-3.5 sm:py-3 rounded-xl bg-bio-500 hover:bg-bio-400 text-slate-950 font-bold text-sm shadow-lg shadow-bio-500/25 transition transform active:scale-95 flex items-center justify-center gap-2 min-h-[48px]">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Abrir Laboratório Virtual
+        </a>
+        <a href="#origem"
+          class="w-full sm:w-auto px-5 sm:px-6 py-3.5 sm:py-3 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-white font-semibold text-sm border border-slate-700 shadow transition active:scale-95 flex items-center justify-center gap-2 min-h-[48px]">
+          Começar pela Teoria
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- CONTEÚDO PRINCIPAL (LAYOUT PRINCIPAL)      -->
+  <!-- ========================================== -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16 flex-1">
+
+    <!-- ========================================== -->
+    <!-- ALERTA EPISTEMOLÓGICO: 3 ARMADILHAS CONCEITUAIS -->
+    <!-- ========================================== -->
+    <div
+      class="p-6 rounded-2xl bg-gradient-to-r from-amber-50 via-emerald-50/60 to-bio-50 dark:from-slate-900 dark:via-slate-900 dark:to-bio-950/40 border-2 border-bio-300 dark:border-bio-800/70 shadow-sm space-y-4">
+      <div class="flex items-center gap-3">
+        <div
+          class="w-10 h-10 rounded-xl bg-bio-600 text-white flex items-center justify-center font-bold text-xl shadow-md">
+          🛡️
+        </div>
+        <div>
+          <span class="text-xs font-mono font-bold uppercase tracking-wider text-bio-700 dark:text-bio-400">Guia do
+            Pensamento Científico • Parecer Epistemológico</span>
+          <h2 class="text-lg sm:text-xl font-display font-black text-slate-900 dark:text-white">
+            Três Armadilhas Para Ter Cautela!
+          </h2>
+        </div>
+      </div>
+      <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+        Olá querido aluno! Antes de mergulhar em nossa aula e nos simuladores, atente-se a três conceitos que costumam
+        gerar confusão quando exploramos este tema:
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
+        <div
+          class="p-4 rounded-xl bg-white dark:bg-slate-950 border border-amber-200 dark:border-amber-900/60 space-y-2">
+          <div class="flex items-center gap-2 text-amber-700 dark:text-amber-400 font-bold text-xs">
+            <span>🎯</span> 1. O "Finalismo"
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Quando discutimos evolução, é comum construir uma associação com a "vontade de evoluir". Precisamos lembrar
+            que o ser vivo <strong>não muda "PARA" se adaptar</strong>. O organismo não tem vontade própria de evoluir!
+            Como vamos discutir nesta aula, o ambiente atua como um <strong>filtro, ou uma peneira seletiva</strong>
+            sobre variações genéticas que já existiam previamente de forma aleatória na população. Então, não há um
+            "objetivo final" na evolução: ela é um processo contínuo e não direcionado.
+          </p>
+        </div>
+        <div class="p-4 rounded-xl bg-white dark:bg-slate-950 border border-blue-200 dark:border-blue-900/60 space-y-2">
+          <div class="flex items-center gap-2 text-blue-700 dark:text-blue-400 font-bold text-xs">
+            <span>🌳</span> 2. A "Escada do Progresso"
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Outro erro epistemológico é o de atribuir à "evolução" um sentido de progresso linear. O processo evolutivo
+            não é uma subida linear que rumo ao progresso que eventualmente chegaria em nós (humanos). Na realidade,
+            este é um processo que apenas descreve <strong>mudanças</strong> em populações ao longo do tempo. De forma
+            alguma há o conceito de "avanço" em qualquer sentido. O processo evolutivo da Vida em nosso planeta é uma
+            <strong>árvore densamente ramificada</strong>, que deu origem a todas as formas de vida aqui existentes,
+            desde as mais simples até as mais complexas. Bactérias e amebas não são "menos evoluídas" que mamíferos;
+            estão perfeitamente adaptadas aos seus nichos.
+          </p>
+        </div>
+        <div
+          class="p-4 rounded-xl bg-white dark:bg-slate-950 border border-emerald-200 dark:border-emerald-900/60 space-y-2">
+          <div class="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-bold text-xs">
+            <span>⚗️</span> 3. Biogênese vs. Origem Química
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Quando discutimos a origem da vida, estamos apenas abordando teorias que poderiam ter dado origem às
+            primeiras formas auto-replicantes. Como vamos ver em breve, o experimento de Pasteur provou que a vida
+            <strong>hoje</strong> só vem de outra vida. Isso não contradiz Oparin-Haldane: as condições da Terra
+            primitiva (sem oxigênio livre, com descargas elétricas e radiação ultravioleta intensa) permitiram a
+            formação de moléculas orgânicas antes do surgimento das primeiras células.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SEÇÃO 1: A ORIGEM DA VIDA                  -->
+    <!-- ========================================== -->
+    <section id="origem" class="scroll-mt-20 space-y-10">
+      <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+        <div class="flex items-center gap-2 text-bio-700 dark:text-bio-400 text-sm font-bold uppercase tracking-wider">
+          <span class="p-1.5 rounded-lg bg-bio-100 dark:bg-bio-950/80">01</span>
+          Do Inanimado ao Vivo • Origem da Vida
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-black font-display mt-1 text-slate-900 dark:text-white">
+          A Origem da Vida: Da Disputa Histórica à Síntese Prebiótica
+        </h2>
+      </div>
+
+      <!-- PARTE 1.1: A DISPUTA HISTÓRICA: ABIOGÊNESE VS. BIOGÊNESE -->
+      <div class="space-y-6">
+        <div class="flex items-center gap-2 text-base font-bold font-display text-bio-800 dark:text-bio-300">
+          <span class="w-2.5 h-2.5 rounded-full bg-bio-500"></span>
+          1.1 A Disputa Histórica: A Matéria Bruta Pode Gerar Vida?
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Card Conceitual Principal -->
+          <div class="lg:col-span-2 space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
+            <p>
+              Como a vida surgiu? Por mais de dois milênios, a humanidade acreditou na <strong
+                class="text-slate-900 dark:text-white font-semibold">Teoria da Abiogênese</strong>, também chamada de
+              <em>Teoria da Geração Espontânea</em>. A lógica parecia óbvia aos olhos nus da época: se um pedaço de
+              carne ficasse exposto, dias depois estaria repleto de larvas; quando as cheias do Rio Nilo recuavam, o
+              lodo fértil parecia "brotar" rãs, crocodilos e serpentes. Assim, era natural concluir que a vida surgia
+              espontaneamente da matéria bruta, assim, o nome da teoria, <em>abiogênese</em>.
+            </p>
+            <p>
+              Foi preciso construir a passos firmes o método científico moderno — com isolamento de variáveis, grupos de
+              controle e instrumentos de precisão — para provar o princípio soberano da <strong
+                class="text-bio-700 dark:text-bio-400 font-semibold">Biogênese</strong>: <em>todo ser vivo provém
+                exclusivamente de outro ser vivo pré-existente</em> (máxima latina: <em class="font-mono text-xs">Omnis
+                cellula e cellula</em>).
+            </p>
+          </div>
+
+          <!-- Coluna Vocabulário Científico -->
+          <div
+            class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-fossil-600 dark:text-fossil-400">Vocabulário
+                Científico</span>
+              <div class="mt-3 space-y-3">
+                <div
+                  class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700">
+                  <span class="text-xs font-bold text-red-600 dark:text-red-400 uppercase">Abiogênese:</span>
+                  <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
+                    <em>A</em> (sem) + <em>Bio</em> (vida) + <em>Gênese</em> (origem). Crença de que matéria bruta
+                    continha um "princípio ativo" ou força vital.
+                  </p>
+                </div>
+                <div class="p-3 rounded-xl bg-bio-50 dark:bg-bio-950/40 border border-bio-100 dark:border-bio-900">
+                  <span class="text-xs font-bold text-bio-700 dark:text-bio-400 uppercase">Biogênese:</span>
+                  <p class="text-xs text-slate-600 dark:text-slate-300 mt-1">
+                    Seres vivos originam-se exclusivamente pela reprodução de outros seres vivos preexistentes da mesma
+                    espécie.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Linha do Tempo Interativa de Cientistas (Tabs Alpine.js) -->
+        <div
+          class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 sm:p-6 shadow-sm"
+          x-data="{ selectedScientist: 'pasteur' }">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+            <div>
+              <h3 class="font-display font-bold text-lg sm:text-xl text-slate-900 dark:text-white">
+                Os Investigadores da Geração Espontânea: Quem Foram os Cientistas?
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+                Selecione um cientista para examinar sua hipótese, o desenho do experimento e seu impacto histórico:
+              </p>
+            </div>
+          </div>
+
+          <!-- Seletor em Pills com Scroll Horizontal Táctil (Diretriz 3 e 5) -->
+          <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-none -mx-1 px-1">
+            <button @click="selectedScientist = 'aristoteles'"
+              :class="selectedScientist === 'aristoteles' ? 'bg-fossil-600 text-white shadow' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'"
+              class="px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition shrink-0 min-h-[44px] flex items-center justify-center">
+              Aristóteles
+            </button>
+            <button @click="selectedScientist = 'vanhelmont'"
+              :class="selectedScientist === 'vanhelmont' ? 'bg-fossil-600 text-white shadow' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'"
+              class="px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition shrink-0 min-h-[44px] flex items-center justify-center">
+              Van Helmont
+            </button>
+            <button @click="selectedScientist = 'redi'"
+              :class="selectedScientist === 'redi' ? 'bg-bio-600 text-white shadow' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'"
+              class="px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition shrink-0 min-h-[44px] flex items-center justify-center">
+              Francesco Redi (1668)
+            </button>
+            <button @click="selectedScientist = 'needham_spallanzani'"
+              :class="selectedScientist === 'needham_spallanzani' ? 'bg-fossil-600 text-white shadow' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'"
+              class="px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition shrink-0 min-h-[44px] flex items-center justify-center">
+              Needham vs. Spallanzani
+            </button>
+            <button @click="selectedScientist = 'pasteur'"
+              :class="selectedScientist === 'pasteur' ? 'bg-bio-600 text-white ring-2 ring-bio-400 shadow' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'"
+              class="px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition shrink-0 flex items-center justify-center gap-1.5 min-h-[44px]">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              Louis Pasteur (1862)
+            </button>
+          </div>
+
+          <!-- Conteúdos Dinâmicos -->
+          <div
+            class="mt-4 p-5 sm:p-6 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80">
+
+            <!-- Aristóteles -->
+            <div x-show="selectedScientist === 'aristoteles'" x-transition class="space-y-3">
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex items-center gap-3 min-w-0">
+                  <span
+                    class="px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-xs font-bold">Grécia
+                    Antiga (Séc. IV a.C.)</span>
+                  <h4 class="font-display font-bold text-base sm:text-lg">Aristóteles e a Doutrina do Princípio Ativo
+                  </h4>
+                </div>
+                <img src="img/Aristotles.jpg" alt="Retrato de Aristóteles"
+                  class="w-28 h-28 sm:w-40 sm:h-40 object-cover rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm shrink-0">
+              </div>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Aristóteles defendia que a matéria inanimada possuía um <strong>princípio ativo ou força vital
+                  (enteléquia)</strong>. Se as condições físicas fossem propícias (calor, umidade, escuridão), essa
+                força organizaria a matéria inerte em um organismo vivo. Essa teoria perdurou por mais de dois mil anos
+                por falta de método experimental controlado.
+              </p>
+            </div>
+
+            <!-- Van Helmont -->
+            <div x-show="selectedScientist === 'vanhelmont'" x-transition class="space-y-3">
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex items-center gap-3 min-w-0">
+                  <span
+                    class="px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-xs font-bold">Bélgica
+                    (1620)</span>
+                  <h4 class="font-display font-bold text-base sm:text-lg">Jan Baptist van Helmont e a Famosa "Receita de
+                    Ratos"</h4>
+                </div>
+                <img src="img/Helmont.jpg" alt="Retrato de Jan Baptist van Helmont"
+                  class="w-28 h-28 sm:w-40 sm:h-40 object-cover rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm shrink-0">
+              </div>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Médico e alquimista renomado, Van Helmont publicou uma "receita científica" que prometia gerar
+                camundongos: colocava-se uma camisa suja com suor humano junto a grãos de trigo em um jarro aberto
+                guardado em uma caixa escura. Segundo ele, após 21 dias, "o fermento do suor humano transformava o trigo
+                em ratos adultos".
+              </p>
+              <div
+                class="p-3.5 bg-amber-50 dark:bg-slate-900 rounded-xl text-xs text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-900 leading-relaxed">
+                ⚠️ <strong>Onde estava a falha de Helmont?</strong> Ausência total de controle experimental! O
+                recipiente aberto simplesmente atraía ratos que já viviam no celeiro em busca de comida e abrigo, e não
+                gerados pela camisa!
+              </div>
+            </div>
+
+            <!-- Francesco Redi -->
+            <div x-show="selectedScientist === 'redi'" x-transition class="space-y-4">
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex items-center gap-3 min-w-0">
+                  <span
+                    class="px-2.5 py-1 rounded bg-bio-100 dark:bg-bio-950 text-bio-800 dark:text-bio-300 text-xs font-bold">Itália
+                    (1668)</span>
+                  <h4 class="font-display font-bold text-base sm:text-lg">Francesco Redi e o Nascimento do Método
+                    Experimental</h4>
+                </div>
+                <img src="img/Francesco_Redi.jpg" alt="Retrato de Francesco Redi"
+                  class="w-28 h-28 sm:w-40 sm:h-40 object-cover rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm shrink-0">
+              </div>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Incomodado com a ideia de que a carne gerava larvas por geração espontânea, o médico Francesco Redi
+                montou um dos primeiros experimentos biológicos controlados da história com três grupos de frascos
+                contendo carne:
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                <div
+                  class="p-3.5 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 text-center">
+                  <span class="font-bold text-slate-800 dark:text-white block mb-1">Frascos Abertos</span>
+                  Moscas entravam e saíam livremente. Dias depois, <span class="text-red-500 font-semibold block mt-1">a
+                    carne fervilhava de larvas!</span>
+                </div>
+                <div
+                  class="p-3.5 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 text-center">
+                  <span class="font-bold text-slate-800 dark:text-white block mb-1">Frascos Herméticos</span>
+                  Totalmente lacrados. A carne apodreceu, mas <span
+                    class="text-bio-600 font-semibold block mt-1">nenhuma larva surgiu!</span>
+                </div>
+                <div
+                  class="p-3.5 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 text-center">
+                  <span class="font-bold text-slate-800 dark:text-white block mb-1">Frascos com Gaze Fina</span>
+                  O ar e o odor saíam, atraindo as moscas. As moscas botavam ovos sobre a gaze: <span
+                    class="text-bio-600 font-semibold block mt-1">larvas na gaze, carne limpa!</span>
+                </div>
+              </div>
+              <p class="text-xs text-bio-700 dark:text-bio-400 font-semibold">
+                Conclusão de Redi: As larvas não surgiam da carne; elas eram a fase juvenil das moscas, nascidas de ovos
+                microscópicos.
+              </p>
+
+              <figure
+                class="mt-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-3 sm:p-4 shadow-sm">
+                <img src="img/02_experimento_francesco_redi.png"
+                  alt="Infográfico do experimento controlado de Francesco Redi com frascos abertos, fechados e cobertos com gaze"
+                  class="w-full rounded-xl object-contain max-h-[420px] mx-auto" loading="lazy" />
+                <figcaption class="text-[11px] text-slate-500 dark:text-slate-400 text-center italic mt-3">
+                  <strong>Experimento de Francesco Redi:</strong> as larvas surgiram apenas onde as moscas puderam
+                  depositar ovos, e não da carne em si.
+                </figcaption>
+              </figure>
+            </div>
+
+            <!-- Needham vs Spallanzani -->
+            <div x-show="selectedScientist === 'needham_spallanzani'" x-transition class="space-y-3">
+              <div class="flex items-center gap-3">
+                <span
+                  class="px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-xs font-bold">Século
+                  XVIII</span>
+                <h4 class="font-display font-bold text-base sm:text-lg">A Batalha dos Caldos Nutritivos: John Needham
+                  vs. Lazzaro Spallanzani</h4>
+              </div>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Com a invenção do microscópio, os defensores da geração espontânea contra-atacaram: "Animais grandes
+                podem vir de ovos, mas micróbios nascem do caldo nutritivo sim!".
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                <div
+                  class="p-3.5 bg-white dark:bg-slate-900 rounded-xl border border-amber-200 dark:border-amber-900/60">
+                  <img src="img/John_Needham.jpg" alt="Retrato de John Needham"
+                    class="w-full max-w-[220px] aspect-[3/4] object-cover rounded-lg mb-3 mx-auto md:mx-0">
+                  <strong class="text-amber-700 dark:text-amber-400 block mb-1">John Needham (Inglaterra,
+                    1745):</strong>
+                  Ferveu caldo de carne por poucos minutos em frascos tapados com rolhas de cortiça porosa. Dias depois,
+                  o caldo turvou com microrganismos. Needham alegou ter provado a "força vital".
+                </div>
+                <div class="p-3.5 bg-white dark:bg-slate-900 rounded-xl border border-bio-200 dark:border-bio-900/60">
+                  <img src="img/Spallanzani.jpg" alt="Retrato de Lazzaro Spallanzani"
+                    class="w-full max-w-[220px] aspect-[3/4] object-cover rounded-lg mb-3 mx-auto md:mx-0">
+                  <strong class="text-bio-700 dark:text-bio-400 block mb-1">Lazzaro Spallanzani (Itália, 1768):</strong>
+                  Apontou falhas em Needham: repetiu o teste, mas ferveu os caldos por quase uma hora e <strong>derreteu
+                    o gargalo de vidro</strong> para vedá-los hermeticamente. Resultado: o caldo permaneceu
+                  perfeitamente estéril e límpido!
+                </div>
+              </div>
+              <p class="text-xs text-slate-500 dark:text-slate-400 italic">
+                Needham retrucou que a fervura prolongada havia "destruído a força vital e estragado o ar". O impasse
+                durou quase um século.
+              </p>
+            </div>
+
+            <!-- Louis Pasteur -->
+            <div x-show="selectedScientist === 'pasteur'" x-transition class="space-y-4">
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex items-center gap-3 min-w-0">
+                  <span class="px-2.5 py-1 rounded bg-bio-600 text-white text-xs font-bold">França (1862) • O Veredito
+                    Definitivo</span>
+                  <h4 class="font-display font-bold text-base sm:text-lg">Louis Pasteur e o Frasco Pescoço de Cisne</h4>
+                </div>
+                <img src="img/Pasteur.png" alt="Retrato de Louis Pasteur"
+                  class="w-28 h-28 sm:w-40 sm:h-40 object-cover rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm shrink-0">
+              </div>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Pasteur encerrou a disputa com um desenho experimental genial promovido pela Academia Francesa de
+                Ciências:
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                <div
+                  class="p-3.5 bg-white dark:bg-slate-900 rounded-xl border border-bio-200 dark:border-slate-800 space-y-1.5">
+                  <span class="font-bold text-bio-700 dark:text-bio-400 block">1. Gargalo Curvado em "S" &
+                    Fervura</span>
+                  Curvou o gargalo de vidro com maçarico no formato de "pescoço de cisne" e ferveu o caldo até a
+                  esterilização completa. O vapor d'água expulsou o ar de dentro e condensou-se nas curvas.
+                </div>
+                <div
+                  class="p-3.5 bg-white dark:bg-slate-900 rounded-xl border border-bio-200 dark:border-slate-800 space-y-1.5">
+                  <span class="font-bold text-bio-700 dark:text-bio-400 block">2. Barreira Física com Ar Livre</span>
+                  O ar entrava e saía livremente (refutando a ideia de que faltava ar ou força vital), mas as poeiras e
+                  micróbios ficavam retidos na curva úmida inferior. O caldo permaneceu estéril por meses!
+                </div>
+                <div
+                  class="p-3.5 bg-white dark:bg-slate-900 rounded-xl border border-bio-200 dark:border-slate-800 space-y-1.5">
+                  <span class="font-bold text-bio-700 dark:text-bio-400 block">3. O Teste Decisivo: Quebra do
+                    Gargalo</span>
+                  Ao quebrar o gargalo de alguns frascos ou incliná-los para tocar a curva empoeirada, micróbios
+                  multiplicaram-se velozmente em poucos dias. A vida vem de micróbios preexistentes no ar!
+                </div>
+                <div
+                  class="p-3.5 bg-white dark:bg-slate-900 rounded-xl border border-bio-200 dark:border-slate-800 space-y-1.5">
+                  <span class="font-bold text-bio-700 dark:text-bio-400 block">4. Aplicação Prática no Dia a Dia</span>
+                  A <strong>pasteurização</strong> — aquecimento controlado seguido de resfriamento para esterilizar
+                  leite, sucos e alimentos — nasceu diretamente dessa pesquisa de Pasteur.
+                </div>
+              </div>
+
+              <figure
+                class="mt-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-3 sm:p-4 shadow-sm">
+                <img src="img/03_infografico_pasteur_pescoco_cisne.png"
+                  alt="Infográfico sequencial do experimento de Louis Pasteur em quatro etapas"
+                  class="w-full rounded-xl object-contain max-h-[420px] mx-auto" loading="lazy" />
+                <figcaption class="text-[11px] text-slate-500 dark:text-slate-400 text-center italic mt-3">
+                  <strong>Experimento do pescoço de cisne:</strong> o ar entrava livremente, mas a curvatura retinha
+                  poeira e microrganismos até o gargalo ser quebrado.
+                </figcaption>
+              </figure>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- PARTE 1.2: A ORIGEM PRIMITIVA: DA EVOLUÇÃO QUÍMICA ÀS PRIMEIRAS CÉLULAS -->
+      <div class="space-y-6 pt-4 border-t border-slate-200 dark:border-slate-800">
+        <div class="flex items-center gap-2 text-base font-bold font-display text-bio-800 dark:text-bio-300">
+          <span class="w-2.5 h-2.5 rounded-full bg-bio-500"></span>
+          1.2 A Origem Primitiva: Da Evolução Química às Primeiras Células
+        </div>
+
+        <div
+          class="p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+          <h3 class="font-display font-black text-lg sm:text-xl text-slate-900 dark:text-white">
+            O Paradoxo da Biogênese e a Solução de Oparin-Haldane
+          </h3>
+          <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+            Se todo ser vivo só nasce de outro, como surgiu o primeiríssimo habitante da Terra?
+            Nas décadas de 1920 e 1930, <strong>Aleksandr Oparin</strong> (Rússia) e <strong>John Burdon
+              Haldane</strong> (Reino Unido) propuseram de forma independente a <em>Hipótese da Evolução Gradual dos
+              Compostos Químicos</em> (Evolução Prebiótica). Eles deduziram que o surgimento da vida a partir da matéria
+            inanimada ocorreu apenas uma vez, sob as condições extremas da Terra primitiva — condições que não existem
+            mais hoje!
+          </p>
+
+          <!-- Destaque: A Terra Primitiva -->
+          <div
+            class="p-4 rounded-xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-900/60 space-y-3">
+            <span class="font-display font-bold text-sm text-amber-900 dark:text-amber-300 flex items-center gap-2">
+              <span>🌋</span> O Cenário da Terra Primitiva (Há cerca de 4,0 a 3,8 bilhões de anos):
+            </span>
+            <ul class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 space-y-1.5 list-disc pl-5">
+              <li><strong>Sem camada de ozônio ($O_3$):</strong> Bombardeamento contínuo de radiação ultravioleta letal
+                direto na crosta.</li>
+              <li><strong>Crosta terrestre instável:</strong> Vulcanismo generalizado expelindo magma, cinzas e vapores
+                incandescentes.</li>
+              <li><strong>Atmosfera Redutora:</strong> Composta primordialmente por Metano ($\mathrm{CH_4}$), Amônia
+                ($\mathrm{NH_3}$), Gás Hidrogênio ($\mathrm{H_2}$) e Vapor de Água ($\mathrm{H_2O}$).</li>
+              <li class="text-red-700 dark:text-red-400 font-bold bg-red-100/60 dark:bg-red-950/60 p-2 rounded-lg">
+                ⚠️ ATENÇÃO CRÍTICA: NÃO HAVIA OXIGÊNIO LIVRE ($\mathrm{O_2}$)! Se houvesse $\mathrm{O_2}$ livre, ele
+                oxidaria e quebraria rapidamente as primeiras moléculas orgânicas antes que elas pudessem se associar.
+              </li>
+            </ul>
+          </div>
+
+          <!-- A Cozinha Prebiótica -->
+          <div class="space-y-3 pt-2">
+            <h4 class="font-display font-bold text-base text-slate-900 dark:text-white">
+              A Cozinha Prebiótica: Como se Formaram os Blocos da Vida?
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+              <div
+                class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-1">
+                <span class="font-bold text-bio-700 dark:text-bio-400 block">1. Descargas & Raios</span>
+                Tempestades violentas e radiação UV quebraram as ligações de $\mathrm{CH_4}$, $\mathrm{NH_3}$,
+                $\mathrm{H_2}$ e $\mathrm{H_2O}$.
+              </div>
+              <div
+                class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-1">
+                <span class="font-bold text-bio-700 dark:text-bio-400 block">2. Aminoácidos</span>
+                Os átomos livres recombinaram-se em compostos orgânicos simples: aminoácidos (tijolos das proteínas) e
+                bases nitrogenadas.
+              </div>
+              <div
+                class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-1">
+                <span class="font-bold text-bio-700 dark:text-bio-400 block">3. Caldo Nutritivo</span>
+                Chuvas torrenciais lavaram esses compostos para os oceanos quentes em formação, acumulando o "Caldo
+                Primordial".
+              </div>
+              <div
+                class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-1">
+                <span class="font-bold text-bio-700 dark:text-bio-400 block">4. Coacervados</span>
+                Proteínas desidrataram na areia quente e formaram aglomerados isolados por água: os
+                <strong>coacervados</strong> (protocélulas).
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed pt-1">
+              Os coacervados não eram seres vivos ainda, mas protocélulas capazes de manter um meio interno químico
+              distinto do exterior. Quando essas estruturas englobaram uma molécula autorreplicante (como o RNA
+              primordial), surgiram as primeiras células vivas!
+            </p>
+          </div>
+
+          <!-- O Experimento de Miller e Urey (1953) -->
+          <div
+            class="p-5 rounded-2xl bg-gradient-to-br from-bio-50 to-emerald-100/50 dark:from-slate-900 dark:to-bio-950/40 border border-bio-200 dark:border-bio-800/80 shadow-sm space-y-3">
+            <h4 class="font-display font-bold text-bio-900 dark:text-bio-200 flex items-center gap-2">
+              <svg class="w-5 h-5 text-bio-600 dark:text-bio-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              O Teste de Laboratório: O Experimento de Miller e Urey (1953)
+            </h4>
+            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              Na Universidade de Chicago, Stanley Miller e seu orientador Harold Urey construíram um aparato de vidro
+              fechado que simulava fielmente a atmosfera e os mares da Terra primitiva:
+            </p>
+            <div
+              class="my-2 p-3 rounded-xl bg-white dark:bg-slate-950 border border-bio-300 dark:border-slate-800 text-center font-mono text-sm text-bio-800 dark:text-bio-300 overflow-x-auto">
+              <span>$$\text{Metano } (\mathrm{CH_4}) + \text{Amônia } (\mathrm{NH_3}) + \text{Hidrogênio }
+                (\mathrm{H_2}) + \text{Água } (\mathrm{H_2O}) \xrightarrow{\text{Faíscas Elétricas}} \text{Aminoácidos
+                (Glicina, Alanina)}$$</span>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-400">
+              Após apenas uma semana de funcionamento ininterrupto, o líquido límpido do fundo adquiriu uma coloração
+              marrom-avermelhada. Ao analisá-lo quimicamente, Miller encontrou diversos aminoácidos orgânicos! Estava
+              provado: a química da Terra primitiva era capaz de gerar espontaneamente os blocos moleculares da vida.
+            </p>
+
+            <figure
+              class="mt-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-3 sm:p-4 shadow-sm">
+              <img src="img/04_aparato_miller_urey_1953.webp"
+                alt="Fotografia histórica de Stanley Miller ao lado do aparato experimental usado para simular as condições da Terra primitiva"
+                class="w-full max-w-[560px] aspect-square mx-auto rounded-xl object-contain bg-slate-50 dark:bg-slate-950 p-2"
+                loading="lazy" />
+              <figcaption class="text-[11px] text-slate-500 dark:text-slate-400 text-center italic mt-3">
+                <strong>Stanley Miller e o aparato de Miller-Urey (1953):</strong> o experimento simulou a atmosfera e
+                os oceanos da Terra primitiva para investigar a formação abiótica de moléculas orgânicas.
+              </figcaption>
+            </figure>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- PARTE 1.3: OS PRIMEIROS SERES VIVOS E A REVOLUÇÃO BIOQUÍMICA -->
+      <div class="space-y-6 pt-4 border-t border-slate-200 dark:border-slate-800">
+        <div class="flex items-center gap-2 text-base font-bold font-display text-bio-800 dark:text-bio-300">
+          <span class="w-2.5 h-2.5 rounded-full bg-bio-500"></span>
+          1.3 Os Primeiros Seres Vivos, a Catástrofe do Oxigênio e a Endossimbiose
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Como se alimentavam & Catástrofe do Oxigênio -->
+          <div
+            class="p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+            <h3 class="font-display font-bold text-base sm:text-lg text-slate-900 dark:text-white">
+              A Hipótese Heterotrófica & O Grande Evento de Oxigenação
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              <strong>Hipótese Heterotrófica:</strong> Os primeiros organismos eram simples procariontes sem maquinário
+              fotossintético. Eles absorviam moléculas orgânicas prontas no oceano primitivo e extraíam energia por
+              <strong>fermentação anaeróbia</strong> (sem $\mathrm{O_2}$).
+            </p>
+            <div
+              class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs space-y-2">
+              <strong class="text-slate-800 dark:text-slate-200 block">⚡ O Grande Evento de Oxigenação (Há 2,4 bilhões
+                de anos):</strong>
+              <p class="text-slate-600 dark:text-slate-300">
+                Ancestrais das cianobactérias aprenderam a fazer fotossíntese liberando gás oxigênio ($\mathrm{O_2}$).
+                Esse evento:
+              </p>
+              <ul class="list-disc pl-4 space-y-1 text-slate-600 dark:text-slate-400 text-[11px]">
+                <li>Extinguiu incontáveis espécies anaeróbias que não toleravam oxigênio ("Catástrofe do Oxigênio").
+                </li>
+                <li>Oxidou o ferro oceânico, gerando as gigantescas jazidas de ferro exploradas pela mineração hoje.
+                </li>
+                <li>Formou a <strong>camada de ozônio ($\mathrm{O_3}$)</strong>, blindando a Terra contra raios UV e
+                  abrindo caminho para a terra firme.</li>
+                <li>Possibilitou a evolução da <strong>respiração celular aeróbia</strong>, até 18 vezes mais eficiente
+                  que a fermentação!</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Teoria da Endossimbiose -->
+          <div
+            class="p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-display font-bold text-base sm:text-lg text-slate-900 dark:text-white">
+                A Teoria da Endossimbiose (Lynn Margulis)
+              </h3>
+              <span
+                class="text-xs font-bold px-2 py-0.5 rounded bg-bio-100 text-bio-800 dark:bg-bio-950 dark:text-bio-300">Origem
+                dos Eucariontes</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Como surgiram as células complexas (eucariontes)? Pela fusão cooperativa entre bactérias de vida livre:
+            </p>
+            <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc pl-4">
+              <li><strong>Mitocôndrias:</strong> Uma célula hospedeira fagocitou uma bactéria aeróbia que escapou da
+                digestão. A bactéria fornecia energia (ATP) e a hospedeira garantia alimento e abrigo.</li>
+              <li><strong>Cloroplastos:</strong> Uma linhagem com mitocôndrias fagocitou cianobactérias
+                fotossintetizantes, originando plantas e algas.</li>
+            </ul>
+
+            <div
+              class="p-3 rounded-xl bg-bio-50 dark:bg-bio-950/40 border border-bio-200 dark:border-bio-800 text-[11px] text-bio-900 dark:text-bio-300 space-y-1">
+              <strong>Evidências irrefutáveis da Endossimbiose:</strong>
+              <div class="grid grid-cols-2 gap-1.5 pt-1">
+                <div>✓ DNA circular próprio bacteriano</div>
+                <div>✓ Ribossomos próprios 70S</div>
+                <div>✓ Membrana celular dupla</div>
+                <div>✓ Divisão binária autônoma</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- IMAGEM 05: A ENDOSSIMBIOSE E A CONTRIBUICAO DE LYNN MARGULIS -->
+        <div
+          class="p-4 sm:p-5 rounded-2xl border border-bio-200 dark:border-bio-800 bg-white dark:bg-slate-900 shadow-sm">
+          <figure>
+            <img src="img/05_teoria_endossimbiose_margulis.png"
+              alt="Infográfico da Teoria da Endossimbiose Sequencial de Lynn Margulis em três etapas"
+              class="w-full max-h-[520px] rounded-xl object-contain bg-slate-50 dark:bg-slate-950" loading="lazy" />
+            <figcaption
+              class="mt-4 rounded-xl bg-bio-50 dark:bg-bio-950/40 p-4 border border-bio-200 dark:border-bio-800 text-center text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              <strong class="block text-slate-900 dark:text-white">Teoria da Endossimbiose Sequencial</strong>
+              <span>
+                Uma célula hospedeira anaeróbia engloba uma bactéria aeróbia, que passa a viver como mitocôndria. Mais
+                tarde, uma cianobactéria fotossintética é incorporada e origina o cloroplasto. Proposta por Lynn
+                Margulis,
+                essa teoria explica como associações cooperativas entre bactérias deram origem às células eucarióticas
+                complexas. Impor
+              </span>
+            </figcaption>
+          </figure>
+
+          <div
+            class="mt-4 grid grid-cols-1 md:grid-cols-[minmax(0,0.8fr)_minmax(0,2fr)] gap-4 items-center p-4 rounded-xl bg-gradient-to-r from-slate-100 to-bio-50 dark:from-slate-950 dark:to-bio-950/40 border border-bio-200 dark:border-bio-800">
+            <figure class="m-0">
+              <img src="img/LynnMargulis.webp" alt="Lynn Margulis trabalhando ao microscópio"
+                class="w-full max-w-[280px] max-h-[260px] mx-auto rounded-xl object-contain grayscale shadow-sm"
+                loading="lazy" />
+              <figcaption class="text-[10px] text-slate-500 dark:text-slate-400 text-center italic mt-2">
+                Lynn Margulis em seu trabalho de pesquisa.
+              </figcaption>
+            </figure>
+            <div class="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-bio-700 dark:text-bio-400">Mulheres na
+                ciência</span>
+              <h4 class="font-display font-black text-base sm:text-lg text-slate-900 dark:text-white">Lynn Margulis: uma
+                ideia que mudou a biologia</h4>
+              <p>
+                Lynn Margulis foi uma bióloga norte-americana que transformou a compreensão sobre a origem das células
+                eucarióticas. Sua teoria mostrou que a cooperação entre organismos, e não apenas a competição, também
+                pode produzir grandes inovações evolutivas.
+              </p>
+              <p class="font-semibold text-bio-800 dark:text-bio-300">
+                Sua trajetória lembra que a ciência avança quando diferentes perguntas, experiências e vozes encontram
+                espaço para transformar evidências em conhecimento.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SEÇÃO 2: EVOLUÇÃO, FÓSSEIS & DERIVA        -->
+    <!-- ========================================== -->
+    <section id="evolucao" class="scroll-mt-20 space-y-10">
+      <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+        <div class="flex items-center gap-2 text-bio-700 dark:text-bio-400 text-sm font-bold uppercase tracking-wider">
+          <span class="p-1.5 rounded-lg bg-bio-100 dark:bg-bio-950/80">02</span>
+          O Tempo Profundo • Evidências Científicas
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-black font-display mt-1 text-slate-900 dark:text-white">
+          O que é Evolução? O Arquivo da Vida e os Três Domínios
+        </h2>
+      </div>
+
+      <!-- Conceituação: Descendência com Modificação -->
+      <div
+        class="p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+        <h3 class="font-display font-black text-xl text-slate-900 dark:text-white flex items-center gap-2">
+          <span>🧬</span> Evolução Biológica: Descendência com Modificação
+        </h3>
+        <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+          No cotidiano, a palavra "evolução" costuma ser usada como sinônimo de "melhoria", "avanço tecnológico" ou
+          "superioridade". Em Biologia, essa ideia está totalmente errada.
+          <strong>Evolução biológica significa mudança nas frequências gênicas e nas características de uma população ao
+            longo do tempo geológico.</strong>
+        </p>
+        <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+          Uma samambaia, uma ameba ou uma bactéria não são organismos "atrasados". Elas são sobreviventes espetaculares,
+          cujas linhagens superaram todas as extinções em massa da Terra. Não existem seres vivos "mais evoluídos" ou
+          "menos evoluídos": todos os organismos vivos hoje tiveram o mesmo tempo de evolução desde o ancestral comum
+          (cerca de 3,8 bilhões de anos) e estão adaptados aos seus modos de vida.
+        </p>
+      </div>
+
+      <!-- As Evidências da Evolução -->
+      <div class="space-y-6">
+        <div class="flex items-center gap-2 text-base font-bold font-display text-bio-800 dark:text-bio-300">
+          <span class="w-2.5 h-2.5 rounded-full bg-bio-500"></span>
+          2.1 O Arquivo da Vida: As Evidências Científicas da Evolução
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <!-- Evidência 1: Paleontologia & Fósseis -->
+          <div
+            class="p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+            <div class="flex items-center gap-3">
+              <span
+                class="p-2 rounded-xl bg-fossil-100 dark:bg-fossil-950/70 text-fossil-700 dark:text-fossil-300 text-lg">🦴</span>
+              <h4 class="font-display font-bold text-base sm:text-lg text-slate-900 dark:text-white">1. Paleontologia &
+                Registro Fóssil</h4>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Fósseis são restos (ossos, dentes, carapaças) ou vestígios de atividade biológica (pegadas, marcas de
+              folhas, fezes fossilizadas chamadas <em>coprólitos</em>) preservados por mais de 10.000 anos em rochas
+              sedimentares, âmbar ou gelo.
+            </p>
+            <div
+              class="p-3 bg-fossil-50 dark:bg-slate-950 rounded-xl text-xs text-slate-600 dark:text-slate-400 border border-fossil-200 dark:border-slate-800">
+              <strong>Formas Intermediárias:</strong> O célebre fóssil de <em>Archaeopteryx</em> documenta a transição
+              evolutiva entre dinossauros répteis e as aves modernas: possui dentes, garras nas asas e cauda óssea, mas
+              já exibia asas emplumadas e fúrcula!
+            </div>
+          </div>
+
+          <!-- Evidência 2: Deriva Continental -->
+          <div
+            class="p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+            <div class="flex items-center gap-3">
+              <span
+                class="p-2 rounded-xl bg-bio-100 dark:bg-bio-950/70 text-bio-700 dark:text-bio-300 text-lg">🌍</span>
+              <h4 class="font-display font-bold text-base sm:text-lg text-slate-900 dark:text-white">2. Conexão com
+                Geografia: Fósseis e Deriva Continental</h4>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Alfred Wegener (1912) propôs que todos os continentes formavam uma única massa: a
+              <strong>Pangeia</strong>. A prova biológica irrefutável veio da paleontologia:
+            </p>
+            <ul class="text-xs text-slate-600 dark:text-slate-400 space-y-1 list-disc pl-4">
+              <li>O pequeno réptil de água doce <em>Mesosaurus</em> ocorre fossilizado exclusivamente no sudeste do
+                Brasil e no sul da África.</li>
+              <li>A samambaia fóssil <em>Glossopteris</em> é encontrada na América do Sul, África, Índia, Antártica e
+                Austrália.</li>
+            </ul>
+            <p class="text-xs text-bio-700 dark:text-bio-400 font-medium">
+              Eles não cruzaram os 5.000 km do Atlântico nadando! Quando viveram, América do Sul e África formavam o
+              bloco contínuo de <strong>Gondwana</strong>.
+            </p>
+          </div>
+
+        </div>
+
+        <figure
+          class="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-bio-200 dark:border-bio-800 shadow-sm">
+          <img src="img/06_deriva_continental_mesosaurus.png"
+            alt="Mapa geológico do supercontinente Gondwana com faixas fósseis contínuas de Mesosaurus e Glossopteris"
+            class="w-full rounded-xl object-contain" loading="lazy" />
+          <figcaption
+            class="mt-4 rounded-xl bg-bio-50 dark:bg-bio-950/40 p-4 border border-bio-200 dark:border-bio-800 text-center text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+            <strong class="block text-slate-900 dark:text-white">Reconstrução Geológica do Supercontinente
+              Gondwana</strong>
+            <span>
+              A América do Sul e a África aparecem soldadas, com faixas fósseis contínuas de <em>Mesosaurus</em> e
+              <em>Glossopteris</em> cruzando a linha de fratura continental. A deriva continental comprovada pela
+              paleontologia: fósseis idênticos de organismos que não cruzavam oceanos comprovam que os continentes
+              estiveram soldados no passado geológico.
+            </span>
+          </figcaption>
+        </figure>
+
+        <!-- Evidências 3, 4 e 5: Anatomia Comparada, Órgãos Vestigiais e Genética Molecular -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          <!-- Evidência 3: Homologia vs. Analogia -->
+          <div
+            class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="p-1.5 rounded-lg bg-bio-100 dark:bg-bio-950 text-bio-700 dark:text-bio-300">🦴</span>
+              <h4 class="font-display font-bold text-sm sm:text-base text-slate-900 dark:text-white">3. Anatomia
+                Comparada</h4>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              <p>
+                <strong>Homologia (Divergência Evolutiva):</strong> Mesma origem embrionária e arquitetura óssea
+                fundamental, mesmo com funções diferentes (braço humano, pata do cavalo, nadadeira da baleia e asa do
+                morcego).
+              </p>
+              <p>
+                <strong>Analogia (Convergência Evolutiva):</strong> Mesma função ecológica, mas origens embrionárias
+                distintas (asa de ave com ossos vs. asa de borboleta de quitina).
+              </p>
+            </div>
+          </div>
+
+          <!-- Evidência 4: Órgãos Vestigiais -->
+          <div
+            class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="p-1.5 rounded-lg bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300">🔍</span>
+              <h4 class="font-display font-bold text-sm sm:text-base text-slate-900 dark:text-white">4. Órgãos
+                Vestigiais</h4>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Estruturas atrofiadas que perderam sua função original em uma espécie, mas permanecem funcionais em
+              espécies aparentadas.
+            </p>
+            <ul class="text-xs text-slate-500 dark:text-slate-400 space-y-1 list-disc pl-4">
+              <li><strong>Apêndice vermiforme:</strong> Nos herbívoros abriga bactérias para digerir celulose; no humano
+                é vestigial.</li>
+              <li><strong>Cóccix humano:</strong> Vestígio esquelético da cauda dos primatas ancestrais.</li>
+            </ul>
+          </div>
+
+          <!-- Evidência 5: Genética e Bioquímica Molecular -->
+          <div
+            class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="p-1.5 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300">🧪</span>
+              <h4 class="font-display font-bold text-sm sm:text-base text-slate-900 dark:text-white">5. Evidências
+                Moleculares</h4>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Todo e qualquer ser vivo na Terra — de um vírus até uma baleia — compartilha o <strong>mesmo código
+                genético universal</strong> formado pelas bases A, T, C, G para produzir os mesmos 20 aminoácidos.
+            </p>
+            <div
+              class="p-2.5 rounded-lg bg-blue-50 dark:bg-blue-950/40 text-xs text-blue-900 dark:text-blue-300 border border-blue-200 dark:border-blue-900">
+              O DNA humano e o do chimpanzé compartilham <strong>~98,5% de identidade</strong>, comprovando o parentesco
+              evolutivo recente.
+            </div>
+          </div>
+
+        </div>
+
+        <figure
+          class="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-bio-200 dark:border-bio-800 shadow-sm">
+          <img src="img/07_homologia_ossea_vertebrados.png"
+            alt="Comparação da homologia óssea nos membros anteriores de humano, sapo, lagarto, baleia, morcego e ave"
+            class="w-full max-h-[560px] mx-auto rounded-xl object-contain bg-slate-50 dark:bg-slate-950"
+            loading="lazy" />
+          <figcaption
+            class="mt-4 rounded-xl bg-bio-50 dark:bg-bio-950/40 p-4 border border-bio-200 dark:border-bio-800 text-center text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+            <strong class="block text-slate-900 dark:text-white">Anatomia Comparada e Homologia Esquelética</strong>
+            <span>
+              Apesar de exercerem funções diferentes, os membros anteriores compartilham a mesma organização óssea
+              fundamental: <span class="text-red-500 font-bold">úmero</span>, <span
+                class="text-blue-500 font-bold">rádio</span>, <span class="text-yellow-600 font-bold">ulna</span>,
+              <span class="text-emerald-500 font-bold">carpos</span> e <span
+                class="text-orange-500 font-bold">falanges</span>. Essa homologia evidencia a ancestralidade comum dos
+              tetrápodes.
+            </span>
+          </figcaption>
+        </figure>
+
+      </div>
+
+      <!-- PARTE 2.2: A GRANDE ÁRVORE DA VIDA E OS 3 DOMÍNIOS DE WOESE -->
+      <div class="space-y-6 pt-4 border-t border-slate-200 dark:border-slate-800">
+        <div class="flex items-center gap-2 text-base font-bold font-display text-bio-800 dark:text-bio-300">
+          <span class="w-2.5 h-2.5 rounded-full bg-bio-500"></span>
+          2.2 A Árvore da Vida: Os Três Grandes Domínios de Carl Woese (1977)
+        </div>
+
+        <div
+          class="p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+          <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+            Analisando o RNA ribossômico, Carl Woese revolucionou a sistemática biológica ao demonstrar que toda a vida
+            na Terra brota de um único <strong>Ancestral Comum Universal (LUCA — <em>Last Universal Common
+                Ancestor</em>)</strong> e se ramifica em Três Grandes Domínios:
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <div
+              class="p-4 rounded-xl border border-emerald-300 dark:border-emerald-900 bg-emerald-50/60 dark:bg-emerald-950/30 space-y-2">
+              <strong class="text-emerald-800 dark:text-emerald-300 text-sm block">1. Domínio BACTERIA</strong>
+              <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                Procariontes verdadeiros (sem núcleo delimitado por membrana). Apresentam parede celular de
+                <strong>peptideoglicano</strong>. São essenciais para os ciclos biogeoquímicos, decomposição e saúde
+                humana (microbiota intestinal).
+              </p>
+            </div>
+            <div
+              class="p-4 rounded-xl border border-amber-300 dark:border-amber-900 bg-amber-50/60 dark:bg-amber-950/30 space-y-2">
+              <strong class="text-amber-800 dark:text-amber-300 text-sm block">2. Domínio ARCHAEA (Arqueias)</strong>
+              <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                Procariontes unicelulares com lipídios de ligações éter (super-resistentes). Sua maquinaria de leitura
+                do DNA se assemelha muito mais aos eucariontes! Vivem em ambientes extremos (fontes termais a 100°C,
+                lagos hipersalinos e no estômago de ruminantes).
+              </p>
+            </div>
+            <div
+              class="p-4 rounded-xl border border-blue-300 dark:border-blue-900 bg-blue-50/60 dark:bg-blue-950/30 space-y-2">
+              <strong class="text-blue-800 dark:text-blue-300 text-sm block">3. Domínio EUKARYA (Eucariontes)</strong>
+              <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                Células complexas com núcleo delimitado por membrana (carioteca) e organelas membranosas (mitocôndrias e
+                cloroplastos). Abrange 4 reinos conhecidos: Protistas, Fungos, Plantas e Animais.
+              </p>
+            </div>
+          </div>
+
+          <figure
+            class="mt-4 p-4 rounded-2xl border border-bio-200 dark:border-bio-800 bg-white dark:bg-slate-900 shadow-sm">
+            <img src="img/08_arvore_tres_dominios_luca.png"
+              alt="Árvore filogenética universal partindo de LUCA e ramificando nos domínios Bacteria, Archaea e Eukarya"
+              class="w-full rounded-xl object-contain bg-slate-50 dark:bg-slate-950" loading="lazy" />
+            <figcaption
+              class="mt-4 rounded-xl bg-bio-50 dark:bg-bio-950/40 p-4 border border-bio-200 dark:border-bio-800 text-center text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+              <strong class="block text-slate-900 dark:text-white">A Árvore Filogenética Universal</strong>
+              <span>
+                Todos os seres vivos compartilham um ancestral comum universal, LUCA, estimado em cerca de 3,8 bilhões
+                de anos. A partir dele, a vida se diversificou nos domínios <span
+                  class="text-blue-600 dark:text-blue-400 font-bold">Bacteria</span>, <span
+                  class="text-purple-600 dark:text-purple-400 font-bold">Archaea</span> e <span
+                  class="text-emerald-600 dark:text-emerald-400 font-bold">Eukarya</span>.
+              </span>
+            </figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SEÇÃO 3: TEORIAS EVOLUTIVAS EM DEBATE      -->
+    <!-- ========================================== -->
+    <section id="teorias" class="scroll-mt-20 space-y-10">
+      <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+        <div class="flex items-center gap-2 text-bio-700 dark:text-bio-400 text-sm font-bold uppercase tracking-wider">
+          <span class="p-1.5 rounded-lg bg-bio-100 dark:bg-bio-950/80">03</span>
+          Mecanismos da Mudança • Teorias Evolutivas
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-black font-display mt-1 text-slate-900 dark:text-white">
+          As Grandes Teorias Evolutivas: Do Fixismo à Seleção Natural
+        </h2>
+      </div>
+
+      <!-- 3.1: Fixismo e Criacionismo -->
+      <div
+        class="p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+        <div class="flex items-center gap-2">
+          <span class="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">🏛️</span>
+          <h3 class="font-display font-bold text-base sm:text-lg text-slate-900 dark:text-white">
+            1. O Fixismo e a Hipótese das Espécies Imutáveis
+          </h3>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+          Durante séculos, vigorou no pensamento ocidental a crença de que as espécies biológicas eram imutáveis e
+          eternas: cada espécie teria sido criada de forma independente e mantido sua forma inalterada desde a criação
+          original.
+        </p>
+        <div
+          class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs space-y-1.5 text-slate-600 dark:text-slate-400">
+          <strong class="text-slate-800 dark:text-slate-200">Por que o fixismo ruiu?</strong>
+          <p>
+            A descoberta nas camadas de rochas de fósseis gigantescos e extintos que não existiam mais no planeta (como
+            mamutes, preguiças-gigantes e dinossauros) desmentiu a ideia de que a fauna sempre fora idêntica. O
+            anatomista Georges Cuvier tentou salvar o fixismo com a teoria do <em>Catastrofismo</em> (dilúvios
+            periódicos dizimavam faunas antigas que eram substituídas por novas criações), mas as evidências de
+            transição gradual anatômica acabaram por sepultar o modelo fixista.
+          </p>
+        </div>
+      </div>
+
+      <!-- Comparador Histórico: Lamarck vs. Darwin & Wallace -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        <!-- Bloco Lamarck -->
+        <div
+          class="p-6 rounded-2xl bg-white dark:bg-slate-900 border-2 border-fossil-300 dark:border-fossil-800 shadow-sm flex flex-col justify-between space-y-4">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-display font-black text-xl text-fossil-700 dark:text-fossil-300">
+                Jean-Baptiste de Lamarck (1809)
+              </h3>
+              <span
+                class="text-xs font-bold px-2.5 py-1 rounded-full bg-fossil-100 dark:bg-fossil-950 text-fossil-800 dark:text-fossil-300 border border-fossil-200 dark:border-fossil-900">
+                O Pioneiro do Transformismo
+              </span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              No ano em que Charles Darwin nasceu (1809), o naturalista francês Lamarck teve a imensa coragem científica
+              de publicar a primeira teoria consistente de evolução biológica: <strong>os seres vivos se transformam ao
+                longo do tempo!</strong>
+            </p>
+            <div class="space-y-2 text-xs text-slate-700 dark:text-slate-300">
+              <div class="p-3 rounded-lg bg-fossil-50 dark:bg-slate-950 border border-fossil-200 dark:border-slate-800">
+                <strong>1. Lei do Uso e Desuso:</strong> A necessidade imposta pelo meio ambiente faz com que o
+                organismo use mais certos órgãos, fortalecendo-os e aumentando-os. Órgãos não utilizados enfraquecem e
+                atrofiam.
+              </div>
+              <div class="p-3 rounded-lg bg-fossil-50 dark:bg-slate-950 border border-fossil-200 dark:border-slate-800">
+                <strong>2. Lei da Herança dos Caracteres Adquiridos:</strong> As modificações morfológicas alcançadas
+                durante a vida do indivíduo pelo esforço de uso seriam transmitidas geneticamente para seus filhotes.
+              </div>
+            </div>
+
+            <div
+              class="p-3.5 bg-amber-50/70 dark:bg-slate-950 rounded-xl border border-amber-200 dark:border-slate-800 text-xs space-y-1">
+              <strong class="text-amber-800 dark:text-amber-400 block">🦒 O Caso da Girafa segundo Lamarck:</strong>
+              <p class="text-slate-600 dark:text-slate-400">
+                "Diante de árvores altas, girafas ancestrais esticavam continuamente o pescoço e pernas para alcançar as
+                copas. Com esse estiramento contínuo em vida, o pescoço cresceu alguns centímetros. Seus filhotes já
+                nasceram com o pescoço mais longo e continuaram esticando, gerando pescoços sucessivamente mais
+                compridos."
+              </p>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-slate-200 dark:border-slate-800 space-y-2 text-xs">
+            <div class="text-red-600 dark:text-red-400 font-semibold flex items-center gap-1.5">
+              <span>❌</span> Por que Lamarck estava cientificamente errado?
+            </div>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-[11px]">
+              Porque características somáticas adquiridas em vida (músculos, pele, cicatrizes) <strong>NÃO afetam o DNA
+                das células reprodutivas (óvulos e espermatozoides)</strong>. Fazer musculação não faz seu filho nascer
+              musculoso! Em 1889, August Weismann cortou a cauda de camundongos por 20 gerações; todos os filhotes
+              continuaram nascendo com caudas normais.
+            </p>
+            <p class="text-fossil-700 dark:text-fossil-400 font-medium text-[11px] pt-1">
+              ⭐ <strong>O Mérito Imortal de Lamarck:</strong> Foi o primeiro a proclamar que a vida se transforma e que
+              o meio ambiente desempenha um papel determinante na evolução!
+            </p>
+          </div>
+        </div>
+
+        <!-- Bloco Darwin & Wallace -->
+        <div
+          class="p-6 rounded-2xl bg-white dark:bg-slate-900 border-2 border-bio-400 dark:border-bio-700 shadow-sm flex flex-col justify-between space-y-4">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-display font-black text-xl text-bio-700 dark:text-bio-300">
+                Charles Darwin & Alfred Wallace (1859)
+              </h3>
+              <span
+                class="text-xs font-bold px-2.5 py-1 rounded-full bg-bio-100 dark:bg-bio-950 text-bio-800 dark:text-bio-300 border border-bio-300 dark:border-bio-800">
+                A Seleção Natural
+              </span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Darwin (em sua viagem de 5 anos no <em>HMS Beagle</em> pelo Brasil e Galápagos) e Wallace (em pesquisas na
+              Amazônia e no Arquipélago Malaio) perceberam a mesma verdade fundamental: <strong>a natureza produz mais
+                descendentes do que os recursos podem sustentar</strong>.
+            </p>
+
+            <!-- Os 4 Passos da Seleção Natural -->
+            <div class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
+              <span class="font-bold text-bio-800 dark:text-bio-300 block mb-1">Como Funciona a Seleção Natural em 4
+                Passos:</span>
+              <div class="p-2.5 rounded-lg bg-bio-50 dark:bg-slate-950 border border-bio-200 dark:border-slate-800">
+                <strong>1. Variabilidade Pré-Existente:</strong> Indivíduos de uma mesma população não são clones;
+                possuem variações genéticas naturais de cor, velocidade, tamanho e resistência.
+              </div>
+              <div class="p-2.5 rounded-lg bg-bio-50 dark:bg-slate-950 border border-bio-200 dark:border-slate-800">
+                <strong>2. Superprodução e Escassez:</strong> Nascem mais indivíduos do que o meio ambiente comporta. Há
+                disputa permanente por alimento, abrigo e parceiros.
+              </div>
+              <div class="p-2.5 rounded-lg bg-bio-50 dark:bg-slate-950 border border-bio-200 dark:border-slate-800">
+                <strong>3. Sobrevivência Diferencial:</strong> Aqueles que, <em>por acaso</em>, nasceram com
+                características mais favoráveis ao ambiente sobrevivem e chegam à idade reprodutiva.
+              </div>
+              <div class="p-2.5 rounded-lg bg-bio-50 dark:bg-slate-950 border border-bio-200 dark:border-slate-800">
+                <strong>4. Mudança ao Longo das Gerações:</strong> Os sobreviventes deixam mais filhotes que herdam
+                esses traços úteis. A frequência da característica vantajosa aumenta na população.
+              </div>
+            </div>
+
+            <div
+              class="p-3.5 bg-bio-50/70 dark:bg-slate-950 rounded-xl border border-bio-200 dark:border-slate-800 text-xs space-y-1">
+              <strong class="text-bio-700 dark:text-bio-400 block">🦒 O Caso da Girafa segundo Darwin &
+                Wallace:</strong>
+              <p class="text-slate-600 dark:text-slate-400">
+                "Na população ancestral já existiam girafas de pescoço longo, médio e curto (variação pré-existente).
+                Quando a seca eliminou a vegetação rasteira, as de pescoço mais longo alcançaram as copas,
+                alimentaram-se melhor, sobreviveram e geraram mais filhotes. As de pescoço curto morreram de fome. Ao
+                longo de milênios, os genes para pescoço longo predominaram."
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="pt-3 border-t border-slate-200 dark:border-slate-800 text-xs text-bio-700 dark:text-bio-400 font-medium">
+            ✅ <strong>Justiça Histórica:</strong> Alfred Russel Wallace concebeu a teoria de forma independente e enviou
+            sua carta a Darwin em 1858. A ciência moderna celebra conjuntamente Darwin e Wallace!
+          </div>
+        </div>
+
+      </div>
+
+      <!-- INFOGRÁFICO DE GIRAFAS (09) E RETRATOS DARWIN & WALLACE (10) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- IMAGEM 09: INFOGRÁFICO COMPARATIVO - GIRAFAS DE LAMARCK VS. DARWIN -->
+        <figure
+          class="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-bio-200 dark:border-bio-800 shadow-sm flex flex-col justify-between">
+          <div>
+            <img src="img/09_comparativo_girafas_lamarck_darwin.png"
+              alt="Painel comparativo entre a visão de Lamarck (esforço individual/uso e desuso) e a visão de Darwin (seleção natural de variabilidade prévia) na evolução das girafas"
+              class="w-full rounded-xl object-contain max-h-[320px] bg-slate-50 dark:bg-slate-950 mb-3"
+              loading="lazy" />
+            <div
+              class="rounded-xl bg-slate-100 dark:bg-slate-950 p-3 border border-slate-200 dark:border-slate-800 text-center text-xs text-slate-600 dark:text-slate-400 space-y-1">
+              <p class="font-bold text-slate-800 dark:text-slate-200">Painel Comparativo em Duas Colunas:</p>
+              <p>Coluna Esquerda (Lamarck: esforço individual em vida induz o estiramento transmitido aos filhos) vs.
+                Coluna Direita (Darwin: variabilidade prévia filtrada pela seleção natural).</p>
+            </div>
+          </div>
+          <figcaption
+            class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 text-center italic mt-3 pt-2 border-t border-slate-200 dark:border-slate-800">
+            <strong>Legenda didática:</strong> "O contraste dos mecanismos: para Lamarck o ambiente induz a
+            transformação individual; para Darwin o ambiente seleciona as variações vantajosas prévias."
+          </figcaption>
+        </figure>
+
+        <!-- IMAGEM 10: O RETRATO HISTÓRICO DE DARWIN & WALLACE -->
+        <figure
+          class="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-bio-200 dark:border-bio-800 shadow-sm flex flex-col justify-between">
+          <div>
+            <img src="img/10_retratos_darwin_wallace_viagens.png"
+              alt="Retratos de Charles Darwin e Alfred Russel Wallace com o mapa das rotas de expedição científica do HMS Beagle e Arquipélago Malaio"
+              class="w-full rounded-xl object-contain max-h-[320px] bg-slate-50 dark:bg-slate-950 mb-3"
+              loading="lazy" />
+            <div
+              class="rounded-xl bg-slate-100 dark:bg-slate-950 p-3 border border-slate-200 dark:border-slate-800 text-center text-xs text-slate-600 dark:text-slate-400 space-y-1">
+              <p class="font-bold text-slate-800 dark:text-slate-200">Dois Exploradores, Uma Única Verdade:</p>
+              <p>Retrato clássico de Darwin (rota do HMS Beagle) e Wallace (pesquisas na Amazônia e Arquipélago Malaio)
+                com rotas de navegação no fundo.</p>
+            </div>
+          </div>
+          <figcaption
+            class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 text-center italic mt-3 pt-2 border-t border-slate-200 dark:border-slate-800">
+            <strong>Legenda didática:</strong> "Dois naturalistas, uma única conclusão biológica: a história moderna
+            celebra Charles Darwin e Alfred Russel Wallace como pais da Seleção Natural."
+          </figcaption>
+        </figure>
+
+      </div>
+
+      <!-- 3.4: O que Darwin não sabia: O Neodarwinismo (Teoria Sintética) -->
+      <div
+        class="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-bio-50 via-emerald-50/50 to-teal-50 dark:from-slate-900 dark:via-slate-900 dark:to-bio-950/40 border border-bio-200 dark:border-bio-800 shadow-sm space-y-3">
+        <h3 class="font-display font-black text-lg text-bio-900 dark:text-bio-200 flex items-center gap-2">
+          <span>🧬</span> O que Darwin Não Sabia: O Neodarwinismo (Teoria Sintética da Evolução)
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+          Darwin provou que a seleção natural escolhe os mais aptos, mas <strong>não conseguia explicar duas questões
+            cruciais</strong>: (1) Como as variações surgem na população? (2) Como elas são transmitidas aos filhotes?
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs pt-1">
+          <div
+            class="p-3.5 bg-white dark:bg-slate-950 rounded-xl border border-bio-200 dark:border-slate-800 space-y-1">
+            <span class="font-bold text-bio-700 dark:text-bio-400 block">Mutações Genéticas (A Novidade
+              Aleatória):</span>
+            Erros aleatórios durante a replicação do DNA, exposição a radiação solar ou substâncias químicas criam novos
+            alelos (genes). <em>A mutação ocorre ao acaso!</em>
+          </div>
+          <div
+            class="p-3.5 bg-white dark:bg-slate-950 rounded-xl border border-bio-200 dark:border-slate-800 space-y-1">
+            <span class="font-bold text-bio-700 dark:text-bio-400 block">Seleção Natural (O Filtro Não
+              Aleatório):</span>
+            O ambiente não cria a mutação: ele atua como uma peneira, preservando mutações vantajosas e eliminando
+            mutações desfavoráveis.
+          </div>
+        </div>
+      </div>
+
+      <!-- 3.5: A Tríade da Adaptação Biológica com Casos Brasileiros -->
+      <div class="space-y-6 pt-4 border-t border-slate-200 dark:border-slate-800">
+        <div class="flex items-center gap-2 text-base font-bold font-display text-bio-800 dark:text-bio-300">
+          <span class="w-2.5 h-2.5 rounded-full bg-bio-500"></span>
+          3.5 A Tríade da Adaptação Biológica: Estratégias de Sobrevivência
+        </div>
+
+        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+          Adaptação é qualquer característica herdável em uma população que aumente sua aptidão biológica
+          (<em>fitness</em>), isto é, sua probabilidade de sobreviver e gerar descendentes férteis. As adaptações
+          agrupam-se em três grandes pilares:
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+          <!-- 1. Morfológicas -->
+          <div
+            class="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+            <span class="text-xs font-bold text-bio-600 dark:text-bio-400 uppercase tracking-wider block">
+              1. Morfológicas (Anatômicas)
+            </span>
+            <div class="space-y-2 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              <p><strong>• Camuflagem:</strong> A forma e cor se confundem com o ambiente (o bicho-pau que parece
+                graveto seco, a coruja no tronco, o camaleão folha-seca).</p>
+              <p><strong>• Mimetismo Batesiano:</strong> Uma espécie inofensiva imita uma venenosa! A
+                <strong>cobra-coral-falsa</strong> copia os anéis vermelhos, pretos e brancos da
+                <strong>coral-verdadeira</strong> venenosa para espantar predadores.
+              </p>
+              <p><strong>• Aposematismo:</strong> Cores berrantes de alerta! Sapos dendrobatídeos da Amazônia com cores
+                elétricas avisando: "sou letal!".</p>
+            </div>
+          </div>
+
+          <!-- 2. Fisiológicas -->
+          <div
+            class="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+            <span class="text-xs font-bold text-bio-600 dark:text-bio-400 uppercase tracking-wider block">
+              2. Fisiológicas (Químicas)
+            </span>
+            <div class="space-y-2 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              <p><strong>• Peçonhas e Toxinas:</strong> Serpentes como jararaca e cascavel sintetizam enzimas que
+                paralisam e digerem a presa de dentro para fora.</p>
+              <p><strong>• Retenção Extrema de Água:</strong> Roedores do semiárido e répteis da <strong>Caatinga
+                  brasileira</strong> possuem alças de Henle ultra-longas nos rins, produzindo urina quase sólida.</p>
+              <p><strong>• Plantas Xerófitas (Cactos):</strong> Metabolismo ácido (CAM): abrem estômatos apenas à noite
+                para captar $\mathrm{CO_2}$ sem perder água no calor do sol.</p>
+            </div>
+          </div>
+
+          <!-- 3. Comportamentais -->
+          <div
+            class="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+            <span class="text-xs font-bold text-bio-600 dark:text-bio-400 uppercase tracking-wider block">
+              3. Comportamentais (Etológicas)
+            </span>
+            <div class="space-y-2 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              <p><strong>• Migração em Massa:</strong> Aves que voam milhares de quilômetros fugindo do inverno polar
+                antes que a neve soterre as sementes.</p>
+              <p><strong>• Danças de Corte:</strong> Machos de aves-do-paraíso realizam coreografias complexas e exibem
+                plumagens exuberantes para seleção sexual pelas fêmeas.</p>
+              <p><strong>• Caça Cooperativa em Bando:</strong> Matilhas de lobos e cardumes de orcas sincronizam cercos
+                para capturar presas gigantes.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- IMAGEM 11: GALERIA COMPARATIVA DE ADAPTAÇÕES BIOLÓGICAS -->
+        <figure
+          class="p-4 sm:p-6 rounded-2xl bg-white dark:bg-slate-900 border border-bio-200 dark:border-bio-800 shadow-lg space-y-4">
+          <div class="overflow-hidden rounded-xl bg-slate-50 dark:bg-slate-950">
+            <img src="img/11_galeria_adaptacoes_biologicas.png"
+              alt="Galeria comparativa de estratégias adaptativas: Rã-ponta-de-flecha azul (Aposematismo, Esquerda), Coral e Falsa-Coral (Mimetismo, Centro) e Lagartixa-satânica-cauda-de-folha (Camuflagem, Direita)"
+              class="w-full h-auto object-contain max-h-[460px] mx-auto rounded-xl transition-transform duration-300 hover:scale-[1.01]"
+              loading="lazy" />
+          </div>
+
+          <!-- Legenda Estruturada com Esquerda, Centro e Direita -->
+          <figcaption class="space-y-4">
+            <!-- Três Colunas Didáticas para Esquerda, Centro e Direita -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+              <!-- Esquerda: Aposematismo -->
+              <div
+                class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800/80 space-y-1.5">
+                <div class="flex items-center gap-2 font-bold text-amber-600 dark:text-amber-400">
+                  <span
+                    class="px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950/60 border border-amber-300/40 text-[10px] uppercase font-mono">Esquerda</span>
+                  <span class="text-sm">Aposematismo</span>
+                </div>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                  <strong>Rã-Ponta-de-Flecha Azul (<em>Dendrobates tinctorius azureus</em>):</strong> A cor azul-elétrico com manchas pretas adverte ostensivamente os predadores sobre os alcaloides altamente tóxicos presentes na sua pele.
+                </p>
+              </div>
+
+              <!-- Centro: Mimetismo -->
+              <div
+                class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800/80 space-y-1.5">
+                <div class="flex items-center gap-2 font-bold text-emerald-600 dark:text-emerald-400">
+                  <span
+                    class="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950/60 border border-emerald-300/40 text-[10px] uppercase font-mono">Centro</span>
+                  <span class="text-sm">Mimetismo Batesiano</span>
+                </div>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                  <strong>Cobra-Coral e Falsa-Coral:</strong> A falsa-coral (inofensiva) evoluiu o mesmo padrão vibrante de anéis tricolores da coral-verdadeira (altamente peçonhenta), enganando os predadores que evitam ambas.
+                </p>
+              </div>
+
+              <!-- Direita: Camuflagem -->
+              <div
+                class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800/80 space-y-1.5">
+                <div class="flex items-center gap-2 font-bold text-teal-600 dark:text-teal-400">
+                  <span
+                    class="px-2 py-0.5 rounded bg-teal-100 dark:bg-teal-950/60 border border-teal-300/40 text-[10px] uppercase font-mono">Direita</span>
+                  <span class="text-sm">Camuflagem</span>
+                </div>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                  <strong>Lagartixa-Satânica-Cauda-de-Folha (<em>Uroplatus phantasticus</em>):</strong> Seu corpo imita com precisão a textura, tom marrom e nervuras de uma folha seca murcha em um galho, fundindo-se à floresta.
+                </p>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-500 dark:text-slate-400 text-center italic pt-1">
+              <strong>Síntese Didática:</strong> "Na luta pela vida, a <strong>rã azul</strong> adverte com cores chocantes (<em>aposematismo</em>), a <strong>falsa-coral</strong> se protege imitando a serpente peçonhenta (<em>mimetismo</em>) e a <strong>lagartixa cauda-de-folha</strong> desaparece na paisagem (<em>camuflagem</em>)."
+            </p>
+          </figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SEÇÃO 4: LABORATÓRIO VIRTUAL (SIMULAÇÃO)   -->
+    <!-- ========================================== -->
+    <section id="laboratorio" class="scroll-mt-20 space-y-6" x-data="{ activeLab: 'darwin' }">
+      <div
+        class="border-b border-slate-200 dark:border-slate-800 pb-4 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <div
+            class="flex items-center gap-2 text-bio-700 dark:text-bio-400 text-sm font-bold uppercase tracking-wider">
+            <span class="p-1.5 rounded-lg bg-bio-100 dark:bg-bio-950/80">04</span>
+            Experimentação Científica • Laboratórios Virtuais
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black font-display mt-1 text-slate-900 dark:text-white">
+            Laboratórios Virtuais: Modelagem de Sistemas Evolutivos
+          </h2>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+            Alterne entre o modelo Darwiniano (seleção natural e custo calórico) e o modelo Lamarckiano (uso, desuso e
+            herança somática).
+          </p>
+        </div>
+
+        <!-- Seletor de Laboratórios em Abas Responsivo (Diretriz 2, 3 e 5) -->
+        <div
+          class="flex flex-col sm:flex-row p-1 bg-slate-100 dark:bg-slate-900 rounded-xl gap-1.5 shrink-0 text-xs sm:text-sm font-semibold border border-slate-200 dark:border-slate-800 w-full sm:w-auto">
+          <button @click="activeLab = 'darwin'"
+            :class="activeLab === 'darwin' ? 'bg-bio-600 text-white shadow-md' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'"
+            class="px-3.5 py-2.5 sm:py-2 rounded-lg transition flex items-center justify-center gap-1.5 min-h-[44px]">
+            <span>🔬 Simulador 1: Darwin (Seleção Natural)</span>
+          </button>
+          <button @click="activeLab = 'lamarck'; if(window.initLamarckSim) window.initLamarckSim();"
+            :class="activeLab === 'lamarck' ? 'bg-fossil-600 text-white shadow-md' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'"
+            class="px-3.5 py-2.5 sm:py-2 rounded-lg transition flex items-center justify-center gap-1.5 min-h-[44px]">
+            <span>🦒 Simulador 2: Lamarck (Uso & Desuso)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ABA 1: SIMULADOR DE SELEÇÃO NATURAL (DARWIN & WALLACE) -->
+      <div x-show="activeLab === 'darwin'" x-transition class="space-y-6">
+
+        <!-- Dossier Científico & Fisiologia Matemática do Ecossistema -->
+        <div class="space-y-4">
+          <!-- Banner Intuitivo Geral -->
+          <div
+            class="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-bio-50 via-emerald-50/60 to-bio-100/50 dark:from-slate-900/90 dark:via-slate-900 dark:to-bio-950/40 border border-bio-200/80 dark:border-slate-800 text-xs sm:text-sm text-slate-700 dark:text-slate-300 shadow-sm">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div class="flex items-start sm:items-center gap-3.5">
+                <div class="p-2.5 rounded-xl bg-bio-600 text-white shadow-md text-xl">
+                  🧪
+                </div>
+                <div class="space-y-1">
+                  <div
+                    class="text-sm sm:text-base font-black font-display text-slate-900 dark:text-white flex items-center gap-2">
+                    <span>Como Funciona Este Ecossistema: Fisiologia & Seleção Natural</span>
+                    <span
+                      class="text-[10px] uppercase font-mono font-bold px-2 py-0.5 rounded-full bg-bio-100 text-bio-800 dark:bg-bio-950 dark:text-bio-300 border border-bio-300 dark:border-bio-800">Modelo
+                      Vivo</span>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Cada criatura é um organismo heterotrófico com <strong>custo metabólico contínuo</strong>. Elas
+                    precisam coletar <strong>comida verde</strong> para sobreviver ao ciclo do "Dia". Criaturas mais
+                    <strong>rápidas (avermelhadas/roxas)</strong> cobrem maiores distâncias e alcançam o alimento antes
+                    dos competidores, mas pagam um <strong>preço calórico quadrático ($v^2$)</strong>. Se acumularem
+                    energia e digerirem pelo menos 2 alimentos, reproduzem-se assexuadamente com <strong>mutações
+                      genéticas</strong> na velocidade!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Painel Detalhado de Equações e Significado Ecológico (Dropdown Recolhido por Padrão) -->
+          <details
+            class="group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-200 overflow-hidden"
+            ontoggle="if (this.open && typeof renderEquations === 'function') renderEquations(this);">
+            <summary
+              class="list-none [&::-webkit-details-marker]:hidden p-5 sm:p-6 cursor-pointer select-none flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition">
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-8 h-8 rounded-lg bg-bio-50 dark:bg-bio-950/70 border border-bio-200 dark:border-bio-800/80 flex items-center justify-center text-bio-600 dark:text-bio-400 shrink-0">
+                  <svg class="w-4 h-4 transition-transform duration-300 group-open:rotate-180" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+                <div>
+                  <span
+                    class="text-[11px] font-mono font-bold tracking-wider uppercase text-bio-600 dark:text-bio-400">Modelagem
+                    Quantitativa</span>
+                  <h3 class="text-base sm:text-lg font-bold font-display text-slate-900 dark:text-white">
+                    As Equações Que Regem a Sobrevivência, o Gasto e a Evolução
+                  </h3>
+                </div>
+              </div>
+              <div class="flex items-center gap-2.5 self-start sm:self-center pl-11 sm:pl-0">
+                <span
+                  class="text-xs text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/80 px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-700 font-medium">
+                  Balanço Energético Estrito
+                </span>
+                <span
+                  class="text-xs font-semibold text-bio-600 dark:text-bio-400 group-open:hidden flex items-center gap-1">
+                  Ver detalhes ▼
+                </span>
+                <span
+                  class="text-xs font-semibold text-slate-400 dark:text-slate-500 hidden group-open:inline-flex items-center gap-1">
+                  Recolher ▲
+                </span>
+              </div>
+            </summary>
+
+            <div class="p-5 sm:p-6 pt-4 sm:pt-5 space-y-6 border-t border-slate-100 dark:border-slate-800">
+
+              <!-- Grid das 4 Equações Fundamentais -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <!-- Equação 1: Gasto Metabólico Basal + Cinético -->
+                <div
+                  class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800 space-y-3 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center justify-between">
+                      <span class="font-bold text-xs text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
+                        <span>⚡</span> 1. Custo Metabólico Basal & Cinético
+                      </span>
+                      <span
+                        class="text-[10px] font-mono bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 px-2 py-0.5 rounded">Gasto
+                        por Frame</span>
+                    </div>
+                    <div
+                      class="my-2.5 p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center font-mono text-sm overflow-x-auto text-amber-700 dark:text-amber-300">
+                      $$\Delta E_{\text{gasto}} = \left( 0.18 + 0.035 \cdot v^2 \right) \cdot \Delta t$$
+                    </div>
+                    <div class="space-y-1.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                      <p><strong>Significado prático dos termos:</strong></p>
+                      <ul class="list-disc pl-4 space-y-1 text-[11px] text-slate-500 dark:text-slate-400">
+                        <li><strong class="text-slate-700 dark:text-slate-200">$0.18$ un/frame:</strong> Taxa metabólica
+                          basal. Mesmo se a criatura ficar completamente estática, gasta energia apenas para manter suas
+                          membranas e processos celulares vivos.</li>
+                        <li><strong class="text-slate-700 dark:text-slate-200">$0.035 \cdot v^2$:</strong> Custo
+                          hidrodinâmico cinético. O expoente <strong>quadrático ($v^2$)</strong> é a chave da seleção
+                          natural: dobrar a velocidade quadruplica o gasto de movimento!</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div
+                    class="pt-2 border-t border-slate-200/80 dark:border-slate-800 text-[11px] text-amber-700 dark:text-amber-400 font-medium bg-amber-50/60 dark:bg-amber-950/30 p-2.5 rounded-lg">
+                    💡 <strong>O que traz de informação:</strong> Uma criatura rápida ($v=5.0$) queima <strong>$1.055
+                      \text{ un/frame}$</strong> ($\approx 5$ vezes mais que uma lenta $v=1.0$ de $0.215 \text{
+                    un/frame}$). Se a comida escassear, a velocidade alta torna-se uma armadilha fatal de inanição
+                    rápida.
+                  </div>
+                </div>
+
+                <!-- Equação 2: Metabolismo e Valor Calórico do Alimento -->
+                <div
+                  class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800 space-y-3 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center justify-between">
+                      <span class="font-bold text-xs text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+                        <span>🌱</span> 2. Valor Calórico & Digestão Gradual
+                      </span>
+                      <span
+                        class="text-[10px] font-mono bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 px-2 py-0.5 rounded">Absorção
+                        em 2 Estágios</span>
+                    </div>
+                    <div
+                      class="my-2.5 p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center font-mono text-sm overflow-x-auto text-emerald-700 dark:text-emerald-300">
+                      $$E_{\text{alimento}} = E_{\text{imediata}} (45) + E_{\text{digestão}} (140) = 185 \text{ un}$$
+                    </div>
+                    <div class="space-y-1.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                      <p><strong>Como o organismo metaboliza cada semente:</strong></p>
+                      <ul class="list-disc pl-4 space-y-1 text-[11px] text-slate-500 dark:text-slate-400">
+                        <li><strong class="text-slate-700 dark:text-slate-200">Choque de Emergência ($+45$ un):</strong>
+                          Injetado no momento do toque físico. Evita morte súbita enquanto persegue uma presa à beira do
+                          esgotamento.</li>
+                        <li><strong class="text-slate-700 dark:text-slate-200">Blobs Dorsais (Máx 4):</strong> O
+                          alimento vira uma esfera verde nas costas do organismo. A cada 30 frames, 1 blob é digerido
+                          rendendo $+140$ un de energia (se $E < 440$).</li>
+                        <li><strong class="text-slate-700 dark:text-slate-200">Catabolismo de Socorro:</strong> Se a
+                          energia cair abaixo de $120$ un, a digestão é <em>imediata</em> sem esperar timer.</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div
+                    class="pt-2 border-t border-slate-200/80 dark:border-slate-800 text-[11px] text-emerald-700 dark:text-emerald-400 font-medium bg-emerald-50/60 dark:bg-emerald-950/30 p-2.5 rounded-lg">
+                    💡 <strong>O que traz de informação:</strong> A capacidade estomacal (até 4 sementes $= 560$ un)
+                    permite aos organismos acumular reserva ("gordura") e sobreviver a travessias sem comida sem exceder
+                    o teto máximo ($E_{\text{max}} = 560$).
+                  </div>
+                </div>
+
+                <!-- Equação 3: Balanço de Sobrevivência Diária (Ciclo do Dia) -->
+                <div
+                  class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800 space-y-3 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center justify-between">
+                      <span class="font-bold text-xs text-blue-600 dark:text-blue-400 flex items-center gap-1.5">
+                        <span>🌅</span> 3. Balanço Diário & "Final do Dia"
+                      </span>
+                      <span
+                        class="text-[10px] font-mono bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded">Ciclo
+                        = 500 Frames (~8,3s)</span>
+                    </div>
+                    <div
+                      class="my-2.5 p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center font-mono text-sm overflow-x-auto text-blue-700 dark:text-blue-300">
+                      $$E_{\text{ingerida no Dia}} \ge E_{\text{dia}} = \left( 0.18 + 0.035 \cdot v^2 \right) \cdot
+                      500$$
+                    </div>
+                    <div class="space-y-1.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                      <p><strong>A regra do final do ciclo solar:</strong></p>
+                      <p class="text-[11px] text-slate-500 dark:text-slate-400">
+                        O relógio circular (canto superior direito do simulador) consome uma fatia a cada frame. Se a
+                        criatura não mantiver saldo positivo contínuo, sua energia atinge $0$ e ocorre a <strong>morte
+                          imediata por inanição</strong> com dissipação celular e som característico.
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    class="pt-2 border-t border-slate-200/80 dark:border-slate-800 text-[11px] text-blue-700 dark:text-blue-400 font-medium bg-blue-50/60 dark:bg-blue-950/30 p-2.5 rounded-lg">
+                    💡 <strong>O que traz de informação:</strong> Uma criatura lenta ($v=1.0$) precisa de apenas
+                    $\approx 107 \text{ un/dia}$ (1 comida basta!). Já uma veloz ($v=5.0$) gasta $\approx 527 \text{
+                    un/dia}$ e é obrigada a caçar pelo menos 3 a 4 alimentos a cada ciclo diário para não morrer antes
+                    do anoitecer!
+                  </div>
+                </div>
+
+                <!-- Equação 4: Fitness & Mutação Genética Estocástica -->
+                <div
+                  class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800 space-y-3 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center justify-between">
+                      <span class="font-bold text-xs text-purple-600 dark:text-purple-400 flex items-center gap-1.5">
+                        <span>🧬</span> 4. Reprodução & Mutação Genética Herdável
+                      </span>
+                      <span
+                        class="text-[10px] font-mono bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 px-2 py-0.5 rounded">Seleção
+                        Natural</span>
+                    </div>
+                    <div
+                      class="my-2.5 p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center font-mono text-sm overflow-x-auto text-purple-700 dark:text-purple-300">
+                      $$v_{\text{filho}} = v_{\text{pai}} \cdot \left[ 1 + (2\xi - 1) \cdot \frac{\mu}{100} \right],
+                      \quad \xi \sim \mathcal{U}(0, 1)$$
+                    </div>
+                    <div class="space-y-1.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                      <p><strong>Gatilhos reprodutivos e investimento parental:</strong></p>
+                      <ul class="list-disc pl-4 space-y-1 text-[11px] text-slate-500 dark:text-slate-400">
+                        <li><strong class="text-slate-700 dark:text-slate-200">Condição:</strong> Energia $E > 460$,
+                          pelo menos 2 comidas digeridas na vida e população total $< 65$.</li>
+                        <li><strong class="text-slate-700 dark:text-slate-200">Investimento:</strong> O progenitor doa
+                          $200$ un de sua energia para criar o filho (que nasce com $240$ un).</li>
+                        <li><strong class="text-slate-700 dark:text-slate-200">Variabilidade:</strong> O parâmetro $\mu$
+                          (slider de mutação) define o desvio percentual máximo ($\pm \mu\%$).</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div
+                    class="pt-2 border-t border-slate-200/80 dark:border-slate-800 text-[11px] text-purple-700 dark:text-purple-400 font-medium bg-purple-50/60 dark:bg-purple-950/30 p-2.5 rounded-lg">
+                    💡 <strong>O que traz de informação:</strong> As mutações são neutras e aleatórias (para mais rápido
+                    ou mais lento). Não existe "desejo de evoluir": os genes que sobrevivem são unicamente aqueles cuja
+                    velocidade compensa matematicamente o suprimento de comida do habitat.
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Tabela Comparativa de Fenótipos: Tradução Prática das Equações -->
+              <div class="overflow-x-auto pt-2">
+                <table
+                  class="w-full text-left text-xs border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+                  <thead class="bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200 font-bold">
+                    <tr>
+                      <th class="p-3">Fenótipo / Linhagem</th>
+                      <th class="p-3">Velocidade ($v$)</th>
+                      <th class="p-3">Cor Visual</th>
+                      <th class="p-3">Gasto / Frame</th>
+                      <th class="p-3">Custo do Dia (500 frames)</th>
+                      <th class="p-3">Comidas p/ Sobreviver</th>
+                      <th class="p-3">Resistência à Fome</th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-600 dark:text-slate-300 font-mono text-[11px]">
+                    <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
+                      <td
+                        class="p-3 font-sans font-semibold text-blue-600 dark:text-blue-400 flex items-center gap-1.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-blue-500 inline-block"></span> Lento (Econômico)
+                      </td>
+                      <td class="p-3">$1.0 \text{ px/f}$</td>
+                      <td class="p-3 font-sans">Azul suave</td>
+                      <td class="p-3">$0.215 \text{ un}$</td>
+                      <td class="p-3">$\approx 107 \text{ un}$</td>
+                      <td class="p-3 font-sans font-bold text-emerald-600 dark:text-emerald-400">1 alimento (sobra
+                        energia!)</td>
+                      <td class="p-3 font-sans text-emerald-600 dark:text-emerald-400 font-semibold">Alta (~28s sem
+                        comer)</td>
+                    </tr>
+                    <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
+                      <td
+                        class="p-3 font-sans font-semibold text-purple-600 dark:text-purple-400 flex items-center gap-1.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-purple-500 inline-block"></span> Médio (Equilibrado)
+                      </td>
+                      <td class="p-3">$3.0 \text{ px/f}$</td>
+                      <td class="p-3 font-sans">Roxo vibrante</td>
+                      <td class="p-3">$0.495 \text{ un}$</td>
+                      <td class="p-3">$\approx 247 \text{ un}$</td>
+                      <td class="p-3 font-sans font-bold text-amber-600 dark:text-amber-400">2 alimentos / dia</td>
+                      <td class="p-3 font-sans text-amber-600 dark:text-amber-400 font-semibold">Média (~12s sem comer)
+                      </td>
+                    </tr>
+                    <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
+                      <td class="p-3 font-sans font-semibold text-red-600 dark:text-red-400 flex items-center gap-1.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-red-500 inline-block"></span> Hiperveloz (Voraz)
+                      </td>
+                      <td class="p-3">$5.0 \text{ px/f}$</td>
+                      <td class="p-3 font-sans">Vermelho vivo</td>
+                      <td class="p-3 text-red-600 dark:text-red-400 font-bold">$1.055 \text{ un}$</td>
+                      <td class="p-3 text-red-600 dark:text-red-400 font-bold">$\approx 527 \text{ un}$</td>
+                      <td class="p-3 font-sans font-bold text-red-600 dark:text-red-400">3 a 4 alimentos / dia!</td>
+                      <td class="p-3 font-sans text-red-600 dark:text-red-400 font-semibold">Crítica (~5.6s sem comer)
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <!-- Container do Simulador + Controles com Alpine.js -->
+        <div id="simulador-container"
+          class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-lg overflow-hidden transition-all duration-500"
+          x-data="simulationControls()">
+          <!-- Painel de Sliders e Controles Superiores -->
+          <div
+            class="p-4 sm:p-6 bg-slate-50 dark:bg-slate-950/70 border-b border-slate-200 dark:border-slate-800 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+
+            <!-- Slider 1: Quantidade de Comida (Pressão Seletiva) -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs font-semibold">
+                <label for="foodSlider" class="text-slate-700 dark:text-slate-200">Disponibilidade de Alimento:</label>
+                <span class="text-bio-600 dark:text-bio-400 font-mono font-bold" x-text="foodCount"></span>
+              </div>
+              <input id="foodSlider" type="range" min="2" max="250" step="2" x-model.number="foodCount"
+                @input="updateParams()"
+                class="w-full accent-bio-600 cursor-pointer h-2 bg-slate-200 dark:bg-slate-800 rounded-lg">
+              <div class="flex justify-between text-[10px] text-slate-400">
+                <span class="text-red-500 font-medium">Extinção Severa (2)</span>
+                <span class="text-emerald-500 font-medium">Superabundância (250)</span>
+              </div>
+            </div>
+
+            <!-- Slider 2: Taxa de Mutação Genética -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs font-semibold">
+                <label for="mutationSlider" class="text-slate-700 dark:text-slate-200">Taxa de Mutação:</label>
+                <span class="text-bio-600 dark:text-bio-400 font-mono" x-text="mutationRate + '%'"></span>
+              </div>
+              <input id="mutationSlider" type="range" min="5" max="60" step="5" x-model.number="mutationRate"
+                @input="updateParams()"
+                class="w-full accent-bio-600 cursor-pointer h-2 bg-slate-200 dark:bg-slate-800 rounded-lg">
+              <div class="flex justify-between text-[10px] text-slate-400">
+                <span>Estável (5%)</span>
+                <span>Alta Variação (60%)</span>
+              </div>
+            </div>
+
+            <!-- Slider 3: Velocidade do Tempo / Simulação -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs font-semibold">
+                <label for="speedSlider" class="text-slate-700 dark:text-slate-200">Velocidade da Simulação:</label>
+                <span class="text-bio-600 dark:text-bio-400 font-mono font-bold" x-text="simSpeed + 'x'"></span>
+              </div>
+              <input id="speedSlider" type="range" min="0.5" max="4" step="0.5" x-model.number="simSpeed"
+                @input="updateParams()"
+                class="w-full accent-bio-600 cursor-pointer h-2 bg-slate-200 dark:bg-slate-800 rounded-lg">
+              <div class="flex justify-between text-[10px] text-slate-400">
+                <span class="text-blue-500 font-medium">0.5x (Câmera Lenta)</span>
+                <span class="text-amber-500 font-medium">4x (Acelerado)</span>
+              </div>
+            </div>
+
+            <!-- Botões de Ação: Pausar, Reiniciar, Alternar Áudio (Diretriz 5 - Touch Acessível) -->
+            <div class="flex items-center gap-2 pt-2 sm:pt-0">
+              <button @click="togglePlay()"
+                class="flex-1 py-2.5 px-3 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow min-h-[44px] active:scale-95"
+                :class="isRunning ? 'bg-amber-500 hover:bg-amber-600 text-slate-950' : 'bg-bio-600 hover:bg-bio-500 text-white'">
+                <span x-text="isRunning ? '⏸️ Pausar' : '▶️ Continuar'"></span>
+              </button>
+              <button @click="resetPopulation()"
+                class="py-2.5 px-3 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold transition min-h-[44px] flex items-center justify-center active:scale-95"
+                title="Reiniciar Ecossistema do Zero">
+                🔄 Reiniciar
+              </button>
+              <button @click="toggleSound()"
+                class="py-2.5 px-3 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold transition flex items-center justify-center gap-1 min-h-[44px] active:scale-95"
+                :title="soundEnabled ? 'Silenciar Efeitos Sonoros' : 'Ativar Efeitos Sonoros'">
+                <span x-text="soundEnabled ? '🔊 Som' : '🔇 Mudo'"></span>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Painel de Métricas e Telemetria em Tempo Real -->
+          <div
+            class="px-4 py-3 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+            <div class="flex items-center gap-4 sm:gap-6">
+              <div>
+                <span class="text-slate-400">Geração Máx:</span>
+                <strong class="text-slate-800 dark:text-white font-mono text-sm ml-1" id="stat-gen">1</strong>
+              </div>
+              <div>
+                <span class="text-slate-400">População Ativa:</span>
+                <strong class="text-bio-600 dark:text-bio-400 font-mono text-sm ml-1" id="stat-pop">24</strong>
+              </div>
+              <div>
+                <span class="text-slate-400">Velocidade Média:</span>
+                <strong class="text-amber-600 dark:text-amber-400 font-mono text-sm ml-1" id="stat-speed">2.0</strong>
+              </div>
+            </div>
+
+            <!-- Legenda de cores das criaturas -->
+            <div class="flex items-center flex-wrap gap-3 text-[11px] text-slate-500 dark:text-slate-400">
+              <span class="flex items-center gap-1">
+                <span class="w-3 h-3 rounded-full bg-blue-500 inline-block"></span> Lento (Econômico)
+              </span>
+              <span class="flex items-center gap-1">
+                <span class="w-3 h-3 rounded-full bg-purple-500 inline-block"></span> Médio
+              </span>
+              <span class="flex items-center gap-1">
+                <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span> Rápido (Alto gasto)
+              </span>
+              <span class="flex items-center gap-1">
+                <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span> Comida
+              </span>
+              <span class="flex items-center gap-1">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 border border-white inline-block"></span> Energia
+                Reserva
+              </span>
+            </div>
+          </div>
+
+          <!-- Canvas do p5.js -->
+          <div id="p5-canvas-container" class="w-full flex justify-center bg-slate-950 overflow-hidden relative"
+            style="min-height: 420px;">
+            <!-- O canvas do p5.js será inserido aqui dinamicamente -->
+          </div>
+
+          <!-- Painel de Gráficos e Telemetria Analítica em Tempo Real -->
+          <div
+            class="p-4 sm:p-5 bg-slate-100/70 dark:bg-slate-950/80 border-t border-slate-200 dark:border-slate-800 grid grid-cols-1 lg:grid-cols-2 gap-4">
+
+            <!-- Gráfico 1: Histograma Fenotípico de Velocidade (Estilo Primer) -->
+            <div
+              class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between">
+                  <h4
+                    class="font-display font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                    <span>📊</span> Histograma: Distribuição de Velocidade
+                  </h4>
+                  <span
+                    class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-bio-100 text-bio-800 dark:bg-bio-950 dark:text-bio-300">Tempo
+                    Real</span>
+                </div>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
+                  Frequência de indivíduos por faixa de velocidade. A seleção natural desloca a curva conforme os
+                  recursos
+                  mudam.
+                </p>
+              </div>
+
+              <!-- Barras do Histograma -->
+              <div
+                class="mt-4 grid grid-cols-5 gap-2 items-end h-28 pt-2 pb-1 border-b border-slate-100 dark:border-slate-800">
+                <!-- Bin 1: Muito Lento (<1.8) -->
+                <div class="flex flex-col items-center h-full justify-end group">
+                  <span class="text-[10px] font-mono font-bold text-blue-600 dark:text-blue-400 mb-1"
+                    id="hist-count-0">0</span>
+                  <div
+                    class="w-full bg-slate-100 dark:bg-slate-800/80 rounded-t-md flex items-end h-20 overflow-hidden">
+                    <div id="hist-bar-0" class="w-full bg-blue-500 rounded-t-md transition-all duration-300"
+                      style="height: 0%;"></div>
+                  </div>
+                  <span class="text-[9px] font-semibold text-slate-400 mt-1">&lt;1.8</span>
+                </div>
+
+                <!-- Bin 2: Moderado (1.8 - 2.8) -->
+                <div class="flex flex-col items-center h-full justify-end group">
+                  <span class="text-[10px] font-mono font-bold text-cyan-600 dark:text-cyan-400 mb-1"
+                    id="hist-count-1">0</span>
+                  <div
+                    class="w-full bg-slate-100 dark:bg-slate-800/80 rounded-t-md flex items-end h-20 overflow-hidden">
+                    <div id="hist-bar-1" class="w-full bg-cyan-500 rounded-t-md transition-all duration-300"
+                      style="height: 0%;"></div>
+                  </div>
+                  <span class="text-[9px] font-semibold text-slate-400 mt-1">1.8-2.8</span>
+                </div>
+
+                <!-- Bin 3: Médio (2.8 - 3.8) -->
+                <div class="flex flex-col items-center h-full justify-end group">
+                  <span class="text-[10px] font-mono font-bold text-purple-600 dark:text-purple-400 mb-1"
+                    id="hist-count-2">0</span>
+                  <div
+                    class="w-full bg-slate-100 dark:bg-slate-800/80 rounded-t-md flex items-end h-20 overflow-hidden">
+                    <div id="hist-bar-2" class="w-full bg-purple-500 rounded-t-md transition-all duration-300"
+                      style="height: 0%;"></div>
+                  </div>
+                  <span class="text-[9px] font-semibold text-slate-400 mt-1">2.8-3.8</span>
+                </div>
+
+                <!-- Bin 4: Rápido (3.8 - 4.8) -->
+                <div class="flex flex-col items-center h-full justify-end group">
+                  <span class="text-[10px] font-mono font-bold text-pink-600 dark:text-pink-400 mb-1"
+                    id="hist-count-3">0</span>
+                  <div
+                    class="w-full bg-slate-100 dark:bg-slate-800/80 rounded-t-md flex items-end h-20 overflow-hidden">
+                    <div id="hist-bar-3" class="w-full bg-pink-500 rounded-t-md transition-all duration-300"
+                      style="height: 0%;"></div>
+                  </div>
+                  <span class="text-[9px] font-semibold text-slate-400 mt-1">3.8-4.8</span>
+                </div>
+
+                <!-- Bin 5: Hiperveloz (>4.8) -->
+                <div class="flex flex-col items-center h-full justify-end group">
+                  <span class="text-[10px] font-mono font-bold text-red-600 dark:text-red-400 mb-1"
+                    id="hist-count-4">0</span>
+                  <div
+                    class="w-full bg-slate-100 dark:bg-slate-800/80 rounded-t-md flex items-end h-20 overflow-hidden">
+                    <div id="hist-bar-4" class="w-full bg-red-500 rounded-t-md transition-all duration-300"
+                      style="height: 0%;"></div>
+                  </div>
+                  <span class="text-[9px] font-semibold text-slate-400 mt-1">&gt;4.8</span>
+                </div>
+              </div>
+
+              <div class="flex justify-between items-center text-[10px] text-slate-400 mt-2">
+                <span class="text-blue-500 font-semibold">◀ Baixo gasto (Econômico)</span>
+                <span class="text-red-500 font-semibold">Alto gasto (Hiperveloz) ▶</span>
+              </div>
+            </div>
+
+            <!-- Gráfico 2: Equilíbrio Ecológico (Alimentos vs População) -->
+            <div
+              class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between">
+                  <h4
+                    class="font-display font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                    <span>⚖️</span> Dinâmica de Recursos vs. População
+                  </h4>
+                  <span class="text-[11px] font-mono font-bold text-bio-600 dark:text-bio-400"
+                    id="eco-status-text">Equilíbrio Ativo</span>
+                </div>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
+                  Monitoramento da capacidade de suporte biológica do habitat em tempo real.
+                </p>
+              </div>
+
+              <!-- Barras Comparativas de Recursos -->
+              <div class="space-y-3 mt-3">
+                <div>
+                  <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span class="text-slate-600 dark:text-slate-300 flex items-center gap-1">
+                      <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span> Alimentos em Campo:
+                    </span>
+                    <strong class="font-mono text-emerald-600 dark:text-emerald-400" id="mon-foods">0</strong>
+                  </div>
+                  <div class="w-full h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <div id="mon-food-bar"
+                      class="h-full bg-gradient-to-r from-emerald-500 to-green-400 rounded-full transition-all duration-300"
+                      style="width: 50%;"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span class="text-slate-600 dark:text-slate-300 flex items-center gap-1">
+                      <span class="w-2.5 h-2.5 rounded-full bg-bio-600 inline-block"></span> População Ativa:
+                    </span>
+                    <strong class="font-mono text-bio-600 dark:text-bio-400" id="mon-pop">0</strong>
+                  </div>
+                  <div class="w-full h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <div id="mon-pop-bar"
+                      class="h-full bg-gradient-to-r from-bio-600 to-emerald-400 rounded-full transition-all duration-300"
+                      style="width: 35%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Telemetria Auxiliar -->
+              <div
+                class="pt-3 mt-2 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center text-[11px] text-slate-500 dark:text-slate-400">
+                <span>Nascimentos Totais: <strong id="mon-births"
+                    class="font-mono text-slate-700 dark:text-slate-200">0</strong></span>
+                <span>Ciclo: <strong id="mon-day" class="font-mono text-bio-600 dark:text-bio-400">Dia 1</strong></span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Rodapé do Laboratório: Bancada de Desafios Didáticos & Experimentos Mentais -->
+          <div
+            class="p-5 sm:p-6 bg-slate-50 dark:bg-slate-950/90 border-t border-slate-200 dark:border-slate-800 space-y-4">
+
+            <div
+              class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">💡</span>
+                <h4 class="font-display font-bold text-sm sm:text-base text-slate-900 dark:text-white">
+                  Bancada de Desafios Didáticos: Teste suas Hipóteses Evolutivas
+                </h4>
+              </div>
+              <span class="text-xs text-slate-500 dark:text-slate-400">
+                Status do Habitat: <strong id="stat-timer" class="font-mono text-bio-600 dark:text-bio-400">Ecossistema
+                  Ativo</strong>
+              </span>
+            </div>
+
+            <!-- 5 Cartões de Experimentos e Perguntas Investigativas Interativas -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 text-xs">
+
+              <!-- Desafio 1: Superabundância Extrema -->
+              <div
+                class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between space-y-3 hover:border-emerald-400 dark:hover:border-emerald-600 transition">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+                      <span>🌱</span> Experimento 1: Fartura Extrema
+                    </span>
+                    <span
+                      class="text-[10px] font-mono bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 px-1.5 py-0.5 rounded">Comida
+                      = 250</span>
+                  </div>
+                  <p class="text-slate-800 dark:text-slate-200 font-semibold text-xs leading-snug">
+                    O que ocorre quando aumentamos a disponibilidade de alimento ao limite máximo?
+                  </p>
+                  <div class="text-[11px] text-slate-500 dark:text-slate-400 space-y-1">
+                    <p><strong>Hipótese investigativa:</strong> Sem a barreira da fome, o custo de combustível $0.035
+                      \cdot v^2$ deixa de ser uma punição seletiva. Quem vencerá a corrida pelas sementes?</p>
+                    <p class="text-bio-700 dark:text-bio-400 font-medium">🎯 <strong>Consequência observável:</strong>
+                      As criaturas avermelhadas e velozes monopólizam os recursos, reproduzem-se em cascata e o
+                      histograma corre inteiro para a direita ($v > 4.5$).</p>
+                  </div>
+                </div>
+                <button @click="applyPreset(250, 20, 1.5)"
+                  class="w-full py-2 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[11px] transition flex items-center justify-center gap-1.5 shadow-sm">
+                  <span>⚡ Testar Superabundância (250 Alimentos)</span>
+                </button>
+              </div>
+
+              <!-- Desafio 2: Escassez Severa -->
+              <div
+                class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between space-y-3 hover:border-red-400 dark:hover:border-red-600 transition">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="font-bold text-red-600 dark:text-red-400 flex items-center gap-1.5">
+                      <span>🍂</span> Experimento 2: O Choque da Escassez
+                    </span>
+                    <span
+                      class="text-[10px] font-mono bg-red-100 dark:bg-red-950 text-red-700 dark:text-red-300 px-1.5 py-0.5 rounded">Comida
+                      = 8</span>
+                  </div>
+                  <p class="text-slate-800 dark:text-slate-200 font-semibold text-xs leading-snug">
+                    O que ocorre quando diminuímos drasticamente o alimento para apenas 8 sementes?
+                  </p>
+                  <div class="text-[11px] text-slate-500 dark:text-slate-400 space-y-1">
+                    <p><strong>Hipótese investigativa:</strong> Quem sucumbe primeiro? As rápidas que gastam 5x mais
+                      calorias ou as lentas?</p>
+                    <p class="text-red-600 dark:text-red-400 font-medium">🎯 <strong>Consequência observável:</strong>
+                      As criaturas vermelhas entram em inanição e morrem com som melancólico em segundos. Apenas
+                      indivíduos azuis (lentos, econômicos) conseguem sobreviver com o pouco que há!</p>
+                  </div>
+                </div>
+                <button @click="applyPreset(8, 15, 1)"
+                  class="w-full py-2 px-3 rounded-lg bg-red-600 hover:bg-red-500 text-white font-bold text-[11px] transition flex items-center justify-center gap-1.5 shadow-sm">
+                  <span>⚡ Testar Escassez Severa (8 Alimentos)</span>
+                </button>
+              </div>
+
+              <!-- Desafio 3: Estabilidade Genética -->
+              <div
+                class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between space-y-3 hover:border-blue-400 dark:hover:border-blue-600 transition">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="font-bold text-blue-600 dark:text-blue-400 flex items-center gap-1.5">
+                      <span>🧊</span> Experimento 3: Estabilidade & Conservadorismo
+                    </span>
+                    <span
+                      class="text-[10px] font-mono bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 px-1.5 py-0.5 rounded">Mutação
+                      = 5%</span>
+                  </div>
+                  <p class="text-slate-800 dark:text-slate-200 font-semibold text-xs leading-snug">
+                    O que ocorre quando reduzimos a taxa de mutação ao mínimo (5%)?
+                  </p>
+                  <div class="text-[11px] text-slate-500 dark:text-slate-400 space-y-1">
+                    <p><strong>Hipótese investigativa:</strong> Os descendentes herdam quase exatamente a mesma
+                      velocidade dos progenitores ($\pm 5\%$). O que acontece com a diversidade?</p>
+                    <p class="text-blue-600 dark:text-blue-400 font-medium">🎯 <strong>Consequência observável:</strong>
+                      O histograma fenotípico afunila em uma única torre vertical estreita. A população perde
+                      variabilidade e fica vulnerável a crises.</p>
+                  </div>
+                </div>
+                <button @click="applyPreset(60, 5, 1.5)"
+                  class="w-full py-2 px-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-[11px] transition flex items-center justify-center gap-1.5 shadow-sm">
+                  <span>⚡ Testar Mutação Mínima (5%)</span>
+                </button>
+              </div>
+
+              <!-- Desafio 4: Hipermutação e Caos -->
+              <div
+                class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between space-y-3 hover:border-purple-400 dark:hover:border-purple-600 transition">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="font-bold text-purple-600 dark:text-purple-400 flex items-center gap-1.5">
+                      <span>🌪️</span> Experimento 4: Hipermutação & Caos Genético
+                    </span>
+                    <span
+                      class="text-[10px] font-mono bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 px-1.5 py-0.5 rounded">Mutação
+                      = 60%</span>
+                  </div>
+                  <p class="text-slate-800 dark:text-slate-200 font-semibold text-xs leading-snug">
+                    O que ocorre quando elevamos a taxa de mutação para o limite de 60%?
+                  </p>
+                  <div class="text-[11px] text-slate-500 dark:text-slate-400 space-y-1">
+                    <p><strong>Hipótese investigativa:</strong> Cada nascimento é uma loteria: pais lentos geram
+                      aberrações rápidas e vice-versa.</p>
+                    <p class="text-purple-600 dark:text-purple-400 font-medium">🎯 <strong>Consequência
+                        observável:</strong> O histograma fica plano e espalhado por todas as 5 faixas. Há alto
+                      desperdício de indivíduos inviáveis, mas plasticidade exploratória máxima.</p>
+                  </div>
+                </div>
+                <button @click="applyPreset(70, 60, 1.5)"
+                  class="w-full py-2 px-3 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-bold text-[11px] transition flex items-center justify-center gap-1.5 shadow-sm">
+                  <span>⚡ Testar Hipermutação (60%)</span>
+                </button>
+              </div>
+
+              <!-- Desafio 5: O Grande Cataclismo e a Armadilha Evolutiva (2 Colunas) -->
+              <div
+                class="p-4 rounded-xl bg-gradient-to-br from-amber-50 to-red-50 dark:from-slate-900 dark:to-red-950/40 border border-amber-300 dark:border-red-900/60 shadow-sm flex flex-col justify-between space-y-3 md:col-span-2 lg:col-span-2 hover:border-red-500 transition">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="font-bold text-red-700 dark:text-red-400 flex items-center gap-1.5 text-sm">
+                      <span>☄️</span> Experimento 5: O Cataclismo de Darwin (A Armadilha Evolutiva)
+                    </span>
+                    <span
+                      class="text-[10px] font-mono bg-red-100 dark:bg-red-950 text-red-700 dark:text-red-300 px-2 py-0.5 rounded font-bold">2
+                      Etapas Interativas</span>
+                  </div>
+                  <p class="text-slate-900 dark:text-white font-semibold text-xs leading-snug">
+                    E se você maximizar o alimento (250) e a mutação (60%), esperar o ecossistema se estabilizar... e de
+                    repente cortar a mutação para 5% e zerar o alimento para 2?
+                  </p>
+                  <div
+                    class="text-[11px] text-slate-600 dark:text-slate-300 space-y-1.5 leading-relaxed bg-white/70 dark:bg-slate-950/70 p-3 rounded-lg border border-amber-200 dark:border-red-950">
+                    <p><strong>A Lição da Paleontologia e Extinção em Massa:</strong></p>
+                    <p>
+                      Na <strong>Etapa 1</strong>, a superabundância seleciona indivíduos hipervelozes viciados em
+                      altíssimo consumo energético ($v^2$). A população estabiliza-se como "predadores vorazes".
+                    </p>
+                    <p>
+                      Na <strong>Etapa 2 (O Choque)</strong>, a comida evapora e a mutação congela. As criaturas
+                      vermelhas necessitam de $>500 \text{ un/dia}$ e morrem em segundos! Como a mutação foi cortada
+                      para 5%, elas <strong>não conseguem des-evoluir geneticamente a tempo</strong> de gerar
+                      descendentes lentos e econômicos! O resultado inevitável é a <strong>Extinção em Massa</strong> da
+                      linhagem!
+                    </p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                  <button @click="triggerCataclysmPhase1()"
+                    class="py-2.5 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[11px] transition flex items-center justify-center gap-1.5 shadow">
+                    <span>🚀 Passo 1: Fartura & Hipermutação (250 / 60%)</span>
+                  </button>
+                  <button @click="triggerCataclysmPhase2()"
+                    class="py-2.5 px-3 rounded-lg bg-red-600 hover:bg-red-500 text-white font-bold text-[11px] transition flex items-center justify-center gap-1.5 shadow">
+                    <span>☄️ Passo 2: O Choque! Cortar Comida (2) e Travar (5%)</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <!-- FIM DA ABA 1: SIMULADOR DE SELEÇÃO NATURAL (DARWIN & WALLACE) -->
+
+      <!-- ============================================================== -->
+      <!-- ABA 2: SIMULADOR DE LAMARCKISMO (USO, DESUSO E WEISMANN)       -->
+      <!-- ============================================================== -->
+      <div x-show="activeLab === 'lamarck'" x-transition class="space-y-6" x-data="lamarckControls()">
+
+        <!-- Banner Intuitivo Geral de Lamarck -->
+        <div
+          class="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-fossil-100 via-amber-50 to-fossil-50 dark:from-slate-900/90 dark:via-slate-900 dark:to-fossil-950/40 border border-fossil-300 dark:border-slate-800 text-xs sm:text-sm text-slate-700 dark:text-slate-300 shadow-sm">
+          <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div class="flex items-start sm:items-center gap-3.5">
+              <div class="p-2.5 rounded-xl bg-fossil-600 text-white shadow-md text-xl">
+                🦒
+              </div>
+              <div class="space-y-1">
+                <div
+                  class="text-sm sm:text-base font-black font-display text-slate-900 dark:text-white flex items-center gap-2">
+                  <span>Metáfora Visual: Os Herbívoros de Pescoço Telescópico</span>
+                  <span
+                    class="text-[10px] uppercase font-mono font-bold px-2 py-0.5 rounded-full bg-fossil-100 text-fossil-800 dark:bg-fossil-950 dark:text-fossil-300 border border-fossil-300 dark:border-fossil-800">Modelo
+                    Lamarckiano</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Na hipótese de Lamarck, nenhum animal precisa morrer de fome para a espécie mudar: o esforço contínuo
+                  em vida estica o órgão, o filhote herda esse estiramento diretamente e órgãos não usados encolhem.
+                  Teste os sliders para ver a hipótese em ação e ative o <strong>Desafio de Weismann</strong> para
+                  entender por que a genética moderna refutou esse modelo!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Container do Simulador + Controles com Alpine.js -->
+        <div id="simulador-lamarck-container"
+          class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-lg overflow-hidden transition-all duration-500">
+
+          <!-- Painel de Sliders e Controles -->
+          <div
+            class="p-4 sm:p-6 bg-slate-50 dark:bg-slate-950/70 border-b border-slate-200 dark:border-slate-800 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+
+            <!-- Slider 1: Taxa de Estiramento por Esforço -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs font-semibold">
+                <label for="stretchSlider" class="text-slate-700 dark:text-slate-200">Estiramento por Uso
+                  (Esforço):</label>
+                <span class="text-fossil-700 dark:text-fossil-300 font-mono font-bold"
+                  x-text="stretchRate + '%'"></span>
+              </div>
+              <input id="stretchSlider" type="range" min="0" max="50" step="5" x-model.number="stretchRate"
+                @input="updateParams()"
+                class="w-full accent-fossil-600 cursor-pointer h-2 bg-slate-200 dark:bg-slate-800 rounded-lg">
+              <p class="text-[10px] text-slate-400">Quanto o pescoço cresce por segundo enquanto o animal tenta alcançar
+                folhas altas.</p>
+            </div>
+
+            <!-- Slider 2: Taxa de Herança Adquirida -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs font-semibold">
+                <label for="inheritanceSlider" class="text-slate-700 dark:text-slate-200">Herança Adquirida
+                  (Prole):</label>
+                <span class="text-amber-600 dark:text-amber-400 font-mono font-bold"
+                  x-text="inheritanceRate + '%'"></span>
+              </div>
+              <input id="inheritanceSlider" type="range" min="0" max="100" step="10" x-model.number="inheritanceRate"
+                @input="updateParams()"
+                class="w-full accent-amber-500 cursor-pointer h-2 bg-slate-200 dark:bg-slate-800 rounded-lg">
+              <p class="text-[10px] text-slate-400">100% = Lamarck pleno. 0% = Genética real (Mendel/DNA nos gametas).
+              </p>
+            </div>
+
+            <!-- Slider 3: Taxa de Atrofia por Desuso -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs font-semibold">
+                <label for="atrophySlider" class="text-slate-700 dark:text-slate-200">Atrofia por Desuso:</label>
+                <span class="text-red-600 dark:text-red-400 font-mono font-bold" x-text="atrophyRate + '%'"></span>
+              </div>
+              <input id="atrophySlider" type="range" min="0" max="30" step="5" x-model.number="atrophyRate"
+                @input="updateParams()"
+                class="w-full accent-red-500 cursor-pointer h-2 bg-slate-200 dark:bg-slate-800 rounded-lg">
+              <p class="text-[10px] text-slate-400">Redução do pescoço caso o animal só coma vegetação rasteira.</p>
+            </div>
+
+            <!-- Botões de Ação e Intervenção Científica (Diretriz 5 - Acessibilidade ao Toque) -->
+            <div class="flex flex-col justify-end gap-2">
+              <button @click="triggerWeismannTest()"
+                class="w-full py-2.5 px-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-1.5 min-h-[44px] active:scale-95">
+                <span>✂️ Teste de Weismann (Amputação)</span>
+              </button>
+              <button @click="resetSim()"
+                class="w-full py-2.5 px-3 rounded-xl bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-xs transition flex items-center justify-center gap-1.5 min-h-[44px] active:scale-95">
+                <span>🔄 Reiniciar Savana</span>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Barra de Telemetria e HUD em Tempo Real -->
+          <div
+            class="px-6 py-3 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4 text-xs">
+            <div class="flex items-center gap-4 sm:gap-6">
+              <div>
+                Geração: <strong class="text-slate-900 dark:text-white font-mono text-sm ml-1"
+                  id="lamarck-stat-gen">1</strong>
+              </div>
+              <div>
+                População: <strong class="text-fossil-700 dark:text-fossil-300 font-mono text-sm ml-1"
+                  id="lamarck-stat-pop">8</strong>
+              </div>
+              <div>
+                Pescoço Médio: <strong class="text-amber-600 dark:text-amber-400 font-mono text-sm ml-1"
+                  id="lamarck-stat-neck">40 px</strong>
+              </div>
+            </div>
+            <div>
+              Status: <strong id="lamarck-stat-status" class="font-mono text-bio-600 dark:text-bio-400">Savana
+                Ativa</strong>
+            </div>
+          </div>
+
+          <!-- Container do Canvas p5.js do Lamarckismo -->
+          <div id="p5-lamarck-canvas-container"
+            class="w-full flex justify-center bg-slate-950 overflow-hidden relative min-h-[420px]">
+            <!-- Canvas gerado dinamicamente via p5.js -->
+          </div>
+
+          <!-- Gráfico Dinâmico Inferior: Evolução do Comprimento Médio do Pescoço -->
+          <div
+            class="p-5 sm:p-6 bg-slate-50 dark:bg-slate-950/90 border-t border-slate-200 dark:border-slate-800 space-y-3">
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="font-display font-bold text-sm text-slate-900 dark:text-white flex items-center gap-2">
+                  <span>📈</span> Curva de Evolução do Comprimento Médio do Pescoço
+                </h4>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400">
+                  Acompanhe a curva histórica das gerações. No modelo de Lamarck, a curva sobe rapidamente porque não há
+                  mortalidade seletiva: todos esticam o pescoço em vida!
+                </p>
+              </div>
+              <span
+                class="text-[10px] font-mono px-2 py-1 rounded bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Tempo
+                Real</span>
+            </div>
+
+            <!-- Canvas do Gráfico -->
+            <div
+              class="w-full h-24 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-2 overflow-hidden flex items-end">
+              <canvas id="lamarck-history-canvas" class="w-full h-full"></canvas>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Caixa de Feedback Pedagógico Reativo em Tempo Real -->
+        <div class="p-4 sm:p-5 rounded-2xl border text-xs sm:text-sm leading-relaxed space-y-2 transition-all" :class="{
+               'bg-fossil-50 dark:bg-fossil-950/30 border-fossil-300 dark:border-fossil-800 text-fossil-950 dark:text-fossil-200': inheritanceRate > 50,
+               'bg-emerald-50 dark:bg-emerald-950/30 border-emerald-300 dark:border-emerald-800 text-emerald-950 dark:text-emerald-200': inheritanceRate === 0,
+               'bg-amber-50 dark:bg-amber-950/30 border-amber-300 dark:border-amber-800 text-amber-950 dark:text-amber-200': inheritanceRate > 0 && inheritanceRate <= 50
+             }">
+          <div class="font-bold font-display flex items-center gap-2">
+            <span>💡</span> Diagnóstico Epistemológico da Configuração Atual:
+          </div>
+          <p x-show="inheritanceRate === 100">
+            <strong>Modo Lamarckismo Pleno (100% de Herança):</strong> Repare como o pescoço médio da população cresce
+            vertiginosamente a cada geração! No raciocínio de Lamarck, a evolução é quase imediata porque o esforço
+            mecânico somático individual é integralmente transferido para a prole.
+          </p>
+          <p x-show="inheritanceRate === 0">
+            <strong>Modo Genética Real (Mendel & Neodarwinismo):</strong> Repare que mesmo que o pai passe a vida
+            inteira esticando o pescoço e soltando partículas de suor, o filho <strong>continua nascendo com o tamanho
+              basal original</strong>! Por quê? Porque esticar os músculos do pescoço (células somáticas) não altera a
+            sequência de genes nos óvulos ou espermatozoides (células germinativas).
+          </p>
+          <p x-show="inheritanceRate > 0 && inheritanceRate < 100">
+            <strong>Modo Herança Parcial:</strong> O filhote herda apenas uma fração do que o pai adquiriu por esforço.
+            Na história da ciência, naturalistas do século XIX debateram intensamente se pequenos efeitos do ambiente
+            poderiam penetrar na hereditariedade, até os experimentos conclusivos de Weismann e Mendel demonstrarem a
+            barreira germinativa.
+          </p>
+          <div x-show="weismannActive" x-transition
+            class="mt-2 p-2.5 rounded-lg bg-red-100 dark:bg-red-950/60 border border-red-300 dark:border-red-900 text-red-900 dark:text-red-200 text-xs">
+            ✂️ <strong>Intervenção de August Weismann em Andamento:</strong> Os pescoços dos adultos foram encurtados
+            artificialmente pelo experimento. Observe: se a Herança Adquirida for 0%, a próxima geração nasce normal! A
+            mutilação não altera o DNA reprodutivo.
+          </div>
+        </div>
+
+      </div>
+      <!-- FIM DA ABA 2: SIMULADOR DE LAMARCKISMO -->
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SEÇÃO 5: MULTIMÍDIA COM VÍDEOS EMBUTIDOS   -->
+    <!-- ========================================== -->
+    <section id="videos" class="scroll-mt-20 space-y-8">
+      <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+        <div class="flex items-center gap-2 text-bio-700 dark:text-bio-400 text-sm font-bold uppercase tracking-wider">
+          <span class="p-1.5 rounded-lg bg-bio-100 dark:bg-bio-950/80">05</span>
+          Cinemateca Científica
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black font-display mt-1 text-slate-900 dark:text-white">
+          Aprofundamento Audiovisual Guiado
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+        <!-- Vídeo 1: Kurzgesagt -->
+        <div
+          class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden flex flex-col">
+          <div class="relative w-full aspect-video bg-black">
+            <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/hOfRN0KihOU?rel=0"
+              title="Kurzgesagt - Como funciona a evolução" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            </iframe>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <span
+                  class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300">Teoria
+                  Geral</span>
+                <span class="text-xs text-slate-400">Canal Kurzgesagt</span>
+              </div>
+              <h3 class="font-display font-bold text-base sm:text-lg text-slate-900 dark:text-white mt-1">
+                Como Funciona a Evolução em Poucos Minutos
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
+                Este vídeo explica visualmente como pequenas variações genéticas acumuladas ao longo de milhões de anos
+                transformaram seres unicelulares na fantástica diversidade biológica da Terra.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-500">
+              🎯 <strong>Foco para a aula:</strong> Observe como os erros de cópia no DNA (mutações) são a matéria-prima
+              da novidade biológica.
+            </div>
+            <a class="text-xs font-semibold text-bio-700 dark:text-bio-400 hover:underline"
+              href="https://www.youtube.com/watch?v=hOfRN0KihOU" target="_blank" rel="noopener noreferrer">
+              Abrir vídeo no YouTube ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Vídeo 2: Primer -->
+        <div
+          class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden flex flex-col">
+          <div class="relative w-full aspect-video bg-black">
+            <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/0ZGbIKd0XrM?rel=0"
+              title="Primer - Simulação de Seleção Natural" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            </iframe>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <span
+                  class="text-xs font-bold px-2 py-0.5 rounded bg-bio-100 text-bio-800 dark:bg-bio-950 dark:text-bio-300">Modelagem
+                  Matemática</span>
+                <span class="text-xs text-slate-400">Canal Primer</span>
+              </div>
+              <h3 class="font-display font-bold text-base sm:text-lg text-slate-900 dark:text-white mt-1">
+                Simulação de Seleção Natural com Criaturas "Blobs"
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
+                A inspiração direta do nosso laboratório p5.js! Mostra como traços herdáveis (velocidade, tamanho,
+                percepção) e a escassez de recursos moldam as populações ao longo de gerações sucessivas.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-500">
+              🎯 <strong>Conexão direta:</strong> Populações evoluem, não indivíduos isolados!
+            </div>
+            <a class="text-xs font-semibold text-bio-700 dark:text-bio-400 hover:underline"
+              href="https://www.youtube.com/watch?v=0ZGbIKd0XrM" target="_blank" rel="noopener noreferrer">
+              Abrir vídeo no YouTube ↗
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SEÇÃO 6: ATIVIDADES DE FIXAÇÃO INTERATIVA  -->
+    <!-- ========================================== -->
+    <section id="fixacao" class="scroll-mt-20 space-y-8" x-data="quizModule()">
+      <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+        <div class="flex items-center gap-2 text-bio-700 dark:text-bio-400 text-sm font-bold uppercase tracking-wider">
+          <span class="p-1.5 rounded-lg bg-bio-100 dark:bg-bio-950/80">06</span>
+          Consolidação do Aprendizado
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black font-display mt-1 text-slate-900 dark:text-white">
+          Atividades de Fixação & Flashcards Interativos
+        </h2>
+      </div>
+
+      <!-- Navegação Interna da Fixação: Abas Quiz vs Flashcards Responsivas (Diretriz 2, 3 e 5) -->
+      <div
+        class="flex border-b border-slate-200 dark:border-slate-800 gap-3 sm:gap-6 text-xs sm:text-sm font-semibold overflow-x-auto pb-1 scrollbar-none">
+        <button @click="activeSubTab = 'quiz'"
+          :class="activeSubTab === 'quiz' ? 'border-b-2 border-bio-600 text-bio-700 dark:text-bio-400 pb-2.5 font-bold' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 pb-2.5'"
+          class="transition flex items-center gap-2 shrink-0 min-h-[44px]">
+          <span>📝 Quiz Diagnóstico Reativo (5 Questões)</span>
+        </button>
+        <button @click="activeSubTab = 'flashcards'"
+          :class="activeSubTab === 'flashcards' ? 'border-b-2 border-bio-600 text-bio-700 dark:text-bio-400 pb-2.5 font-bold' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 pb-2.5'"
+          class="transition flex items-center gap-2 shrink-0 min-h-[44px]">
+          <span>🃏 Flashcards 3D de Memorização</span>
+        </button>
+      </div>
+
+      <!-- ABA 1: QUIZ INTERATIVO COM FEEDBACK IMEDIATO -->
+      <div x-show="activeSubTab === 'quiz'" x-transition class="space-y-6">
+
+        <!-- Placar do Aluno -->
+        <div
+          class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs sm:text-sm">
+          <div>
+            Progresso do Quiz:
+            <strong class="text-bio-700 dark:text-bio-400 font-mono"
+              x-text="answeredCount() + ' de ' + questions.length + ' respondidas'"></strong>
+          </div>
+          <div class="font-bold text-slate-700 dark:text-slate-300">
+            Pontuação: <span class="text-emerald-600 dark:text-emerald-400 font-mono" x-text="score"></span> / 100 pts
+          </div>
+        </div>
+
+        <!-- Lista de Questões -->
+        <div class="space-y-6">
+          <template x-for="(q, index) in questions" :key="q.id">
+            <div
+              class="p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+
+              <div class="flex items-start justify-between gap-3">
+                <div class="space-y-1">
+                  <span class="text-xs font-bold text-bio-600 dark:text-bio-400 uppercase tracking-wider"
+                    x-text="'Questão ' + (index + 1) + ' • ' + q.topic"></span>
+                  <h3 class="font-display font-bold text-base sm:text-lg text-slate-900 dark:text-white"
+                    x-text="q.prompt"></h3>
+                </div>
+                <template x-if="q.answered">
+                  <span class="px-2.5 py-1 rounded-full text-xs font-bold shrink-0"
+                    :class="q.isCorrect ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300' : 'bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300'"
+                    x-text="q.isCorrect ? '✓ Correto (+20 pts)' : '✗ Incorreto'"></span>
+                </template>
+              </div>
+
+              <!-- Alternativas (Diretriz 5 - Toque Acessível min-h-[48px]) -->
+              <div class="space-y-2">
+                <template x-for="(opt, optIdx) in q.options" :key="optIdx">
+                  <button @click="answerQuestion(q, optIdx)" :disabled="q.answered"
+                    class="w-full text-left p-3.5 sm:p-4 rounded-xl border text-xs sm:text-sm font-medium transition flex items-center justify-between min-h-[48px] active:scale-[0.99]"
+                    :class="{
+                      'border-slate-200 dark:border-slate-800 hover:border-bio-400 dark:hover:border-bio-600 bg-slate-50/50 dark:bg-slate-950/40': !q.answered,
+                      'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-bold': q.answered && optIdx === q.correctAnswer,
+                      'border-red-400 bg-red-50 dark:bg-red-950/30 text-red-800 dark:text-red-300 line-through': q.answered && q.selectedAnswer === optIdx && !q.isCorrect,
+                      'opacity-50 border-slate-200 dark:border-slate-800': q.answered && optIdx !== q.correctAnswer && q.selectedAnswer !== optIdx
+                    }">
+                    <span x-text="opt"></span>
+                    <template x-if="q.answered && optIdx === q.correctAnswer">
+                      <span class="text-emerald-600 dark:text-emerald-400 font-bold ml-2 shrink-0">✓ Correto</span>
+                    </template>
+                  </button>
+                </template>
+              </div>
+
+              <!-- Feedback Explicativo Imediato -->
+              <div x-show="q.answered" x-transition class="p-4 rounded-xl text-xs sm:text-sm border"
+                :class="q.isCorrect ? 'bg-emerald-50/80 dark:bg-emerald-950/30 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200' : 'bg-amber-50/80 dark:bg-amber-950/30 border-amber-300 dark:border-amber-800 text-amber-950 dark:text-amber-200'">
+                <div class="font-bold mb-1 flex items-center gap-1.5">
+                  <span x-text="q.isCorrect ? '🎯 Excelente dedução científica!' : '💡 Reflexão didática:'"></span>
+                </div>
+                <p x-text="q.feedback"></p>
+              </div>
+
+            </div>
+          </template>
+        </div>
+
+      </div>
+
+      <!-- ABA 2: FLASHCARDS INTERATIVOS (FLIP 3D) -->
+      <div x-show="activeSubTab === 'flashcards'" x-transition class="space-y-6">
+        <div class="text-center max-w-xl mx-auto space-y-1">
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+            Clique em qualquer cartão para girar e revelar a explicação científica essencial do conceito.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <template x-for="(card, index) in flashcards" :key="index">
+            <div class="h-64 cursor-pointer perspective-1000 select-none group" @click="card.flipped = !card.flipped">
+              <div
+                class="relative w-full h-full rounded-2xl transform-style-3d transition-transform duration-500 shadow-md"
+                :class="{ 'rotate-y-180': card.flipped }">
+                <!-- Frente do Card -->
+                <div
+                  class="absolute inset-0 w-full h-full rounded-2xl backface-hidden p-6 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 flex flex-col justify-between items-center text-center">
+                  <span
+                    class="text-[10px] font-bold tracking-wider uppercase text-bio-600 dark:text-bio-400 px-2 py-1 rounded-md bg-bio-50 dark:bg-slate-800"
+                    x-text="card.category"></span>
+                  <div class="space-y-2">
+                    <span class="text-4xl" x-text="card.icon"></span>
+                    <h4 class="font-display font-bold text-lg text-slate-900 dark:text-white" x-text="card.term"></h4>
+                  </div>
+                  <span class="text-xs text-slate-400 flex items-center gap-1">
+                    🔄 Clique para virar
+                  </span>
+                </div>
+
+                <!-- Verso do Card -->
+                <div
+                  class="absolute inset-0 w-full h-full rounded-2xl backface-hidden rotate-y-180 p-6 bg-gradient-to-br from-bio-900 to-slate-900 text-white border-2 border-bio-500 flex flex-col justify-between items-center text-center">
+                  <span class="text-[10px] font-bold tracking-wider uppercase text-bio-300" x-text="card.term"></span>
+                  <p class="text-xs sm:text-sm text-slate-200 leading-relaxed" x-text="card.definition"></p>
+                  <span class="text-xs text-bio-400">
+                    ✓ Conceito-chave
+                  </span>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- RODAPÉ PEDAGÓGICO COM CRÉDITOS             -->
+  <!-- ========================================== -->
+  <footer
+    class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-10 px-4 sm:px-6 lg:px-8 mt-16 transition-colors">
+    <div
+      class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-slate-500 dark:text-slate-400">
+
+      <div class="flex items-center space-x-3">
+        <div class="w-8 h-8 rounded-lg bg-bio-700 text-white flex items-center justify-center font-bold text-sm">
+          🧬
+        </div>
+        <div>
+          <span class="font-display font-bold text-slate-800 dark:text-slate-200">Engenharia Educacional
+            Científica</span>
+          <p>Aula Digital Interativa SPA para o Ensino de Biologia</p>
+        </div>
+      </div>
+
+      <div class="text-center sm:text-right space-y-1">
+        <p class="font-semibold text-slate-700 dark:text-slate-300">&copy; 2026 Nícolas Chenquel Nogueira. Todos os
+          direitos reservados.</p>
+        <div class="flex items-center justify-center sm:justify-end gap-3 pt-1">
+          <a href="https://github.com/nchnogueira" target="_blank" rel="noopener noreferrer"
+            aria-label="GitHub de Nícolas Chenquel Nogueira"
+            class="inline-flex items-center gap-1.5 hover:text-bio-700 dark:hover:text-bio-300 transition">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.38.6.11.82-.26.82-.58 0-.28-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.75.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.3 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.29-1.55 3.3-1.23 3.3-1.23.64 1.66.24 2.88.1 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.36.81 1.1.81 2.21 0 1.6-.01 2.88-.01 3.27 0 .32.22.69.82.58C20.56 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0Z" />
+            </svg>
+            GitHub
+          </a>
+          <a href="https://linkedin.com/in/nchnogueira/" target="_blank" rel="noopener noreferrer"
+            aria-label="LinkedIn de Nícolas Chenquel Nogueira"
+            class="inline-flex items-center gap-1.5 hover:text-bio-700 dark:hover:text-bio-300 transition">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M5.04 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 .04-5ZM3 9.75h4V21H3V9.75Zm6.5 0h3.83v1.54h.05c.53-1 1.83-2.04 3.77-2.04C21.18 9.25 22 11.59 22 14.63V21h-4v-5.65c0-1.35-.02-3.08-1.88-3.08-1.88 0-2.17 1.47-2.17 2.99V21h-4V9.75Z" />
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+        <p>Desenvolvido com Antigravity • Imagens geradas com ChatGPT</p>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+
+</html>

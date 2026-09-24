@@ -1,0 +1,128 @@
+/* ==========================================================================
+       1. ESTILOS ADICIONAIS & ANIMAÇÕES DOS FLASHCARDS 3D
+       ========================================================================== */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+
+    .backface-hidden {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+
+    /* Estilização suave da barra de rolagem */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+
+    .dark ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #10b981;
+      border-radius: 4px;
+    }
+
+    /* ==========================================================================
+       DIRETRIZ 3: FLUIDEZ DO LAYOUT E PREVENÇÃO DE OVERFLOW HORIZONTAL
+       Garante que nenhum elemento exceda a largura da tela do celular.
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    /* ==========================================================================
+       DIRETRIZ 4: IMAGENS E MÍDIAS FLUIDAS
+       Garante que todas as imagens, vídeos, canvas e iframes redimensionem fluidamente.
+       ========================================================================== */
+    img, video, iframe, embed, object {
+      max-width: 100% !important;
+      height: auto;
+    }
+
+    canvas {
+      max-width: 100% !important;
+      height: auto;
+      display: block;
+    }
+
+    /* Scroll horizontal táctil suave para tabelas, fórmulas KaTeX e seletores em pills */
+    .overflow-x-auto {
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain;
+    }
+
+    /* ==========================================================================
+       DIRETRIZ 2 & 5: MEDIA QUERIES FOCADAS EM TELAS DE CELULARES (max-width: 768px)
+       Ajustes de Grid, Flexbox, tamanhos de toque mínimos e legibilidade móvel.
+       ========================================================================== */
+    @media (max-width: 768px) {
+      /* Diretriz 5: Acessibilidade do Toque (alvo mínimo de toque para dedos em telas touch: 44px) */
+      button,
+      a.rounded-xl,
+      a.rounded-lg,
+      input[type="range"],
+      summary {
+        min-height: 44px;
+        touch-action: manipulation;
+      }
+
+      /* Sliders touch: polegares ampliados para facilitar o arrasto com a ponta dos dedos */
+      input[type="range"] {
+        height: 10px;
+      }
+
+      input[type="range"]::-webkit-slider-thumb {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        margin-top: -7px;
+      }
+
+      input[type="range"]::-moz-range-thumb {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+      }
+
+      /* Prevenção de quebra de layout por palavras científicas longas */
+      h1, h2, h3, h4, p, span, strong {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+      }
+
+      /* Altura adaptativa dos flashcards para não truncar texto explicativo em celular */
+      .perspective-1000,
+      .perspective-1000 .h-64 {
+        height: 17rem;
+      }
+    }
+
+    /* Ajustes específicos para smartphones compactos (telas com até 480px) */
+    @media (max-width: 480px) {
+      .perspective-1000,
+      .perspective-1000 .h-64 {
+        height: 18.5rem;
+      }
+    }
