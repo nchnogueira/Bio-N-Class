@@ -1,6 +1,10 @@
 # 🌿 Bio-N-Class | Portfólio de Aulas Interativas de Ciências da Natureza
 
 <p align="center">
+  <img src="Logo/BioNClass.svg" alt="Bio-N-Class Logo" width="180" />
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/Ci%C3%AAncias-Natureza-22c55e?style=for-the-badge&logo=dna&logoColor=white" alt="Ciências da Natureza" />
   <img src="https://img.shields.io/badge/Status-Em%20Desenvolvimento-blue?style=for-the-badge" alt="Status" />
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
@@ -12,7 +16,7 @@
 
 ## 📖 Sobre o Projeto
 
-O **Bio-N-Class** é um portfólio de aulas interativas em formato web (SPA - *Single Page Application*), voltado para o ensino e divulgação de **Ciências da Natureza** (**Biologia**, **Química** e **Física**).
+O **Bio-N-Class** é um portfólio de aulas interativas em formato web, voltado para o ensino e divulgação de **Ciências da Natureza** (**Biologia**, **Química** e **Física**).
 
 Cada aula é desenvolvida como uma experiência multimídia rica, combinando fundamentação teórica sólida, recursos visuais modernos, quizzes de fixação e, principalmente, **simulações e experimentos interativos** executados diretamente no navegador.
 
